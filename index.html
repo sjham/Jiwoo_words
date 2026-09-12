@@ -1,0 +1,3441 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="지우를 위한 중학 영단어 카드 640장">
+<meta name="theme-color" content="#ECECE8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111216" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Jiwoo's Words">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Jiwoo's Words</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Bebas+Neue&family=Cinzel+Decorative:wght@700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Nanum+Pen+Script&display=swap">
+<style>
+  /* 독립 페이지용 기본 초기화 (아티팩트 뷰어가 해 주던 것) */
+  html{color-scheme:light dark}
+  body{margin:0;-webkit-text-size-adjust:100%}
+  img{max-width:100%}
+  [hidden]{display:none !important}
+  :root{
+    --ground:#EDF0F6;
+    --surface:#FFFFFF;
+    --surface-2:#F6F8FC;
+    --line:#D7DEEB;
+    --line-soft:#E6EBF4;
+    --ink:#151B27;
+    --ink-2:#4C596E;
+    --ink-3:#7C889D;
+    --accent:#3A41AE;
+    --accent-soft:#E7E8FA;
+    --on-accent:#FFFFFF;
+    --repeat:#A85A16;
+    --repeat-soft:#FBECDC;
+    --done:#15705A;
+    --done-soft:#DFF1EA;
+    --shadow:0 1px 2px rgba(21,27,39,.05), 0 10px 28px -18px rgba(21,27,39,.28);
+    --r-lg:18px;
+    --r-md:12px;
+    --r-sm:8px;
+    --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0F1319;
+      --surface:#171D27;
+      --surface-2:#1D2532;
+      --line:#2C3543;
+      --line-soft:#232B38;
+      --ink:#E7EBF3;
+      --ink-2:#A4B0C2;
+      --ink-3:#78859A;
+      --accent:#9AA1FF;
+      --accent-soft:#252A4A;
+      --on-accent:#111524;
+      --repeat:#E4A25A;
+      --repeat-soft:#38291A;
+      --done:#5FC7A2;
+      --done-soft:#14322A;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -20px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F1319;
+    --surface:#171D27;
+    --surface-2:#1D2532;
+    --line:#2C3543;
+    --line-soft:#232B38;
+    --ink:#E7EBF3;
+    --ink-2:#A4B0C2;
+    --ink-3:#78859A;
+    --accent:#9AA1FF;
+    --accent-soft:#252A4A;
+    --on-accent:#111524;
+    --repeat:#E4A25A;
+    --repeat-soft:#38291A;
+    --done:#5FC7A2;
+    --done-soft:#14322A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -20px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding-inline:18px;padding-block:26px 60px}
+
+  /* ---------- header ---------- */
+  .head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 18px;justify-content:space-between}
+  .brand{display:flex;flex-direction:column;gap:2px}
+  .brand h1{
+    margin:0;font-family:var(--display);font-weight:700;
+    font-size:clamp(1.45rem,4.4vw,1.95rem);letter-spacing:-.015em;text-wrap:balance;
+  }
+  .brand .sub{color:var(--ink-3);font-size:12.5px;letter-spacing:.02em}
+  .syncchip{
+    display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink-2);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 11px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-3);flex:none}
+  .dot.on{background:var(--done)}
+
+  /* ---------- progress ---------- */
+  .meter{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+  .meter .bar{height:8px;border-radius:999px;background:var(--line-soft);overflow:hidden;display:flex}
+  .meter .bar i{display:block;height:100%}
+  .meter .bar .b-done{background:var(--done)}
+  .meter .bar .b-rep{background:var(--repeat)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px}
+  .chipbtn{
+    font:inherit;font-size:12.5px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--surface);color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;padding:6px 12px;
+  }
+  .chipbtn b{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .chipbtn:hover{border-color:var(--accent)}
+  .chipbtn .sq{width:8px;height:8px;border-radius:2px;flex:none}
+  .sq.new{background:var(--ink-3)}
+  .sq.rep{background:var(--repeat)}
+  .sq.done{background:var(--done)}
+
+  /* ---------- tabs ---------- */
+  .tabs{display:flex;gap:4px;margin-top:22px;background:var(--surface-2);border:1px solid var(--line-soft);padding:4px;border-radius:999px;width:fit-content;max-width:100%;overflow-x:auto}
+  .tabs button{
+    font:inherit;font-size:13.5px;font-weight:500;white-space:nowrap;
+    border:0;background:transparent;color:var(--ink-2);
+    padding:7px 15px;border-radius:999px;cursor:pointer;
+  }
+  .tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+
+  /* ---------- panels ---------- */
+  .panel{display:none}
+  .panel.on{display:block}
+
+  .notice{
+    margin-top:18px;background:var(--accent-soft);border:1px solid var(--accent);
+    border-radius:var(--r-md);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between
+  }
+  .notice[hidden]{display:none}
+  .notice p{margin:0;font-size:13.5px;color:var(--ink)}
+  .notice .acts{display:flex;flex-wrap:wrap;gap:8px}
+
+  /* ---------- study card ---------- */
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:flex-end}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  select,input[type=text],textarea{
+    font:inherit;color:var(--ink);background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 10px;
+  }
+  select{padding-right:26px}
+  textarea{width:100%;min-height:104px;resize:vertical;line-height:1.55}
+  .check{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);padding-bottom:9px}
+
+  .card{
+    margin-top:16px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r-lg);box-shadow:var(--shadow);
+    padding:30px 22px 24px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:14px;min-height:262px;justify-content:center;
+  }
+  .card .tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+  .tag{
+    font-size:11px;letter-spacing:.04em;color:var(--ink-2);background:var(--surface-2);
+    border:1px solid var(--line-soft);border-radius:999px;padding:3px 9px
+  }
+  .tag.rep{color:var(--repeat);background:var(--repeat-soft);border-color:transparent}
+  .tag.done{color:var(--done);background:var(--done-soft);border-color:transparent}
+  .q-en{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,8vw,3.15rem);line-height:1.1;letter-spacing:-.02em;word-break:break-word}
+  .q-ko{font-family:var(--sans);font-weight:600;font-size:clamp(1.5rem,6vw,2.1rem);line-height:1.3;word-break:keep-all}
+  .answer{border-top:1px dashed var(--line);width:100%;padding-top:16px;display:flex;flex-direction:column;gap:10px;align-items:center}
+  .a-main{font-weight:600;font-size:clamp(1.25rem,5vw,1.6rem);word-break:keep-all}
+  .a-main.en{font-family:var(--display);font-weight:700;letter-spacing:-.01em}
+  .a-ex{font-family:var(--word);font-style:italic;font-size:14.5px;color:var(--ink-2);max-width:44ch;word-break:break-word}
+  .a-ex b{color:var(--ink);font-weight:600}
+  .reveal-in{animation:rise .22s ease-out}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.reveal-in{animation:none}}
+
+  .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .btn{
+    font:inherit;font-size:14.5px;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    border-radius:var(--r-sm);padding:11px 18px;
+  }
+  .btn:hover{border-color:var(--ink-3)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .btn.primary:hover{filter:brightness(1.06)}
+  .btn.rep{color:var(--repeat);border-color:var(--repeat);background:var(--repeat-soft)}
+  .btn.done{color:var(--done);border-color:var(--done);background:var(--done-soft)}
+  .btn.small{font-size:13px;font-weight:500;padding:7px 12px}
+  .btn kbd{
+    font-family:var(--mono);font-size:10.5px;font-weight:400;opacity:.75;
+    border:1px solid currentColor;border-radius:4px;padding:0 4px;margin-left:7px
+  }
+  .row-under{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:14px}
+  .counter{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .hint{font-size:12px;color:var(--ink-3)}
+
+  /* ---------- list ---------- */
+  .listbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:flex-end}
+  .listbar input[type=text]{min-width:150px}
+  .tablewrap{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:520px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:middle;font-size:13.5px}
+  th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:600;position:sticky;top:0;background:var(--surface)}
+  tr:last-child td{border-bottom:0}
+  td .w{font-family:var(--display);font-weight:600;font-size:15.5px}
+  td .m{color:var(--ink-2)}
+  .pill{font-size:11px;padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .pill.new{color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line-soft)}
+  .pill.rep{color:var(--repeat);background:var(--repeat-soft)}
+  .pill.done{color:var(--done);background:var(--done-soft)}
+  .mini{display:flex;gap:4px;flex-wrap:wrap}
+  .mini button{font:inherit;font-size:11.5px;cursor:pointer;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);border-radius:6px;padding:3px 8px}
+  .mini button:hover{border-color:var(--ink-3);color:var(--ink)}
+  .empty{padding:26px 16px;text-align:center;color:var(--ink-3);font-size:13.5px}
+
+  /* ---------- add ---------- */
+  .form{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:18px;display:flex;flex-direction:column;gap:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid2 .field{min-width:0}
+  .grid2 input,.grid2 select{width:100%}
+  @media (max-width:560px){.grid2{grid-template-columns:1fr}}
+  .form h2,.card-h{margin:0;font-size:15px;font-weight:600}
+  .form .note{font-size:12.5px;color:var(--ink-3);margin:0}
+  .danger{color:var(--repeat)}
+
+  /* ---------- 오늘 띠 ---------- */
+  #today{
+    margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:12px 14px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between
+  }
+  .today-main{flex:1 1 220px;min-width:200px;display:flex;flex-direction:column;gap:7px}
+  .today-top{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--ink-2);align-items:baseline}
+  .today-top b{font-family:var(--mono);font-weight:500;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .today-top .money{font-family:var(--mono);font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tbar{height:7px;border-radius:999px;background:var(--line-soft);overflow:hidden}
+  .tbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .35s ease}
+  #today.hit .tbar i{background:var(--done)}
+  @media (prefers-reduced-motion: reduce){.tbar i{transition:none}}
+  .stamps{display:flex;gap:5px;align-items:center}
+  .stamps .s{
+    width:22px;height:22px;border-radius:7px;border:1px solid var(--line);background:var(--surface-2);
+    display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink-3);font-family:var(--mono)
+  }
+  .stamps .s.on{background:var(--done-soft);border-color:transparent;color:var(--done);font-weight:500}
+  .stamps .s.today{box-shadow:0 0 0 2px var(--accent-soft)}
+  .pulse{animation:pop .45s ease-out}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.04)}100%{transform:scale(1)}}
+  @media (prefers-reduced-motion: reduce){.pulse{animation:none}}
+
+  /* ---------- 발음 ---------- */
+  .speak{
+    border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);
+    width:34px;height:34px;border-radius:50%;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:none
+  }
+  .speak:hover{color:var(--accent);border-color:var(--accent)}
+  .speak svg{width:16px;height:16px}
+  .qrow{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- 숙어 퀴즈 ---------- */
+  .quizbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:18px}
+  .quizbar .score{font-size:13px;color:var(--ink-2)}
+  .quizbar .score b{font-family:var(--mono);font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+  .exwrap > .cloze{margin-bottom:2px}
+  .cloze{font-size:clamp(1.1rem,4.2vw,1.42rem);line-height:1.65;font-weight:500;word-break:keep-all;max-width:32ch}
+  .cloze u{text-decoration:none;border-bottom:2px solid var(--accent);padding:0 .5em;color:var(--accent)}
+  .opts{display:flex;flex-direction:column;gap:8px;width:100%;max-width:420px}
+  .opt{
+    font:inherit;font-family:var(--display);font-weight:600;font-size:16px;text-align:left;cursor:pointer;
+    background:var(--surface-2);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-sm);
+    padding:11px 14px;display:flex;align-items:center;gap:10px
+  }
+  .opt:hover{border-color:var(--accent)}
+  .opt span.k{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none}
+  .opt.ok{background:var(--done-soft);border-color:var(--done);color:var(--done)}
+  .opt.no{background:var(--repeat-soft);border-color:var(--repeat);color:var(--repeat)}
+  .opt[disabled]{cursor:default}
+  .verdict{font-weight:600;font-size:15px}
+  .verdict.ok{color:var(--done)}
+  .verdict.no{color:var(--repeat)}
+  .exrow{display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap}
+  .exwrap{display:flex;flex-direction:column;align-items:center;gap:9px;width:100%}
+  .trans{
+    font:inherit;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;
+    background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line);
+    border-radius:999px;padding:5px 11px
+  }
+  .trans:hover{border-color:var(--accent);color:var(--accent)}
+  .trans[aria-expanded="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  .a-ko{
+    font-size:14px;color:var(--ink-2);background:var(--surface-2);
+    border:1px solid var(--line-soft);border-radius:var(--r-sm);
+    padding:9px 13px;max-width:38ch;word-break:keep-all;line-height:1.6
+  }
+  .a-ko[hidden]{display:none}
+  .trans.tip{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+  .trans.tip[aria-expanded="true"]{border-color:var(--accent)}
+  .a-tip{
+    font-size:14px;color:var(--ink);background:var(--accent-soft);
+    border:1px solid var(--accent);border-radius:var(--r-sm);
+    padding:11px 14px;max-width:40ch;word-break:keep-all;line-height:1.65;text-align:left
+  }
+  .a-tip b{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+  .a-tip[hidden]{display:none}
+  .a-tip .shape{
+    display:inline-block;margin-top:7px;font-family:var(--mono);font-size:15px;
+    letter-spacing:.18em;color:var(--accent)
+  }
+
+  /* ---------- 포인트 ---------- */
+  .pts-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  @media (max-width:560px){.pts-grid{grid-template-columns:1fr}}
+  .box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:16px}
+  .box h2{margin:0 0 10px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .big{font-family:var(--mono);font-size:30px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.15}
+  .big small{font-size:14px;color:var(--ink-3);margin-left:4px;font-weight:400}
+  .sub-line{font-size:13px;color:var(--ink-2);margin-top:6px}
+  .box.payout{border-color:var(--accent)}
+  .box .acts{justify-content:flex-start;margin-top:12px}
+  .rules{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--ink-2)}
+  .rules b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .paidlog{font-size:12.5px;color:var(--ink-3);display:flex;flex-direction:column;gap:3px;margin-top:10px}
+
+  /* ---------- 편지 ---------- */
+  .letterbtn{
+    font:inherit;font-size:11.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+    background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:5px 11px
+  }
+  .letterbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .backdrop{
+    position:fixed;inset:0;background:rgba(12,16,24,.55);backdrop-filter:blur(3px);
+    display:flex;align-items:center;justify-content:center;padding:20px;z-index:50
+  }
+  .backdrop[hidden]{display:none}
+  .letter{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.5);max-width:440px;width:100%;
+    padding:28px 26px 22px;display:flex;flex-direction:column;gap:16px;text-align:center;
+    animation:letterin .3s ease-out
+  }
+  @keyframes letterin{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.letter{animation:none}}
+  .letter .to{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  .letter .body{
+    font-family:"Nanum Pen Script","IBM Plex Sans KR",cursive;
+    font-size:26px;line-height:1.65;color:var(--ink);word-break:keep-all;white-space:pre-line
+  }
+  .letter .from{font-family:"Nanum Pen Script","IBM Plex Sans KR",cursive;font-size:22px;color:var(--ink-2);text-align:right}
+  .letter .rule{height:1px;background:var(--line-soft)}
+
+  /* ---------- 상품 ---------- */
+  .run{font-size:14px;color:var(--ink-2);margin:0 0 12px}
+  .run b{font-family:var(--mono);font-weight:500;font-size:16px;color:var(--ink)}
+  .rewards{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+  .reward{
+    display:flex;align-items:center;gap:12px;padding:11px 13px;
+    border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface-2)
+  }
+  .reward.on{border-color:var(--done);background:var(--done-soft)}
+  .reward .icon{
+    width:30px;height:30px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;
+    background:var(--surface);border:1px solid var(--line);color:var(--ink-3);font-size:13px
+  }
+  .reward.on .icon{background:var(--done);border-color:var(--done);color:#fff}
+  .reward .txt{flex:1;min-width:0}
+  .reward .name{font-weight:600;font-size:14px}
+  .reward.on .name{color:var(--done)}
+  .reward .need{font-size:12px;color:var(--ink-3);font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .reward .rbar{height:5px;border-radius:999px;background:var(--line-soft);overflow:hidden;margin-top:6px}
+  .reward .rbar i{display:block;height:100%;background:var(--accent)}
+  .reward.on .rbar i{background:var(--done)}
+
+  .more{margin-top:14px}
+  .more > summary{
+    cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--poster);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:4px;padding:5px 12px;background:var(--surface)
+  }
+  .more > summary::-webkit-details-marker{display:none}
+  .more > summary::after{content:"+";font-family:var(--mono);font-size:13px}
+  .more[open] > summary::after{content:"−"}
+  .more > summary:hover{border-color:var(--accent);color:var(--accent)}
+  .more .controls{margin-top:10px}
+  @media (max-width:560px){
+    .hint{display:none}
+    .btn kbd{display:none}
+    .row-under{justify-content:flex-start}
+  }
+  .toast{
+    position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+    background:var(--ink);color:var(--ground);font-size:13px;font-weight:500;
+    padding:9px 16px;border-radius:999px;box-shadow:var(--shadow);
+    opacity:0;pointer-events:none;transition:opacity .2s
+  }
+  .toast.show{opacity:1}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  footer{margin-top:26px;font-size:12px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
+  /* ===================================================================
+     DESIGN LAYER — 재즈 슬리브 & 앰프 패널
+     =================================================================== */
+  :root{
+    --ground:#ECECE8;
+    --surface:#FBFBF9;
+    --surface-2:#F2F2EE;
+    --line:#D6D5CE;
+    --line-soft:#E4E3DD;
+    --ink:#15171B;
+    --ink-2:#4B4F57;
+    --ink-3:#7D828C;
+    --accent:#8A6410;
+    --accent-soft:#F3E8CF;
+    --on-accent:#FFFDF6;
+    --repeat:#A93C22;
+    --repeat-soft:#F6E4DC;
+    --done:#0E6857;
+    --done-soft:#DCECE6;
+    --shadow:0 1px 1px rgba(20,22,26,.04), 0 14px 30px -22px rgba(20,22,26,.45);
+    --poster:"Bebas Neue","IBM Plex Sans KR",system-ui,sans-serif;
+    --word:"Libre Baskerville","Times New Roman",serif;
+    --grot:"Archivo","IBM Plex Sans KR",system-ui,sans-serif;
+    --display:var(--word);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#111216;
+      --surface:#1A1C21;
+      --surface-2:#22242B;
+      --line:#31343D;
+      --line-soft:#26282F;
+      --ink:#F1EEE7;
+      --ink-2:#A9ADB7;
+      --ink-3:#787D88;
+      --accent:#E0B75B;
+      --accent-soft:#2B2519;
+      --on-accent:#17180F;
+      --repeat:#E08B5C;
+      --repeat-soft:#342319;
+      --done:#4FC1A6;
+      --done-soft:#12302A;
+      --shadow:0 1px 1px rgba(0,0,0,.5), 0 18px 40px -26px rgba(0,0,0,.9);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#111216;
+    --surface:#1A1C21;
+    --surface-2:#22242B;
+    --line:#31343D;
+    --line-soft:#26282F;
+    --ink:#F1EEE7;
+    --ink-2:#A9ADB7;
+    --ink-3:#787D88;
+    --accent:#E0B75B;
+    --accent-soft:#2B2519;
+    --on-accent:#17180F;
+    --repeat:#E08B5C;
+    --repeat-soft:#342319;
+    --done:#4FC1A6;
+    --done-soft:#12302A;
+    --shadow:0 1px 1px rgba(0,0,0,.5), 0 18px 40px -26px rgba(0,0,0,.9);
+  }
+
+  /* --- 헤더 로크업 --- */
+  .head{align-items:flex-start;padding-bottom:12px;border-bottom:0;position:relative}
+  .orn{position:relative;height:16px;margin:2px 0 4px}
+  .orn::before{
+    content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+    height:3px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+  }
+  .orn::after{
+    content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;background:var(--accent);
+    transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 0 5px var(--ground)
+  }
+  .letter .rule{
+    position:relative;height:12px;background:transparent;margin:2px 0
+  }
+  .letter .rule::before{
+    content:"";position:absolute;left:12%;right:12%;top:50%;transform:translateY(-50%);
+    height:3px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+  }
+  .letter .rule::after{
+    content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;background:var(--accent);
+    transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 0 5px var(--surface)
+  }
+  .eyebrow{
+    font-family:var(--poster);font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);line-height:1
+  }
+  .brand h1{
+    font-family:"Cinzel Decorative","Libre Baskerville",Georgia,serif;
+    font-weight:700;letter-spacing:.015em;line-height:1.15;
+    font-size:clamp(1.7rem,5.6vw,2.45rem);margin-top:6px
+  }
+  .brand .sub{font-size:12px;color:var(--ink-3);letter-spacing:.01em;margin-top:2px}
+  .syncchip,.letterbtn{border-radius:4px;font-family:var(--poster);font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px}
+  .letterbtn{color:var(--accent);border-color:var(--accent)}
+
+  /* --- VU 미터 --- */
+  .meter .bar{height:10px;border-radius:3px;background:var(--surface-2);border:1px solid var(--line);position:relative;overflow:hidden}
+  .meter .bar i{border-radius:0}
+  .meter .bar::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(to right,transparent 0 11px,var(--ground) 11px 12px);
+    opacity:.55
+  }
+  .chipbtn{border-radius:4px;font-size:12px}
+  .chipbtn b{font-size:13px}
+  .chipbtn .sq{border-radius:1px}
+
+  /* --- 탭: 앰프 스위치 --- */
+  .tabs{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0;gap:2px;width:100%}
+  .tabs button{
+    font-family:var(--poster);font-size:16px;letter-spacing:.1em;text-transform:uppercase;
+    border-radius:0;padding:10px 14px;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--ink-3)
+  }
+  .tabs button[aria-selected="true"]{background:transparent;box-shadow:none;color:var(--ink);border-bottom-color:var(--accent)}
+
+  /* --- 오늘 패널: 앰프 --- */
+  #today{border-radius:6px;background:var(--surface);border:1px solid var(--line);position:relative}
+  #today::before{
+    content:"Today's set";position:absolute;top:-8px;left:14px;padding:0 6px;background:var(--ground);
+    font-family:var(--poster);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)
+  }
+  .today-main{padding-top:4px}
+  .tbar{height:9px;border-radius:2px;border:1px solid var(--line);background:var(--surface-2)}
+  .tbar i{border-radius:0}
+  /* 7일 기록: 프렛보드 인레이 */
+  .stamps{
+    padding:9px 10px;border-radius:5px;background:var(--surface-2);border:1px solid var(--line);
+    position:relative;gap:7px
+  }
+  .stamps::before{
+    content:"";position:absolute;left:8px;right:8px;top:50%;height:5px;transform:translateY(-50%);
+    background:repeating-linear-gradient(to bottom,var(--line) 0 1px,transparent 1px 3px);opacity:.8;pointer-events:none
+  }
+  .stamps .s{
+    width:21px;height:21px;border-radius:50%;background:var(--surface);border:1px solid var(--line);
+    font-family:var(--poster);font-size:12px;letter-spacing:.04em;color:var(--ink-3);z-index:1
+  }
+  .stamps .s.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .stamps .s.today{box-shadow:0 0 0 2px var(--ground),0 0 0 3px var(--accent)}
+
+  /* --- 카드: 레코드 슬리브 --- */
+  .card{
+    border-radius:6px;padding:34px 22px 26px;background:var(--surface);
+    border:1px solid var(--line);position:relative
+  }
+  .card::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:3px;
+    background:linear-gradient(to right,var(--accent),var(--accent) 38%,transparent 38%)
+  }
+  .tag{
+    border-radius:3px;font-family:var(--poster);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    padding:3px 8px;color:var(--ink-3)
+  }
+  .tag.rep{color:var(--repeat)}
+  .tag.done{color:var(--done)}
+  .q-en{
+    font-family:var(--word);font-weight:700;letter-spacing:-.012em;line-height:1.08;
+    font-size:clamp(2rem,7.6vw,3.1rem)
+  }
+  .q-ko{font-weight:700;letter-spacing:-.01em}
+  .a-main.en{font-family:var(--word);font-weight:700;letter-spacing:-.01em}
+  .answer{border-top:1px solid var(--line-soft)}
+  .counter{font-size:12px;letter-spacing:.06em}
+  .hint{font-family:var(--poster);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* --- 버튼 --- */
+  .btn{border-radius:4px;letter-spacing:.01em}
+  .btn.rep,.btn.done{font-family:var(--poster);font-size:19px;letter-spacing:.1em;padding:9px 20px}
+  .btn kbd{border-radius:2px}
+  .trans{border-radius:3px;font-family:var(--poster);font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px}
+  .speak{border-radius:50%}
+
+  /* --- 퀴즈 --- */
+  .opt{font-family:var(--word);font-weight:700;font-size:15px;border-radius:4px}
+  .opt span.k{font-family:var(--poster);font-size:14px;letter-spacing:.06em}
+  .cloze u{border-bottom-width:2px}
+  .verdict{font-family:var(--poster);font-size:20px;letter-spacing:.08em;text-transform:uppercase}
+
+  /* --- 박스 / 라벨 --- */
+  .box,.form,.tablewrap,.notice{border-radius:6px}
+  .box h2,.field label,th,.form h2{
+    font-family:var(--poster);letter-spacing:.16em;text-transform:uppercase;font-weight:400
+  }
+  .box h2{font-size:15px;color:var(--accent)}
+  .field label{font-size:13px;color:var(--ink-3);font-weight:400}
+  th{font-size:13px}
+  .form h2{font-size:17px;color:var(--ink)}
+  .big{font-family:var(--grot);font-weight:700;letter-spacing:-.03em}
+  select,input[type=text],textarea{border-radius:4px}
+  .reward{border-radius:4px}
+  .reward .name{font-size:14.5px;letter-spacing:-.01em}
+  .reward .icon{border-radius:50%}
+  .pill{border-radius:3px;font-family:var(--poster);font-size:12.5px;letter-spacing:.1em;padding:3px 9px}
+  td .w{font-family:var(--word);font-weight:700;font-size:14.5px;letter-spacing:0}
+  .mini button{border-radius:3px}
+
+  /* --- 편지 --- */
+  .letter{border-radius:6px;border-top:4px solid var(--accent)}
+  .letter .to{font-family:var(--poster);font-size:15px;letter-spacing:.24em;color:var(--accent)}
+  .more{margin-top:14px}
+  .more > summary{
+    cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--poster);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+    border:1px solid var(--line);border-radius:4px;padding:5px 12px;background:var(--surface)
+  }
+  .more > summary::-webkit-details-marker{display:none}
+  .more > summary::after{content:"+";font-family:var(--mono);font-size:13px}
+  .more[open] > summary::after{content:"−"}
+  .more > summary:hover{border-color:var(--accent);color:var(--accent)}
+  .more .controls{margin-top:10px}
+  @media (max-width:560px){
+    .hint{display:none}
+    .btn kbd{display:none}
+    .row-under{justify-content:flex-start}
+  }
+  .toast{border-radius:4px;background:var(--ink);color:var(--ground)}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="head">
+    <div class="brand">
+      <div class="eyebrow">Middle School English · Side A</div>
+      <h1>Jiwoo&rsquo;s Words</h1>
+      <div class="sub">중1–중3 단어 530 · 숙어 110</div>
+    </div>
+    </header>
+  <div class="orn" aria-hidden="true"></div>
+
+  <div class="meter">
+    <div class="bar" role="img" id="bar" aria-label="학습 진도">
+      <i class="b-done" id="bar-done" style="width:0%"></i>
+      <i class="b-rep" id="bar-rep" style="width:0%"></i>
+    </div>
+    <div class="legend">
+      <button class="chipbtn" type="button" data-jump="new-only"><span class="sq new"></span>안 본 카드 <b id="c-new">0</b></button>
+      <button class="chipbtn" type="button" data-jump="repeat-only"><span class="sq rep"></span>반복함 <b id="c-rep">0</b></button>
+      <button class="chipbtn" type="button" data-jump="done-only"><span class="sq done"></span>완성함 <b id="c-done">0</b></button>
+    </div>
+  </div>
+
+  <div class="today" id="today">
+    <div class="today-main">
+      <div class="today-top">
+        <span>오늘 <b id="t-count">0</b> / <span class="num" id="t-goal">20</span>장</span>
+        <span class="money" id="t-pts">이번 주 0P</span>
+      </div>
+      <div class="tbar"><i id="t-fill"></i></div>
+    </div>
+    <div class="stamps" id="stamps" role="img" aria-label="최근 7일 목표 달성 기록"></div>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="화면 선택">
+    <button id="tab-study" role="tab" aria-selected="true" aria-controls="panel-study">학습</button>
+    <button id="tab-quiz" role="tab" aria-selected="false" aria-controls="panel-quiz">숙어 퀴즈</button>
+    <button id="tab-list" role="tab" aria-selected="false" aria-controls="panel-list">단어 목록</button>
+    <button id="tab-points" role="tab" aria-selected="false" aria-controls="panel-points">포인트</button>
+  </div>
+
+  <!-- ===== 학습 ===== -->
+  <section class="panel on" id="panel-study" role="tabpanel" aria-labelledby="tab-study">
+    <div class="notice" id="resume" hidden>
+      <p id="resume-text">반복함 카드가 기다리고 있어요.</p>
+      <div class="acts">
+        <button class="btn small primary" type="button" id="resume-rep">반복함 먼저</button>
+        <button class="btn small" type="button" id="resume-new">새 카드부터</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="sel-order">출제 순서</label>
+        <select id="sel-order">
+          <option value="repeat-first">반복함 먼저</option>
+          <option value="new-first">안 본 카드 먼저</option>
+          <option value="repeat-only">반복함만</option>
+          <option value="new-only">안 본 카드만</option>
+          <option value="done-only">완성함만 (복습)</option>
+          <option value="all">전체 순서대로</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sel-grade">범위</label>
+        <select id="sel-grade">
+          <option value="all">전체</option>
+          <option value="1">중1 과정</option>
+          <option value="2">중2 과정</option>
+          <option value="3">중3 과정</option>
+          <option value="4">숙어</option>
+          <option value="0">내가 추가한 카드</option>
+        </select>
+      </div>
+    </div>
+
+    <details class="more">
+      <summary>더 보기</summary>
+      <div class="controls">
+        <div class="field">
+          <label for="sel-dir">문제 형식</label>
+          <select id="sel-dir">
+            <option value="en-ko">영어 → 뜻</option>
+            <option value="ko-en">뜻 → 영어</option>
+            <option value="mix">섞어서</option>
+          </select>
+        </div>
+        <label class="check" for="chk-shuffle"><input type="checkbox" id="chk-shuffle"> 무작위로</label>
+        <button class="btn small" type="button" id="btn-restart" style="margin-bottom:4px">다시 시작</button>
+      </div>
+    </details>
+
+    <div class="card" id="card">
+      <div class="empty">카드를 준비하고 있어요…</div>
+    </div>
+
+    <div class="row-under">
+      <span class="counter" id="counter">0 / 0</span>
+      <span class="hint" id="hint">Space 뜻 보기 · 1 반복함 · 2 완성함 · S 발음</span>
+    </div>
+  </section>
+
+  <!-- ===== 숙어 퀴즈 ===== -->
+  <section class="panel" id="panel-quiz" role="tabpanel" aria-labelledby="tab-quiz">
+    <div class="quizbar">
+      <span class="score" id="q-score">문제 <b>1</b> / 10 · 정답 <b>0</b></span>
+      <button class="btn small" type="button" id="btn-newquiz">새 문제 뽑기</button>
+    </div>
+    <div class="card" id="quiz"></div>
+    <div class="row-under">
+      <span class="hint">빈칸에 알맞은 숙어를 고르세요. 맞히면 완성함, 틀리면 반복함으로 들어갑니다.</span>
+    </div>
+  </section>
+
+  <!-- ===== 목록 ===== -->
+  <section class="panel" id="panel-list" role="tabpanel" aria-labelledby="tab-list">
+    <div class="listbar">
+      <div class="field">
+        <label for="q-search">단어 찾기</label>
+        <input type="text" id="q-search" placeholder="영어 또는 뜻" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="q-status">상태</label>
+        <select id="q-status">
+          <option value="all">전체</option>
+          <option value="new">안 본 카드</option>
+          <option value="repeat">반복함</option>
+          <option value="done">완성함</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="q-grade">범위</label>
+        <select id="q-grade">
+          <option value="all">전체</option>
+          <option value="1">중1 과정</option>
+          <option value="2">중2 과정</option>
+          <option value="3">중3 과정</option>
+          <option value="4">숙어</option>
+          <option value="0">내 카드</option>
+        </select>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>단어</th><th>뜻</th><th>상태</th><th>바꾸기</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <footer>
+      <span id="list-count"></span>
+      <button class="btn small" type="button" id="btn-reset">진도 전체 초기화</button>
+    </footer>
+
+  <!-- ===== 추가 (목록 탭 안) ===== -->
+  <div id="panel-add">
+    <form class="form" id="form-one" autocomplete="off">
+      <h2>카드 한 장 추가</h2>
+      <div class="grid2">
+        <div class="field">
+          <label for="in-en">영어 단어 *</label>
+          <input type="text" id="in-en" required placeholder="예: enough">
+        </div>
+        <div class="field">
+          <label for="in-ko">뜻 *</label>
+          <input type="text" id="in-ko" required placeholder="예: 충분한">
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label for="in-pos">품사</label>
+          <select id="in-pos">
+            <option value="">선택 없음</option>
+            <option value="n">명사 n.</option>
+            <option value="v">동사 v.</option>
+            <option value="adj">형용사 adj.</option>
+            <option value="adv">부사 adv.</option>
+            <option value="phr">표현 phr.</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="in-grade">단계</label>
+          <select id="in-grade">
+            <option value="0">내 카드</option>
+            <option value="1">중1 과정</option>
+            <option value="2">중2 과정</option>
+            <option value="3">중3 과정</option>
+            <option value="4">숙어</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="in-ex">예문 (선택) — 숙어는 빈칸으로 낼 부분을 {중괄호}로</label>
+        <input type="text" id="in-ex" placeholder="예: We have enough time.">
+      </div>
+      <div class="acts" style="justify-content:flex-start">
+        <button class="btn primary" type="submit">카드 추가</button>
+      </div>
+    </form>
+
+    <form class="form" id="form-bulk" autocomplete="off">
+      <h2>여러 장 붙여넣기</h2>
+      <p class="note">한 줄에 한 단어씩. <code>단어, 뜻, 예문</code> 순서이고 예문은 없어도 됩니다. 쉼표 대신 탭이나 <code>/</code> 도 됩니다.</p>
+      <div class="field">
+        <label for="in-bulk">단어 목록</label>
+        <textarea id="in-bulk" placeholder="brave, 용감한, She was brave enough to speak.
+harvest, 수확
+on purpose, 고의로"></textarea>
+      </div>
+      <div class="acts" style="justify-content:flex-start">
+        <button class="btn primary" type="submit">한꺼번에 추가</button>
+      </div>
+    </form>
+  </div>
+  </section>
+
+  <!-- ===== 포인트 ===== -->
+  <section class="panel" id="panel-points" role="tabpanel" aria-labelledby="tab-points">
+    <div class="pts-grid">
+      <div class="box">
+        <h2>이번 주</h2>
+        <div class="big" id="wk-pts">0<small>P</small></div>
+        <div class="sub-line" id="wk-money">0원</div>
+        <div class="sub-line" id="wk-days">목표 달성 0일 / 5일</div>
+      </div>
+      <div class="box payout">
+        <h2>아직 안 받은 용돈</h2>
+        <div class="big" id="bal-money">0원</div>
+        <div class="sub-line" id="bal-pts">0P</div>
+        <div class="acts">
+          <button class="btn primary" type="button" id="btn-payout">용돈 지급 완료</button>
+        </div>
+        <div class="paidlog" id="paidlog"></div>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:12px">
+      <h2>완주 도전</h2>
+      <div class="run" id="run-progress"></div>
+      <div class="rewards" id="rewards"></div>
+      <p class="note" style="margin-top:12px">상품은 카드를 <b>완성함</b>으로 보낸 수로 열립니다. 포인트는 용돈으로만 쓰이고, 상품과는 따로예요.</p>
+    </div>
+
+    <details class="more" style="margin-top:12px">
+      <summary>주별 기록과 규칙</summary>
+    <div class="box" style="margin-top:12px">
+      <h2>주별 기록</h2>
+      <div class="tablewrap" style="margin-top:0;border:0">
+        <table>
+          <thead><tr><th>주</th><th>학습</th><th>달성</th><th>포인트</th><th>금액</th></tr></thead>
+          <tbody id="wk-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:12px">
+      <h2>규칙과 설정</h2>
+      <ul class="rules">
+        <li>카드 한 장 분류할 때마다 <b>0.5P</b> (하루 목표의 두 배까지만 쌓입니다)</li>
+        <li>하루 목표를 채우면 <b>+10P</b></li>
+        <li>한 주에 5일 채우면 <b>+20P</b></li>
+        <li>포인트는 용돈으로만 바뀝니다. 상품은 완주 진행으로 열려요</li>
+      </ul>
+      <div class="grid2" style="margin-top:14px">
+        <div class="field">
+          <label for="set-goal">하루 목표</label>
+          <select id="set-goal">
+            <option value="10">10장</option>
+            <option value="15">15장</option>
+            <option value="20">20장</option>
+            <option value="30">30장</option>
+            <option value="40">40장</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="set-rate">1P는 몇 원</label>
+          <input type="text" id="set-rate" inputmode="numeric" value="100">
+        </div>
+      </div>
+    </div>
+    </details>
+  </section>
+</div>
+<div class="backdrop" id="backdrop" hidden>
+  <div class="letter" role="dialog" aria-modal="true" aria-label="아빠 편지">
+    <div class="to">지우에게</div>
+    <div class="body">지우야.
+아빠가 지우를 위해 만들어봤다.
+공부한다고 생각하지 말고
+즐겁게 가지고 놀아.</div>
+    <div class="from">- 아빠 -</div>
+    <div class="rule"></div>
+    <button class="btn primary" type="button" id="btn-letter-close">시작하기</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ 단어 데이터: [단계, 영어, 품사, 뜻, 예문] ============ */
+  var RAW = [
+  [1,"always","adv","항상, 늘","My brother is always late for school."],
+  [1,"answer","v","대답하다; 대답","Raise your hand and answer the question."],
+  [1,"borrow","v","빌리다","Can I borrow your eraser, please?"],
+  [1,"break","v","깨뜨리다, 부수다","Be careful. You might break the window."],
+  [1,"bring","v","가져오다, 데려오다","Bring your gym clothes tomorrow."],
+  [1,"busy","adj","바쁜","My mother is busy on Monday mornings."],
+  [1,"careful","adj","조심하는, 주의 깊은","Be careful when you cross the street."],
+  [1,"choose","v","고르다, 선택하다","Choose your favorite color for the poster."],
+  [1,"climb","v","오르다, 올라가다","We climb the hill behind our school every spring."],
+  [1,"collect","v","모으다, 수집하다","My club members collect cans after lunch."],
+  [1,"comfortable","adj","편안한","These new school shoes are very comfortable."],
+  [1,"cook","v","요리하다; 요리사","My father cooks ramen for us on Sundays."],
+  [1,"dangerous","adj","위험한","It is dangerous to swim in this river."],
+  [1,"decide","v","결정하다","I decided to join the guitar club."],
+  [1,"delicious","adj","맛있는","The school lunch is delicious today."],
+  [1,"different","adj","다른, 서로 다른","My twin sister and I like different subjects."],
+  [1,"difficult","adj","어려운","This math question is too difficult for me."],
+  [1,"enough","adj","충분한; 충분히","We don't have enough chairs for everyone."],
+  [1,"exercise","v","운동하다; 운동","I exercise with my dad every evening."],
+  [1,"famous","adj","유명한","This park is famous for its cherry blossoms."],
+  [1,"finish","v","끝내다, 마치다","Finish your homework before dinner."],
+  [1,"forget","v","잊다","Don't forget to bring your umbrella."],
+  [1,"free","adj","무료의; 자유로운","The school library is free for all students."],
+  [1,"friendly","adj","친절한, 다정한","Our new English teacher is very friendly."],
+  [1,"healthy","adj","건강한","Eating vegetables keeps us healthy."],
+  [1,"hurry","v","서두르다","Hurry up! The school bus is coming."],
+  [1,"invite","v","초대하다","I want to invite my friends to my birthday party."],
+  [1,"join","v","함께하다, 가입하다","Why don't you join our soccer club?"],
+  [1,"keep","v","유지하다, 계속하다","Please keep your desk clean."],
+  [1,"lend","v","빌려주다","Can you lend me your pencil?"],
+  [1,"lonely","adj","외로운","I felt lonely on my first day at this school."],
+  [1,"lose","v","잃다; 지다","Don't lose your student ID card."],
+  [1,"mistake","n","실수, 잘못","Everybody makes mistakes, so don't worry."],
+  [1,"neighbor","n","이웃","Our new neighbor has a big brown dog."],
+  [1,"noise","n","소음","Please don't make noise in the library."],
+  [1,"often","adv","자주, 흔히","We often play basketball after school."],
+  [1,"practice","v","연습하다; 연습","Jiwoo practices the violin for an hour every day."],
+  [1,"prepare","v","준비하다","I am preparing for the English test."],
+  [1,"quiet","adj","조용한","The classroom is very quiet during the test."],
+  [1,"ready","adj","준비된","Are you ready for the school festival?"],
+  [1,"remember","v","기억하다","I remember your face, but not your name."],
+  [1,"return","v","돌아오다; 반납하다","You must return the book by Friday."],
+  [1,"safe","adj","안전한","This road is not safe at night."],
+  [1,"save","v","구하다; 모으다, 절약하다","I save two thousand won every week."],
+  [1,"share","v","나누다, 함께 쓰다","Let's share this pizza with our classmates."],
+  [1,"sick","adj","아픈, 병든","My little brother is sick in bed today."],
+  [1,"solve","v","풀다, 해결하다","Can you solve this puzzle?"],
+  [1,"spend","v","(돈을) 쓰다; (시간을) 보내다","I spend two hours on my homework every day."],
+  [1,"strange","adj","이상한, 낯선","I heard a strange sound in the gym."],
+  [1,"surprise","n","놀람; 놀라게 하다","The birthday cake was a surprise for my mom."],
+  [1,"travel","v","여행하다; 여행","My family travels to Jeju every summer."],
+  [1,"trouble","n","문제, 곤란","I am in trouble because I lost my phone."],
+  [1,"understand","v","이해하다","I don't understand this question. Can you help me?"],
+  [1,"useful","adj","유용한, 쓸모 있는","This dictionary is very useful for students."],
+  [1,"visit","v","방문하다; 방문","We visit our grandparents on holidays."],
+  [1,"wait","v","기다리다","Wait for me in front of the school gate."],
+  [1,"weather","n","날씨","How is the weather in Busan today?"],
+  [1,"worry","v","걱정하다","Don't worry. You can do it."],
+  [1,"wrong","adj","잘못된, 틀린","Sorry, you have the wrong number."],
+  [1,"special","adj","특별한","Today is a special day for Jiwoo."],
+
+  [2,"achieve","v","이루다, 성취하다","Jiwoo worked hard to achieve his dream."],
+  [2,"advice","n","조언, 충고","My teacher gave me useful advice about studying."],
+  [2,"agree","v","동의하다","I agree with your opinion about school uniforms."],
+  [2,"allow","v","허락하다","Students are not allowed to use phones in class."],
+  [2,"appear","v","나타나다; ~처럼 보이다","A rainbow appeared after the rain stopped."],
+  [2,"attention","n","주의, 관심","Please pay attention to the safety rules."],
+  [2,"avoid","v","피하다","We should avoid using too much plastic."],
+  [2,"believe","v","믿다","I believe that he is telling the truth."],
+  [2,"celebrate","v","축하하다, 기념하다","We celebrated Children's Day with our family."],
+  [2,"challenge","n","도전; 도전하다","Learning a new language is a big challenge."],
+  [2,"communicate","v","의사소통하다","We can communicate with people around the world."],
+  [2,"compare","v","비교하다","Don't compare yourself with other students."],
+  [2,"complain","v","불평하다","He complained about the noise next door."],
+  [2,"continue","v","계속하다","The rain continued for three days."],
+  [2,"culture","n","문화","I want to learn about Korean culture more deeply."],
+  [2,"curious","adj","궁금한, 호기심 많은","I am curious about how robots work."],
+  [2,"damage","n","피해, 손상; 손상시키다","The typhoon caused a lot of damage to the village."],
+  [2,"describe","v","묘사하다, 설명하다","Can you describe the picture in English?"],
+  [2,"develop","v","발전시키다, 개발하다","Our town has developed very quickly."],
+  [2,"discover","v","발견하다","Scientists discovered a new kind of fish."],
+  [2,"effort","n","노력","If you make an effort, you will improve."],
+  [2,"energy","n","에너지, 기운","We should use more solar energy and less coal."],
+  [2,"environment","n","환경","We should protect the environment for the future."],
+  [2,"especially","adv","특히","I like winter sports, especially skating."],
+  [2,"experience","n","경험; 경험하다","Volunteering was a great experience for me."],
+  [2,"explain","v","설명하다","Could you explain the rule one more time?"],
+  [2,"express","v","표현하다","It is not easy to express my feelings in English."],
+  [2,"fail","v","실패하다; (시험에) 떨어지다","I failed the first test, but I didn't give up."],
+  [2,"fix","v","고치다, 수리하다","My father fixed my bike last weekend."],
+  [2,"focus","v","집중하다; 초점","It is hard to focus when the room is noisy."],
+  [2,"gather","v","모이다, 모으다","All the students gathered in the school gym."],
+  [2,"goal","n","목표; 골","Jiwoo's goal is to read ten English books this year."],
+  [2,"habit","n","습관","Reading before bed is a good habit."],
+  [2,"imagine","v","상상하다","Imagine living without a smartphone."],
+  [2,"improve","v","향상시키다, 나아지다","I want to improve my listening skills."],
+  [2,"include","v","포함하다","The price includes a drink and a dessert."],
+  [2,"introduce","v","소개하다","Let me introduce my best friend, Minji."],
+  [2,"knowledge","n","지식","Books give us knowledge about the world."],
+  [2,"language","n","언어","English is used as a global language."],
+  [2,"memory","n","기억, 추억","I have a happy memory of my school trip."],
+  [2,"nervous","adj","긴장한, 불안한","Jiwoo was very nervous before his speech."],
+  [2,"opinion","n","의견","In my opinion, we need more free time."],
+  [2,"opportunity","n","기회","This is a good opportunity to make new friends."],
+  [2,"patient","adj","참을성 있는; 환자","You should be patient with younger children."],
+  [2,"perhaps","adv","아마도, 어쩌면","Perhaps she missed the bus this morning."],
+  [2,"polite","adj","예의 바른","It is polite to greet your neighbors."],
+  [2,"popular","adj","인기 있는","This song has been popular since last year."],
+  [2,"prefer","v","더 좋아하다","I prefer taking the subway to riding the bus."],
+  [2,"protect","v","보호하다, 지키다","Helmets protect our heads when we ride a bike."],
+  [2,"realize","v","깨닫다","I realized that I left my textbook at home."],
+  [2,"reason","n","이유, 까닭","Tell me the reason why you were late."],
+  [2,"recommend","v","추천하다","I recommend this movie to my classmates."],
+  [2,"reduce","v","줄이다","We should reduce food waste at lunch."],
+  [2,"respect","v","존중하다; 존중","We should respect other people's cultures."],
+  [2,"result","n","결과","The result of the game surprised everyone."],
+  [2,"succeed","v","성공하다","Jiwoo practiced every day and finally succeeded."],
+  [2,"suggest","v","제안하다","I suggest that we meet at the library."],
+  [2,"support","v","지지하다, 돕다; 지원","My parents always support my decisions."],
+  [2,"waste","v","낭비하다; 쓰레기","Don't waste water while you brush your teeth."],
+  [2,"wonder","v","궁금해하다; 놀라움","I wonder who wrote this letter."],
+
+  [3,"accept","v","받아들이다, 수락하다","She accepted the invitation with a big smile."],
+  [3,"accurate","adj","정확한","His answer was accurate and clear."],
+  [3,"admire","v","존경하다, 감탄하다","I admire people who help others."],
+  [3,"advantage","n","장점, 이점","Living in a small town has many advantages."],
+  [3,"affect","v","영향을 미치다","A lack of sleep affects your health."],
+  [3,"ancient","adj","고대의, 아주 오래된","We learned about ancient Egypt in history class."],
+  [3,"apply","v","신청하다; 적용하다","I applied for the student exchange program."],
+  [3,"appreciate","v","감사하다; 감상하다","I appreciate everything you have done for me."],
+  [3,"argue","v","논쟁하다, 주장하다","They argued about which movie to watch."],
+  [3,"attitude","n","태도","A positive attitude can change your life."],
+  [3,"available","adj","이용할 수 있는","The book you want is not available now."],
+  [3,"benefit","n","이익, 혜택","Regular exercise has many benefits for students."],
+  [3,"concentrate","v","집중하다","It is difficult to concentrate in a noisy room."],
+  [3,"confident","adj","자신 있는","Jiwoo looked confident while giving his speech."],
+  [3,"consider","v","고려하다, 생각하다","We should consider other people's feelings."],
+  [3,"contain","v","담고 있다, 포함하다","This drink contains too much sugar."],
+  [3,"creative","adj","창의적인","The students made creative posters about recycling."],
+  [3,"decrease","v","감소하다, 줄다","The number of students has decreased since 2010."],
+  [3,"depend","v","의존하다, ~에 달려 있다","Whether we go or not depends on the weather."],
+  [3,"determine","v","결정하다, 알아내다","Your effort will determine the result."],
+  [3,"disappear","v","사라지다","The clouds disappeared and the sun came out."],
+  [3,"discuss","v","논의하다","Let's discuss the problem in our group."],
+  [3,"effective","adj","효과적인","This is the most effective way to memorize words."],
+  [3,"encourage","v","격려하다, 장려하다","My teacher encouraged Jiwoo to try again."],
+  [3,"equal","adj","동등한, 같은","Everyone should have equal chances."],
+  [3,"estimate","v","추정하다; 추정","It is hard to estimate how long it will take."],
+  [3,"expect","v","기대하다, 예상하다","I didn't expect to see you here."],
+  [3,"familiar","adj","익숙한, 친숙한","This street looks familiar to me."],
+  [3,"generous","adj","관대한, 후한","He was generous enough to share his lunch."],
+  [3,"graduate","v","졸업하다","Jiwoo will graduate from middle school next February."],
+  [3,"honest","adj","정직한, 솔직한","An honest mistake is better than a clever lie."],
+  [3,"immediately","adv","즉시, 곧바로","Call 119 immediately if there is a fire."],
+  [3,"increase","v","증가하다, 늘리다","The number of visitors increased last year."],
+  [3,"independent","adj","독립적인","I want to be more independent from my parents."],
+  [3,"influence","n","영향; 영향을 주다","Friends have a strong influence on our choices."],
+  [3,"instead","adv","대신에","We didn't take a taxi. We walked home instead."],
+  [3,"involve","v","포함하다, 관련시키다","The project involves working with other classes."],
+  [3,"judge","v","판단하다; 판사","You should not judge people by their appearance."],
+  [3,"maintain","v","유지하다","It is important to maintain a healthy diet."],
+  [3,"necessary","adj","필요한","It is necessary to wear a mask in the hospital."],
+  [3,"obvious","adj","분명한, 명백한","It was obvious that he was telling a lie."],
+  [3,"offer","v","제공하다, 제안하다; 제안","A kind man offered me his seat on the bus."],
+  [3,"organize","v","조직하다, 정리하다","Our class organized a charity concert."],
+  [3,"particular","adj","특정한, 특별한","Is there any particular reason for your choice?"],
+  [3,"perform","v","공연하다, 수행하다","The band performed on stage last night."],
+  [3,"persuade","v","설득하다","I persuaded my parents to let me go camping."],
+  [3,"predict","v","예측하다","No one can predict what will happen tomorrow."],
+  [3,"previous","adj","이전의, 앞의","Please read the previous chapter before class."],
+  [3,"produce","v","생산하다, 만들어내다","This factory produces paper from old newspapers."],
+  [3,"provide","v","제공하다","The school provides free lunch for every student."],
+  [3,"purpose","n","목적","The purpose of this meeting is to plan the festival."],
+  [3,"recognize","v","알아보다, 인정하다","I didn't recognize him because he had grown so tall."],
+  [3,"refuse","v","거절하다","He refused to answer the question."],
+  [3,"remain","v","남아 있다; 여전히 ~이다","Only a few seats remain on the bus."],
+  [3,"require","v","요구하다, 필요로 하다","This plant requires a lot of sunlight."],
+  [3,"responsible","adj","책임이 있는","We are responsible for what we say online."],
+  [3,"satisfy","v","만족시키다","The result satisfied both teams."],
+  [3,"separate","v","분리하다; 별개의","Please separate the paper from the plastic."],
+  [3,"serious","adj","심각한; 진지한","Climate change is a serious problem for everyone."],
+  [3,"tradition","n","전통","Making kimchi together is an old Korean tradition."],
+
+  [4,"look for","idm","~을 찾다","Let's {look for} your gym shoes together."],
+  [4,"look at","idm","~을 보다","Please {look at} the board."],
+  [4,"take care of","idm","~을 돌보다","You should {take care of} your little brother."],
+  [4,"get up","idm","일어나다, 기상하다","I {get up} at seven every morning."],
+  [4,"go to bed","idm","잠자리에 들다","I {go to bed} before eleven on school days."],
+  [4,"be good at","idm","~을 잘하다","Jiwoo wants to {be good at} English."],
+  [4,"be interested in","idm","~에 관심이 있다","You will {be interested in} this story."],
+  [4,"be late for","idm","~에 늦다","Don't {be late for} class again."],
+  [4,"be proud of","idm","~을 자랑스러워하다","Jiwoo's parents will {be proud of} him."],
+  [4,"be afraid of","idm","~을 두려워하다","Don't {be afraid of} making mistakes."],
+  [4,"give up","idm","포기하다","Never {give up} your dream."],
+  [4,"grow up","idm","자라다, 성장하다","Children {grow up} very fast."],
+  [4,"turn off","idm","(전원을) 끄다","Please {turn off} the lights when you leave."],
+  [4,"turn on","idm","(전원을) 켜다","Can you {turn on} the air conditioner?"],
+  [4,"put on","idm","입다, 착용하다","{Put on} your coat. It's cold outside."],
+  [4,"take off","idm","벗다; 이륙하다","{Take off} your shoes before you come in."],
+  [4,"wake up","idm","잠에서 깨다","I {wake up} early on school days."],
+  [4,"get along with","idm","~와 잘 지내다","Jiwoo and I {get along with} all our classmates."],
+  [4,"look forward to","idm","~을 기대하다","Jiwoo and I always {look forward to} the school trip."],
+  [4,"look after","idm","~을 돌보다","Can you {look after} my cat this weekend?"],
+  [4,"look up","idm","(사전에서) 찾아보다","{Look up} the word in your dictionary."],
+  [4,"find out","idm","알아내다","Let's {find out} the answer together."],
+  [4,"come true","idm","실현되다, 이루어지다","I hope my dream will {come true}."],
+  [4,"take part in","idm","~에 참가하다","Jiwoo wants to {take part in} the speech contest."],
+  [4,"take a walk","idm","산책하다","We {take a walk} in the park after dinner."],
+  [4,"take a picture","idm","사진을 찍다","Let's {take a picture} in front of the tree."],
+  [4,"pick up","idm","집어 들다; 태우러 가다","Please {pick up} the trash on the floor."],
+  [4,"throw away","idm","버리다","Don't {throw away} plastic bottles."],
+  [4,"clean up","idm","청소하다, 치우다","We {clean up} the classroom every Friday."],
+  [4,"hurry up","idm","서두르다","{Hurry up}, or we will miss the bus."],
+  [4,"wait for","idm","~을 기다리다","I will {wait for} you at the bus stop."],
+  [4,"arrive at","idm","~에 도착하다","We will {arrive at} the museum at ten."],
+  [4,"get on","idm","(버스 등에) 타다","{Get on} the bus at the school gate."],
+  [4,"get off","idm","(버스 등에서) 내리다","{Get off} at the next stop, please."],
+  [4,"run out of","idm","~을 다 써버리다","We may {run out of} paper during the test."],
+  [4,"make friends with","idm","~와 친구가 되다","I want to {make friends with} the new student."],
+  [4,"take a rest","idm","쉬다, 휴식하다","Let's {take a rest} for ten minutes."],
+  [4,"be full of","idm","~로 가득 차다","The hall will {be full of} students."],
+  [4,"be made of","idm","~로 만들어지다","Desks can {be made of} wood or metal."],
+  [4,"be covered with","idm","~로 덮여 있다","In winter, the mountain will {be covered with} snow."],
+  [4,"be famous for","idm","~로 유명하다","This town will {be famous for} its cherry trees."],
+  [4,"be different from","idm","~와 다르다","My idea may {be different from} yours."],
+  [4,"be similar to","idm","~와 비슷하다","Your bag seems to {be similar to} mine."],
+  [4,"be worried about","idm","~을 걱정하다","Don't {be worried about} the final exam."],
+  [4,"be surprised at","idm","~에 놀라다","You will {be surprised at} the news."],
+  [4,"depend on","idm","~에 달려 있다, 의존하다","It may {depend on} the weather."],
+  [4,"care about","idm","~에 마음을 쓰다","We should {care about} the environment."],
+  [4,"agree with","idm","~에 동의하다","I {agree with} your plan."],
+  [4,"thanks to","idm","~ 덕분에","{Thanks to} your help, I finished the project."],
+  [4,"because of","idm","~ 때문에","The game was canceled {because of} the rain."],
+  [4,"instead of","idm","~ 대신에","Let's drink water {instead of} soda."],
+  [4,"in front of","idm","~ 앞에서","Meet me {in front of} the library."],
+  [4,"on time","idm","제시간에","The train arrived exactly {on time}."],
+  [4,"in time","idm","늦지 않게, 시간 맞춰","We got to the gate just {in time}."],
+  [4,"at first","idm","처음에는","{At first}, English was hard for me."],
+  [4,"at last","idm","마침내","{At last}, we reached the top of the mountain."],
+  [4,"for example","idm","예를 들면","I like water sports, {for example}, swimming."],
+  [4,"more and more","idm","점점 더 많은","{More and more} people ride bikes to school."],
+  [4,"as soon as","idm","~하자마자","Call me {as soon as} you arrive."],
+  [4,"used to","idm","예전에 ~하곤 했다","I {used to} play soccer every weekend."],
+  [3,"achievement","n","성취, 업적","Winning the prize was a great achievement."],
+  [3,"admit","v","인정하다","He admitted that he was wrong."],
+  [3,"afford","v","~할 여유가 있다","We can't afford a new car this year."],
+  [3,"aim","n","목표; 목표로 하다","The aim of this club is to help others."],
+  [3,"amount","n","양, 액수","A large amount of water is wasted every day."],
+  [3,"analyze","v","분석하다","We analyzed the results of the survey."],
+  [3,"announce","v","발표하다, 알리다","The teacher announced the test date."],
+  [3,"anxious","adj","불안한, 걱정하는","She was anxious about her first speech."],
+  [3,"apologize","v","사과하다","You should apologize to your friend."],
+  [3,"appearance","n","외모, 겉모습","Don't judge a book by its appearance."],
+  [3,"approach","v","다가가다; 접근법","A stranger approached the school gate."],
+  [3,"appropriate","adj","적절한, 알맞은","Choose appropriate clothes for the ceremony."],
+  [3,"arrange","v","정리하다, 마련하다","We arranged the chairs in a circle."],
+  [3,"assist","v","돕다","Two students assisted the science teacher."],
+  [3,"athlete","n","운동선수","Jiwoo trains like an athlete six days a week."],
+  [3,"attempt","v","시도하다; 시도","He attempted to climb the climbing wall."],
+  [3,"attract","v","끌어당기다, 매혹하다","The festival attracts many visitors."],
+  [3,"audience","n","청중, 관객","The audience clapped for a long time."],
+  [3,"aware","adj","알고 있는, 의식하는","Are you aware of the new school rule?"],
+  [3,"balance","n","균형","Keep your balance on the bike."],
+  [3,"behave","v","행동하다","Please behave politely in the museum."],
+  [3,"belong","v","~에 속하다, ~의 것이다","This umbrella belongs to my sister."],
+  [3,"brief","adj","간단한, 짧은","He gave a brief explanation of the rule."],
+  [3,"cause","v","일으키다; 원인","Heavy rain caused the accident."],
+  [3,"charge","v","요금을 청구하다; 요금","The museum charges no fee for students."],
+  [3,"citizen","n","시민","Every citizen should follow the law."],
+  [3,"claim","v","주장하다","He claimed that he saw a rare bird."],
+  [3,"climate","n","기후","Climate change affects farming."],
+  [3,"combine","v","결합하다, 섞다","Combine the flour and the eggs first."],
+  [3,"comment","n","논평, 의견","Please write a short comment below."],
+  [3,"common","adj","흔한, 공통의","Kim is a common last name in Korea."],
+  [3,"community","n","지역 사회, 공동체","Our community built a small library."],
+  [3,"competition","n","대회, 경쟁","Jiwoo won first place in the competition."],
+  [3,"complete","v","완성하다; 완전한","I completed the project last night."],
+  [3,"complex","adj","복잡한","This machine has a complex design."],
+  [3,"conclusion","n","결론","We reached a conclusion after a long talk."],
+  [3,"condition","n","상태, 조건","My old bike is still in good condition."],
+  [3,"confuse","v","혼란스럽게 하다","These two words often confuse students."],
+  [3,"connect","v","연결하다","This bridge connects the two islands."],
+  [3,"contribute","v","기여하다, 이바지하다","Everyone contributed to the class project."],
+  [3,"convenient","adj","편리한","This app is convenient for studying words."],
+  [3,"cost","v","비용이 들다; 비용","The trip cost more than we expected."],
+  [3,"courage","n","용기","It takes courage to admit a mistake."],
+  [3,"crowd","n","군중, 무리","A large crowd gathered in the square."],
+  [3,"cure","v","치료하다; 치료법","Doctors cured her illness quickly."],
+  [3,"customer","n","손님, 고객","The customer asked for a smaller size."],
+  [3,"debate","n","토론","We had a debate about school uniforms."],
+  [3,"delay","v","미루다, 지연시키다","The rain delayed the baseball game."],
+  [3,"deliver","v","배달하다, 전하다","They deliver the newspaper every morning."],
+  [3,"demand","v","요구하다; 수요","The students demanded more library hours."],
+  [3,"deny","v","부인하다","He denied breaking the window."],
+  [3,"desire","n","욕구, 바람","She has a strong desire to learn."],
+  [3,"destroy","v","파괴하다","The fire destroyed the old building."],
+  [3,"detail","n","세부 사항","Tell me the details of your plan."],
+  [3,"device","n","기기, 장치","This device measures the temperature."],
+  [3,"disaster","n","재난, 재해","The village prepared for natural disasters."],
+  [3,"disease","n","질병","Washing your hands prevents many diseases."],
+  [3,"distance","n","거리","The distance to the station is two kilometers."],
+  [3,"divide","v","나누다","Let's divide the work into four parts."],
+  [3,"donate","v","기부하다","Our class donated books to the library."],
+  [3,"doubt","v","의심하다; 의심","I doubt that he will come on time."],
+  [3,"duty","n","의무, 임무","It is our duty to protect nature."],
+  [3,"earn","v","(돈을) 벌다, 얻다","He earned money by washing cars."],
+  [3,"economy","n","경제","The economy is growing slowly this year."],
+  [3,"effect","n","효과, 영향","Music has a good effect on the brain."],
+  [3,"elect","v","선출하다","We elected Jiwoo as class president."],
+  [3,"emotion","n","감정","Art helps us express our emotions."],
+  [3,"enemy","n","적","Fear is your biggest enemy."],
+  [3,"entire","adj","전체의","The entire class joined the clean-up."],
+  [3,"escape","v","탈출하다, 벗어나다","The cat escaped through the window."],
+  [3,"essential","adj","필수적인","Water is essential for life."],
+  [3,"evidence","n","증거","There is no evidence for that story."],
+  [3,"examine","v","조사하다, 검사하다","The doctor examined my throat."],
+  [3,"exchange","v","교환하다; 교환","We exchanged gifts on Christmas Day."],
+  [3,"exist","v","존재하다","Some animals no longer exist on the earth."],
+  [3,"expand","v","확장하다, 넓히다","The city plans to expand the park."],
+  [3,"expert","n","전문가","She is an expert on sea animals."],
+  [3,"explore","v","탐험하다, 탐구하다","We explored the cave with flashlights."],
+  [3,"fair","adj","공정한, 공평한","The teacher is fair to every student."],
+  [3,"feature","n","특징","The main feature of this phone is its camera."],
+  [3,"force","v","강요하다; 힘","Don't force him to answer the question."],
+  [3,"fortunately","adv","다행히","Fortunately, no one was hurt."],
+  [3,"frequently","adv","자주, 빈번히","He frequently visits his grandmother."],
+  [3,"function","n","기능","This button has two functions."],
+  [3,"gain","v","얻다, 늘리다","You can gain confidence through practice."],
+  [3,"generation","n","세대","Each generation has its own music."],
+  [3,"global","adj","세계적인","Plastic waste is a global problem."],
+  [3,"government","n","정부","The government built a new hospital."],
+  [3,"gradually","adv","점차, 서서히","The weather gradually became warmer."],
+  [3,"harm","v","해치다; 해","Too much sugar can harm your teeth."],
+  [3,"huge","adj","거대한","A huge whale appeared near the boat."],
+  [3,"identify","v","확인하다, 알아보다","Can you identify this plant?"],
+  [3,"ignore","v","무시하다","Never ignore a safety warning."],
+  [3,"impact","n","영향, 충격","Social media has a big impact on teenagers."],
+  [3,"impress","v","감명을 주다","Jiwoo's speech impressed everyone in the hall."],
+  [3,"indicate","v","나타내다, 가리키다","This sign indicates the way to the exit."],
+  [3,"industry","n","산업","The film industry is growing fast."],
+  [3,"inform","v","알리다","Please inform me of any changes."],
+  [3,"injure","v","다치게 하다","He injured his knee during the game."],
+  [3,"insist","v","주장하다, 고집하다","She insisted on paying for lunch."],
+  [3,"invention","n","발명, 발명품","The printing press was a great invention."],
+  [3,"laboratory","n","실험실","We did an experiment in the laboratory."],
+  [3,"lack","n","부족","The team lost because of a lack of practice."],
+  [3,"limit","n","한계, 제한","There is a limit to what one person can do."],
+  [3,"manage","v","해내다, 관리하다","I managed to finish the whole race."],
+  [3,"measure","v","측정하다; 대책","Measure the length of the desk."],
+  [3,"method","n","방법","This method saves a lot of time."],
+  [3,"obey","v","따르다, 복종하다","Drivers must obey traffic signs."],
+  [3,"official","adj","공식적인; 공무원","The official results will come out tomorrow."],
+  [3,"opposite","adj","반대의; 반대편의","Their houses are on opposite sides of the road."],
+  [3,"permit","v","허가하다","The school permits bikes in the yard."],
+  [3,"pollution","n","오염","Air pollution is worse in big cities."],
+  [3,"population","n","인구","The population of our town is small."],
+  [3,"positive","adj","긍정적인","Try to keep a positive mind."],
+  [3,"prove","v","증명하다","He proved that his idea works."],
+  [3,"rapidly","adv","빠르게, 급속히","Technology is changing rapidly."],
+  [3,"recover","v","회복하다","Jiwoo recovered from his cold in a week."],
+  [3,"regret","v","후회하다","I regret not studying harder last year."],
+  [3,"relationship","n","관계","A good relationship needs honesty."],
+  [3,"replace","v","대체하다, 바꾸다","We replaced the old lamp with a new one."],
+  [2,"accident","n","사고","The accident happened near the school."],
+  [2,"active","adj","활동적인, 적극적인","My grandfather is still very active."],
+  [2,"appointment","n","약속, 예약","I have a dentist appointment at four."],
+  [2,"blood","n","피, 혈액","Blood carries oxygen in our body."],
+  [2,"brave","adj","용감한","The brave boy helped the lost child."],
+  [2,"breathe","v","숨 쉬다","It is hard to breathe in dusty air."],
+  [2,"cancel","v","취소하다","They canceled the field trip."],
+  [2,"careless","adj","부주의한","A careless mistake cost us the game."],
+  [2,"cheap","adj","값싼","These pencils are cheap and good."],
+  [2,"clear","adj","분명한, 맑은","The teacher's explanation was clear."],
+  [2,"close","adj","가까운; 닫다","My house is close to the school."],
+  [2,"contest","n","대회","Jiwoo entered the writing contest."],
+  [2,"correct","adj","옳은; 고치다","Choose the correct answer."],
+  [2,"count","v","세다","Count the students in your group."],
+  [2,"create","v","만들다, 창조하다","Let's create a poster together."],
+  [2,"danger","n","위험","This sign warns us of danger."],
+  [2,"decision","n","결정","It was a difficult decision for me."],
+  [2,"deep","adj","깊은","The lake is very deep here."],
+  [2,"diet","n","식단, 식사","A balanced diet keeps you healthy."],
+  [2,"direction","n","방향","Ask him for the direction to the museum."],
+  [2,"earth","n","지구, 땅","The earth goes around the sun."],
+  [2,"empty","adj","비어 있는","The classroom was empty after school."],
+  [2,"exactly","adv","정확히, 바로","That is exactly what I wanted to say."],
+  [2,"excited","adj","신이 난, 들뜬","The students were excited about the trip."],
+  [2,"expensive","adj","비싼","This bag is too expensive for me."],
+  [2,"fill","v","채우다","Fill the bottle with cold water."],
+  [2,"forest","n","숲","We walked through a quiet forest."],
+  [2,"fresh","adj","신선한","The market sells fresh vegetables."],
+  [2,"heavy","adj","무거운","This box is too heavy to carry."],
+  [2,"hide","v","숨다, 숨기다","The cat hid under the bed."],
+  [2,"hold","v","잡다, 열다","Hold the rope with both hands."],
+  [2,"human","n","인간; 인간의","Humans need clean air and water."],
+  [2,"information","n","정보","I found useful information online."],
+  [2,"interest","n","관심, 흥미","He has a strong interest in science."],
+  [2,"invent","v","발명하다","Who invented the telephone?"],
+  [2,"kind","adj","친절한; 종류","It was kind of you to help me."],
+  [2,"lead","v","이끌다, 이어지다","This path leads to the beach."],
+  [2,"level","n","수준, 단계","This book is at my reading level."],
+  [2,"local","adj","지역의, 현지의","We visited a local market."],
+  [2,"lucky","adj","운이 좋은","I was lucky to find my wallet."],
+  [2,"machine","n","기계","This machine makes ice cream."],
+  [2,"message","n","메시지, 전갈","I left a message for my teacher."],
+  [2,"nature","n","자연","We should live in harmony with nature."],
+  [2,"own","adj","자신의; 소유하다","I want my own room."],
+  [2,"pain","n","고통, 통증","I felt a sharp pain in my ankle."],
+  [2,"planet","n","행성","Mars is a cold and dry planet."],
+  [2,"poor","adj","가난한; 서투른","He is poor at drawing."],
+  [2,"power","n","힘, 전력","The storm cut off the power."],
+  [2,"present","n","선물; 현재의","I bought a present for my mom."],
+  [2,"promise","v","약속하다; 약속","I promise to call you tonight."],
+  [4,"be able to","idm","~할 수 있다","You will {be able to} speak English well."],
+  [4,"be based on","idm","~에 근거하다","The movie may {be based on} a true story."],
+  [4,"be known for","idm","~로 알려져 있다","Our school will {be known for} its music club."],
+  [4,"be tired of","idm","~에 싫증 나다","Don't {be tired of} trying again."],
+  [4,"be used to","idm","~에 익숙하다","You will {be used to} the new school soon."],
+  [4,"break down","idm","고장 나다","The old bus may {break down} again."],
+  [4,"bring up","idm","(이야기를) 꺼내다; 기르다","Don't {bring up} that topic again."],
+  [4,"call off","idm","취소하다","They may {call off} the picnic."],
+  [4,"carry out","idm","수행하다, 실행하다","We should {carry out} the plan together."],
+  [4,"cheer up","idm","기운을 내다","{Cheer up}! You did your best."],
+  [4,"come up with","idm","(생각을) 떠올리다","Let's {come up with} a better idea."],
+  [4,"cut down on","idm","~을 줄이다","We should {cut down on} plastic use."],
+  [4,"deal with","idm","~을 다루다, 처리하다","You must {deal with} the problem yourself."],
+  [4,"fall asleep","idm","잠들다","I often {fall asleep} during long movies."],
+  [4,"figure out","idm","알아내다, 이해하다","I can't {figure out} this math problem."],
+  [4,"get rid of","idm","~을 없애다","We should {get rid of} the old desks."],
+  [4,"give a hand","idm","도와주다","Can you {give a hand} with these boxes?"],
+  [4,"go on","idm","계속하다","Please {go on} with your story."],
+  [4,"hand in","idm","제출하다","You must {hand in} your report by Friday."],
+  [4,"hang out","idm","어울려 놀다","I like to {hang out} with my cousins."],
+  [4,"keep in mind","idm","명심하다","Please {keep in mind} the safety rules."],
+  [4,"make a decision","idm","결정을 내리다","You should {make a decision} soon."],
+  [4,"make sure","idm","확실히 하다, 확인하다","{Make sure} the door is locked."],
+  [4,"pay attention to","idm","~에 주의를 기울이다","Please {pay attention to} the teacher."],
+  [4,"put off","idm","미루다","Don't {put off} today's homework."],
+  [4,"set up","idm","설치하다, 세우다","Let's {set up} the tent before dark."],
+  [4,"show up","idm","나타나다","He may {show up} late again."],
+  [4,"take place","idm","열리다, 일어나다","The festival will {take place} in May."],
+  [4,"turn down","idm","거절하다; 소리를 줄이다","She may {turn down} the offer."],
+  [4,"work out","idm","운동하다; 잘 풀리다","Jiwoo and I {work out} at the gym twice a week."],
+  [3,"reveal","v","드러내다, 밝히다","The writer revealed the ending too early."],
+  [3,"rely","v","의지하다, 믿다","You can rely on your team members."],
+  [3,"remove","v","제거하다, 치우다","Please remove your shoes at the door."],
+  [3,"repair","v","수리하다","My uncle repaired the broken chair."],
+  [3,"represent","v","대표하다, 나타내다","Two students will represent our class."],
+  [3,"resource","n","자원","Water is a precious resource."],
+  [3,"respond","v","응답하다, 반응하다","She responded to my email at once."],
+  [3,"risk","n","위험","There is a risk of heavy rain today."],
+  [3,"role","n","역할","Each member has a role in the project."],
+  [3,"rough","adj","거친, 험한","The road to the top is rough."],
+  [3,"routine","n","일상, 일과","Morning exercise is part of my routine."],
+  [3,"rural","adj","시골의","My grandparents live in a rural village."],
+  [3,"sacrifice","v","희생하다; 희생","She sacrificed her weekend to help us."],
+  [3,"scene","n","장면","The last scene of the movie was sad."],
+  [3,"search","v","찾다, 검색하다","We searched for the lost key everywhere."],
+  [3,"seek","v","찾다, 구하다","Don't be afraid to seek help."],
+  [3,"select","v","선택하다, 고르다","Select three books from this shelf."],
+  [3,"sense","n","감각, 느낌","She has a good sense of humor."],
+  [3,"series","n","연속, 시리즈","We watched a series of short films."],
+  [3,"settle","v","정착하다, 해결하다","The family settled in a small town."],
+  [3,"shape","n","모양, 형태","The cloud had the shape of a heart."],
+  [3,"shortage","n","부족","There is a shortage of water in summer."],
+  [3,"sight","n","광경, 시력","The sight from the tower was amazing."],
+  [3,"signal","n","신호","The green signal means you can go."],
+  [3,"significant","adj","중요한, 상당한","This is a significant change for our school."],
+  [3,"similar","adj","비슷한","Our uniforms are similar in color."],
+  [3,"situation","n","상황","Try to stay calm in a difficult situation."],
+  [3,"skill","n","기술, 능력","Reading is an important skill."],
+  [3,"society","n","사회","Technology changes our society quickly."],
+  [3,"solution","n","해결책","We found a simple solution to the problem."],
+  [3,"source","n","원천, 출처","The sun is the main source of energy."],
+  [3,"species","n","(생물의) 종","This island has many rare species."],
+  [3,"spread","v","퍼지다, 퍼뜨리다","Good news spreads fast."],
+  [3,"stable","adj","안정된","The ladder must be stable before you climb."],
+  [3,"standard","n","기준, 표준","The school set a new standard for safety."],
+  [3,"state","v","말하다, 진술하다; 상태","He stated his opinion clearly."],
+  [3,"structure","n","구조","The structure of the bridge is simple."],
+  [3,"struggle","v","애쓰다, 분투하다","He struggled to finish the last lap."],
+  [3,"subject","n","과목, 주제","My favorite subject is history."],
+  [3,"suffer","v","고통받다, 시달리다","Many plants suffer in dry weather."],
+  [3,"sudden","adj","갑작스러운","There was a sudden change in the weather."],
+  [3,"suitable","adj","적합한, 알맞은","This movie is suitable for children."],
+  [3,"supply","v","공급하다; 공급","The store supplies food to the school."],
+  [3,"surface","n","표면","The surface of the lake was calm."],
+  [3,"survey","n","조사, 설문","We did a survey about school lunches."],
+  [3,"survive","v","살아남다","Few plants survive in the desert."],
+  [3,"symbol","n","상징","The dove is a symbol of peace."],
+  [3,"talent","n","재능","Jiwoo has a talent for drawing."],
+  [3,"target","n","목표, 대상","Our target is one thousand words."],
+  [3,"task","n","과업, 일","Each group has a different task."],
+  [3,"technology","n","기술, 과학 기술","Technology helps us learn in new ways."],
+  [3,"temperature","n","온도, 기온","The temperature dropped below zero."],
+  [3,"tend","v","~하는 경향이 있다","Young children tend to ask many questions."],
+  [3,"term","n","용어; 학기","The new term begins in March."],
+  [3,"theory","n","이론","His theory sounds reasonable."],
+  [3,"threat","n","위협","Pollution is a threat to sea animals."],
+  [3,"tiny","adj","아주 작은","A tiny insect sat on the leaf."],
+  [3,"tool","n","도구","A dictionary is a useful tool."],
+  [3,"topic","n","주제, 화제","Choose a topic for your report."],
+  [3,"total","adj","전체의; 합계","The total number of students is 300."],
+  [3,"transfer","v","옮기다, 전학하다","He transferred to our school last year."],
+  [3,"transport","v","수송하다; 교통","Buses transport many people every day."],
+  [3,"treat","v","대하다, 다루다; 치료하다","Treat others the way you want to be treated."],
+  [3,"trust","v","신뢰하다; 신뢰","Jiwoo trusts his best friend completely."],
+  [3,"typical","adj","전형적인","This is a typical day in my school life."],
+  [3,"unique","adj","독특한, 고유한","Every fingerprint is unique."],
+  [3,"unit","n","단위, 단원","A meter is a unit of length."],
+  [3,"universe","n","우주","The universe is bigger than we imagine."],
+  [3,"urban","adj","도시의","Urban areas are often crowded."],
+  [3,"urgent","adj","긴급한","This is an urgent message for you."],
+  [3,"value","n","가치","Old photos have great value to my family."],
+  [3,"variety","n","다양성, 여러 가지","The store has a variety of snacks."],
+  [3,"various","adj","다양한","We studied various kinds of plants."],
+  [3,"view","n","견해; 경관","My view is different from yours."],
+  [3,"virtual","adj","가상의","We took a virtual tour of the museum."],
+  [3,"volunteer","v","자원봉사하다; 자원봉사자","Jiwoo volunteers at the animal center on Saturdays."],
+  [3,"wealth","n","부, 재산","Health is more important than wealth."],
+  [3,"weigh","v","무게가 나가다","This box weighs about five kilograms."],
+  [3,"whole","adj","전체의, 온전한","I read the whole book in two days."],
+  [3,"wisdom","n","지혜","We can learn wisdom from old stories."],
+  [3,"wildlife","n","야생 동물","This park protects wildlife."],
+  [3,"worth","adj","~할 가치가 있는","This museum is worth visiting twice."],
+  [3,"average","n","평균; 평균의","The average score was seventy."],
+  [3,"basic","adj","기본적인","Let's start with the basic rules."],
+  [3,"capable","adj","할 수 있는, 유능한","Jiwoo is capable of much more."],
+  [3,"capital","n","수도; 자본","Seoul is the capital of Korea."],
+  [3,"career","n","직업, 경력","She is planning her future career."],
+  [3,"ceremony","n","의식, 식","The opening ceremony starts at nine."],
+  [3,"chance","n","기회, 가능성","Give me one more chance, please."],
+  [3,"character","n","성격; 등장인물","The main character is a brave girl."],
+  [2,"afraid","adj","두려워하는","I am not afraid of the dark now."],
+  [2,"alone","adv","혼자, 홀로","He walked home alone last night."],
+  [2,"among","prep","~ 중에, ~ 사이에","She is the tallest among us."],
+  [2,"angry","adj","화난","My mother was angry about the mess."],
+  [2,"arrive","v","도착하다","The train will arrive in ten minutes."],
+  [2,"beauty","n","아름다움","The beauty of the mountain surprised us."],
+  [2,"begin","v","시작하다","The class begins at nine."],
+  [2,"behind","prep","~ 뒤에","The ball rolled behind the door."],
+  [2,"bill","n","계산서, 청구서","My father paid the electric bill."],
+  [2,"bottom","n","맨 아래, 바닥","Write your name at the bottom."],
+  [2,"build","v","짓다, 세우다","They will build a new gym next year."],
+  [2,"calm","adj","침착한, 고요한","Stay calm and take a deep breath."],
+  [2,"carry","v","나르다, 옮기다","Can you carry this bag for me?"],
+  [2,"catch","v","잡다, 타다","I ran fast to catch the bus."],
+  [2,"certain","adj","확실한, 어떤","I am certain that he will come."],
+  [2,"cheer","v","응원하다, 환호하다","We cheered for our team loudly."],
+  [2,"chore","n","집안일","Washing dishes is my daily chore."],
+  [2,"comfort","n","위로, 편안함","Her words gave me great comfort."],
+  [2,"compete","v","경쟁하다","Ten schools competed in the contest."],
+  [2,"contact","v","연락하다; 연락","You can contact me by email."],
+  [2,"cover","v","덮다, 다루다","Snow covered the whole playground."],
+  [2,"crowded","adj","붐비는","The subway is crowded in the morning."],
+  [2,"daily","adj","매일의, 일상의","Reading is part of my daily life."],
+  [2,"dark","adj","어두운","It gets dark early in winter."],
+  [2,"disappoint","v","실망시키다","I don't want to disappoint my parents."],
+  [2,"discount","n","할인","Students get a discount on tickets."],
+  [2,"double","adj","두 배의; 두 배가 되다","The price is double the usual."],
+  [2,"draw","v","그리다, 끌어당기다","She drew a picture of her dog."],
+  [2,"dry","adj","마른, 건조한","Hang the towel until it is dry."],
+  [2,"during","prep","~ 동안","I read three books during the vacation."],
+  [2,"enter","v","들어가다","Knock before you enter the room."],
+  [2,"event","n","행사, 사건","The school event was a big success."],
+  [2,"exam","n","시험","The final exam is next Monday."],
+  [2,"excellent","adj","훌륭한","Jiwoo's presentation was excellent."],
+  [2,"exit","n","출구","The exit is on your left."],
+  [2,"fact","n","사실","It is a fact that plants need light."],
+  [2,"favor","n","부탁, 호의","Can I ask you a favor?"],
+  [2,"fear","n","두려움","Practice can help you beat your fear."],
+  [2,"flat","adj","평평한","We need a flat place for the tent."],
+  [2,"fold","v","접다","Fold the paper in half."],
+  [2,"follow","v","따르다, 뒤따르다","Follow the teacher's directions."],
+  [2,"foreign","adj","외국의","I want to learn a foreign language."],
+  [2,"freeze","v","얼다, 얼리다","Water freezes at zero degrees."],
+  [2,"friendship","n","우정","Their friendship lasted ten years."],
+  [2,"garbage","n","쓰레기","Please take out the garbage."],
+  [2,"gentle","adj","온화한, 부드러운","Be gentle with the baby bird."],
+  [2,"grade","n","성적, 학년","Jiwoo got a good grade in math."],
+  [2,"greet","v","인사하다, 맞이하다","She greeted us with a warm smile."],
+  [2,"guess","v","추측하다, 알아맞히다","Guess what is inside the box."],
+  [2,"guide","n","안내인, 안내서; 안내하다","A guide showed us around the palace."],
+  [2,"hang","v","걸다, 매달다","Hang your coat on the hook."],
+  [2,"harvest","v","수확하다; 수확","Farmers harvest rice in October."],
+  [2,"health","n","건강","Sleep is important for your health."],
+  [2,"helpful","adj","도움이 되는","Your advice was very helpful."],
+  [2,"hurt","v","다치게 하다, 아프다","I hurt my finger while cooking."],
+  [2,"image","n","이미지, 인상","The image on the screen was clear."],
+  [2,"indoor","adj","실내의","We played indoor games on a rainy day."],
+  [2,"instrument","n","악기, 기구","The violin is my favorite instrument."],
+  [2,"island","n","섬","We visited a small island by boat."],
+  [2,"journey","n","여행, 여정","The journey took about five hours."],
+  [1,"airport","n","공항","We met my uncle at the airport."],
+  [1,"already","adv","이미, 벌써","I have already finished my homework."],
+  [1,"almost","adv","거의","It is almost time for lunch."],
+  [1,"amazing","adj","놀라운","The magic show was amazing."],
+  [1,"bake","v","굽다","My sister bakes cookies on weekends."],
+  [1,"between","prep","~ 사이에","The bank is between the park and the school."],
+  [1,"both","adj","둘 다의","Both of my brothers play soccer."],
+  [1,"bottle","n","병","Bring a water bottle to the field trip."],
+  [1,"clean","adj","깨끗한; 청소하다","My room is always clean."],
+  [1,"clever","adj","영리한","The clever bird opened the box."],
+  [1,"cloudy","adj","흐린","It is cloudy and cool today."],
+  [1,"cousin","n","사촌","Jiwoo's cousin lives in Daegu."],
+  [1,"cross","v","건너다","Look both ways before you cross."],
+  [1,"cute","adj","귀여운","The puppy in the photo is so cute."],
+  [1,"early","adv","일찍; 이른","We arrived early for the concert."],
+  [1,"enjoy","v","즐기다","I enjoy playing badminton with my dad."],
+  [1,"exciting","adj","신나는, 흥미진진한","The last game was really exciting."],
+  [1,"field","n","들판, 분야","The children ran across the field."],
+  [1,"finally","adv","마침내","We finally finished the group project."],
+  [1,"floor","n","바닥, 층","The library is on the third floor."],
+  [1,"garden","n","정원","My mother grows tomatoes in the garden."],
+  [1,"gift","n","선물","This scarf is a gift from my aunt."],
+  [1,"hobby","n","취미","Jiwoo's hobby is collecting stamps."],
+  [1,"holiday","n","휴일, 방학","We go camping on holidays."],
+  [1,"hungry","adj","배고픈","I am hungry after gym class."],
+  [1,"kitchen","n","부엌","My father is cooking in the kitchen."],
+  [1,"later","adv","나중에","I will call you later tonight."],
+  [1,"letter","n","편지, 글자","I wrote a letter to my grandmother."],
+  [1,"library","n","도서관","The library closes at six."],
+  [1,"match","n","경기, 시합; 어울리다","Our class won the soccer match."],
+  [4,"ask for","idm","~을 요청하다","You can {ask for} help anytime."],
+  [4,"believe in","idm","~을 믿다","You should {believe in} yourself."],
+  [4,"belong to","idm","~의 것이다, ~에 속하다","This book must {belong to} Minsu."],
+  [4,"bring back","idm","돌려주다, 다시 가져오다","Please {bring back} the umbrella tomorrow."],
+  [4,"check out","idm","확인하다, 살펴보다","Let's {check out} the new library."],
+  [4,"come from","idm","~ 출신이다, ~에서 오다","Where do you {come from}?"],
+  [4,"do your best","idm","최선을 다하다","Just {do your best} on the test."],
+  [4,"end up","idm","결국 ~하게 되다","You may {end up} missing the bus."],
+  [4,"focus on","idm","~에 집중하다","Let's {focus on} today's lesson."],
+  [4,"get better","idm","나아지다, 좋아지다","Your English will {get better} soon."],
+  [4,"get together","idm","모이다","Let's {get together} after the exam."],
+  [4,"in addition","idm","게다가, 덧붙여","{In addition}, we need more chairs."],
+  [4,"in fact","idm","사실은","{In fact}, I have never been there."],
+  [4,"in other words","idm","다시 말해","{In other words}, we must start today."],
+  [4,"look like","idm","~처럼 보이다, 닮다","You {look like} your father."],
+  [4,"make up your mind","idm","결심하다","You should {make up your mind} today."],
+  [4,"no longer","idm","더 이상 ~아닌","He is {no longer} a beginner."],
+  [4,"on the other hand","idm","반면에","{On the other hand}, buses are cheaper."],
+  [4,"result in","idm","~을 초래하다","Careless driving may {result in} accidents."],
+  [4,"turn out","idm","~로 밝혀지다","The story may {turn out} to be true."]
+  ];
+  var EXKO = {
+    "always":"우리 형은 항상 학교에 늦는다.",
+    "answer":"손을 들고 질문에 대답하세요.",
+    "borrow":"지우개 좀 빌려도 될까?",
+    "break":"조심해. 창문을 깨뜨릴 수도 있어.",
+    "bring":"내일 체육복을 가져오세요.",
+    "busy":"우리 엄마는 월요일 아침마다 바쁘시다.",
+    "careful":"길을 건널 때는 조심해라.",
+    "choose":"포스터에 쓸, 네가 좋아하는 색을 골라.",
+    "climb":"우리는 봄마다 학교 뒤 언덕에 오른다.",
+    "collect":"우리 동아리 부원들은 점심 후에 캔을 모은다.",
+    "comfortable":"이 새 학교 신발은 아주 편안하다.",
+    "cook":"아빠는 일요일마다 우리에게 라면을 끓여 주신다.",
+    "dangerous":"이 강에서 수영하는 것은 위험하다.",
+    "decide":"나는 기타 동아리에 들기로 결정했다.",
+    "delicious":"오늘 급식은 맛있다.",
+    "different":"쌍둥이 언니와 나는 서로 다른 과목을 좋아한다.",
+    "difficult":"이 수학 문제는 나에게 너무 어렵다.",
+    "enough":"우리는 모두가 앉을 의자가 충분하지 않다.",
+    "exercise":"나는 매일 저녁 아빠와 운동한다.",
+    "famous":"이 공원은 벚꽃으로 유명하다.",
+    "finish":"저녁 먹기 전에 숙제를 끝내라.",
+    "forget":"우산 가져오는 것을 잊지 마라.",
+    "free":"학교 도서관은 모든 학생에게 무료다.",
+    "friendly":"새로 오신 영어 선생님은 아주 친절하시다.",
+    "healthy":"채소를 먹는 것은 우리를 건강하게 해 준다.",
+    "hurry":"서둘러! 스쿨버스가 오고 있어.",
+    "invite":"나는 생일 파티에 친구들을 초대하고 싶다.",
+    "join":"우리 축구 동아리에 들어오는 게 어때?",
+    "keep":"책상을 깨끗하게 유지해 주세요.",
+    "lend":"연필 좀 빌려줄래?",
+    "lonely":"이 학교에서의 첫날, 나는 외로웠다.",
+    "lose":"학생증을 잃어버리지 마라.",
+    "mistake":"누구나 실수를 하니까 걱정하지 마.",
+    "neighbor":"새 이웃은 크고 갈색인 개를 키운다.",
+    "noise":"도서관에서는 소음을 내지 마세요.",
+    "often":"우리는 방과 후에 자주 농구를 한다.",
+    "practice":"지우는 매일 한 시간씩 바이올린을 연습한다.",
+    "prepare":"나는 영어 시험을 준비하고 있다.",
+    "quiet":"시험 시간에 교실은 아주 조용하다.",
+    "ready":"학교 축제 준비됐니?",
+    "remember":"네 얼굴은 기억나는데 이름은 기억나지 않아.",
+    "return":"금요일까지 그 책을 반납해야 한다.",
+    "safe":"이 길은 밤에 안전하지 않다.",
+    "save":"나는 매주 2천 원을 모은다.",
+    "share":"이 피자를 반 친구들과 나눠 먹자.",
+    "sick":"내 남동생은 오늘 아파서 누워 있다.",
+    "solve":"이 퍼즐을 풀 수 있니?",
+    "spend":"나는 매일 숙제에 두 시간을 쓴다.",
+    "strange":"나는 체육관에서 이상한 소리를 들었다.",
+    "surprise":"생일 케이크는 엄마에게 깜짝 선물이었다.",
+    "travel":"우리 가족은 여름마다 제주로 여행을 간다.",
+    "trouble":"휴대전화를 잃어버려서 나는 곤란한 상황이다.",
+    "understand":"이 문제가 이해되지 않아. 도와줄 수 있니?",
+    "useful":"이 사전은 학생들에게 아주 유용하다.",
+    "visit":"우리는 명절에 조부모님을 찾아뵌다.",
+    "wait":"학교 정문 앞에서 나를 기다려.",
+    "weather":"오늘 부산 날씨는 어때?",
+    "worry":"걱정하지 마. 넌 할 수 있어.",
+    "wrong":"죄송하지만 전화를 잘못 거셨어요.",
+    "special":"오늘은 지우에게 특별한 날이다.",
+    "achieve":"지우는 꿈을 이루기 위해 열심히 노력했다.",
+    "advice":"선생님이 공부에 대해 유용한 조언을 해 주셨다.",
+    "agree":"나는 교복에 대한 네 의견에 동의한다.",
+    "allow":"학생들은 수업 중에 휴대전화를 쓸 수 없다.",
+    "appear":"비가 그친 뒤 무지개가 나타났다.",
+    "attention":"안전 수칙에 주의를 기울여 주세요.",
+    "avoid":"우리는 플라스틱을 너무 많이 쓰는 것을 피해야 한다.",
+    "believe":"나는 그가 진실을 말하고 있다고 믿는다.",
+    "celebrate":"우리는 가족과 함께 어린이날을 기념했다.",
+    "challenge":"새로운 언어를 배우는 것은 큰 도전이다.",
+    "communicate":"우리는 전 세계 사람들과 소통할 수 있다.",
+    "compare":"자신을 다른 학생과 비교하지 마라.",
+    "complain":"그는 옆집 소음에 대해 불평했다.",
+    "continue":"비가 사흘 동안 계속되었다.",
+    "culture":"나는 한국 문화를 더 깊이 배우고 싶다.",
+    "curious":"나는 로봇이 어떻게 작동하는지 궁금하다.",
+    "damage":"태풍이 그 마을에 큰 피해를 입혔다.",
+    "describe":"그 그림을 영어로 묘사할 수 있니?",
+    "develop":"우리 동네는 아주 빠르게 발전했다.",
+    "discover":"과학자들이 새로운 종류의 물고기를 발견했다.",
+    "effort":"노력하면 너는 나아질 것이다.",
+    "energy":"우리는 태양 에너지를 더 많이 쓰고 석탄을 덜 써야 한다.",
+    "environment":"우리는 미래를 위해 환경을 보호해야 한다.",
+    "especially":"나는 겨울 스포츠, 특히 스케이팅을 좋아한다.",
+    "experience":"자원봉사는 나에게 좋은 경험이었다.",
+    "explain":"그 규칙을 한 번만 더 설명해 주시겠어요?",
+    "express":"영어로 내 감정을 표현하는 것은 쉽지 않다.",
+    "fail":"나는 첫 시험에 떨어졌지만 포기하지 않았다.",
+    "fix":"아빠가 지난 주말에 내 자전거를 고쳐 주셨다.",
+    "focus":"방이 시끄러우면 집중하기 어렵다.",
+    "gather":"모든 학생이 학교 체육관에 모였다.",
+    "goal":"지우의 목표는 올해 영어책 열 권을 읽는 것이다.",
+    "habit":"자기 전에 책을 읽는 것은 좋은 습관이다.",
+    "imagine":"스마트폰 없이 사는 것을 상상해 봐.",
+    "improve":"나는 듣기 실력을 향상시키고 싶다.",
+    "include":"그 가격에는 음료와 디저트가 포함되어 있다.",
+    "introduce":"내 가장 친한 친구 민지를 소개할게.",
+    "knowledge":"책은 우리에게 세상에 대한 지식을 준다.",
+    "language":"영어는 국제 공용어로 쓰인다.",
+    "memory":"나는 수학여행에 대한 행복한 기억이 있다.",
+    "nervous":"지우는 발표 전에 무척 긴장했다.",
+    "opinion":"내 생각에는 우리에게 자유 시간이 더 필요하다.",
+    "opportunity":"이것은 새 친구를 사귈 좋은 기회다.",
+    "patient":"너는 어린아이들에게 참을성이 있어야 한다.",
+    "perhaps":"아마 그녀는 오늘 아침 버스를 놓쳤을 것이다.",
+    "polite":"이웃에게 인사하는 것은 예의 바른 일이다.",
+    "popular":"이 노래는 작년부터 인기가 있다.",
+    "prefer":"나는 버스를 타는 것보다 지하철 타는 것을 더 좋아한다.",
+    "protect":"헬멧은 자전거를 탈 때 우리 머리를 보호해 준다.",
+    "realize":"나는 교과서를 집에 두고 온 것을 깨달았다.",
+    "reason":"네가 늦은 이유를 말해 봐.",
+    "recommend":"나는 이 영화를 반 친구들에게 추천한다.",
+    "reduce":"우리는 점심때 음식물 쓰레기를 줄여야 한다.",
+    "respect":"우리는 다른 사람들의 문화를 존중해야 한다.",
+    "result":"그 경기의 결과는 모두를 놀라게 했다.",
+    "succeed":"지우는 매일 연습했고 마침내 성공했다.",
+    "suggest":"나는 우리가 도서관에서 만나자고 제안한다.",
+    "support":"우리 부모님은 언제나 내 결정을 지지해 주신다.",
+    "waste":"이를 닦는 동안 물을 낭비하지 마라.",
+    "wonder":"나는 누가 이 편지를 썼는지 궁금하다.",
+    "accept":"그녀는 환한 미소로 초대를 받아들였다.",
+    "accurate":"그의 답은 정확하고 분명했다.",
+    "admire":"나는 다른 사람을 돕는 사람들을 존경한다.",
+    "advantage":"작은 마을에 사는 것은 장점이 많다.",
+    "affect":"수면 부족은 건강에 영향을 미친다.",
+    "ancient":"우리는 역사 시간에 고대 이집트에 대해 배웠다.",
+    "apply":"나는 학생 교환 프로그램에 지원했다.",
+    "appreciate":"저를 위해 해 주신 모든 것에 감사드립니다.",
+    "argue":"그들은 어떤 영화를 볼지를 두고 다투었다.",
+    "attitude":"긍정적인 태도는 인생을 바꿀 수 있다.",
+    "available":"네가 원하는 그 책은 지금 볼 수 없다.",
+    "benefit":"규칙적인 운동은 학생들에게 이로운 점이 많다.",
+    "concentrate":"시끄러운 방에서는 집중하기 어렵다.",
+    "confident":"지우는 발표하는 동안 자신 있어 보였다.",
+    "consider":"우리는 다른 사람의 감정을 고려해야 한다.",
+    "contain":"이 음료에는 설탕이 너무 많이 들어 있다.",
+    "creative":"학생들은 재활용에 관한 창의적인 포스터를 만들었다.",
+    "decrease":"학생 수가 2010년 이후로 줄어들었다.",
+    "depend":"우리가 갈지 말지는 날씨에 달려 있다.",
+    "determine":"너의 노력이 결과를 결정할 것이다.",
+    "disappear":"구름이 사라지고 해가 나왔다.",
+    "discuss":"우리 모둠에서 그 문제를 논의해 보자.",
+    "effective":"이것이 단어를 외우는 가장 효과적인 방법이다.",
+    "encourage":"선생님은 지우에게 다시 해 보라고 격려하셨다.",
+    "equal":"모든 사람은 동등한 기회를 가져야 한다.",
+    "estimate":"얼마나 걸릴지 추정하기는 어렵다.",
+    "expect":"나는 여기서 너를 보리라고는 예상하지 못했다.",
+    "familiar":"이 거리는 나에게 익숙해 보인다.",
+    "generous":"그는 자기 점심을 나눠 줄 만큼 관대했다.",
+    "graduate":"지우는 내년 2월에 중학교를 졸업한다.",
+    "honest":"정직한 실수가 교묘한 거짓말보다 낫다.",
+    "immediately":"불이 나면 즉시 119에 전화해라.",
+    "increase":"방문객 수가 작년에 증가했다.",
+    "independent":"나는 부모님으로부터 더 독립적이고 싶다.",
+    "influence":"친구는 우리의 선택에 강한 영향을 준다.",
+    "instead":"우리는 택시를 타지 않았다. 대신 걸어서 집에 갔다.",
+    "involve":"그 프로젝트는 다른 반과 함께 작업하는 일을 포함한다.",
+    "judge":"사람을 겉모습으로 판단해서는 안 된다.",
+    "maintain":"건강한 식습관을 유지하는 것이 중요하다.",
+    "necessary":"병원에서는 마스크를 쓰는 것이 필요하다.",
+    "obvious":"그가 거짓말을 하고 있다는 것은 분명했다.",
+    "offer":"친절한 아저씨가 버스에서 나에게 자리를 양보해 주셨다.",
+    "organize":"우리 반은 자선 음악회를 준비했다.",
+    "particular":"그 선택에 특별한 이유가 있니?",
+    "perform":"그 밴드는 어젯밤 무대에서 공연했다.",
+    "persuade":"나는 부모님을 설득해서 캠핑을 가게 되었다.",
+    "predict":"내일 무슨 일이 일어날지 아무도 예측할 수 없다.",
+    "previous":"수업 전에 이전 단원을 읽어 오세요.",
+    "produce":"이 공장은 헌 신문지로 종이를 생산한다.",
+    "provide":"학교는 모든 학생에게 무료 급식을 제공한다.",
+    "purpose":"이 모임의 목적은 축제를 계획하는 것이다.",
+    "recognize":"그가 키가 너무 많이 커서 나는 그를 알아보지 못했다.",
+    "refuse":"그는 그 질문에 대답하기를 거절했다.",
+    "remain":"버스에는 몇 자리만 남아 있다.",
+    "require":"이 식물은 햇빛이 많이 필요하다.",
+    "responsible":"우리는 온라인에서 하는 말에 책임이 있다.",
+    "satisfy":"그 결과는 두 팀 모두를 만족시켰다.",
+    "separate":"종이를 플라스틱과 분리해 주세요.",
+    "serious":"기후 변화는 모두에게 심각한 문제다.",
+    "tradition":"함께 김장을 하는 것은 오래된 한국의 전통이다.",
+    "look for":"네 체육화를 같이 찾아보자.",
+    "look at":"칠판을 봐 주세요.",
+    "take care of":"너는 남동생을 돌봐야 한다.",
+    "get up":"나는 매일 아침 7시에 일어난다.",
+    "go to bed":"나는 학교 가는 날에는 11시 전에 잠자리에 든다.",
+    "be good at":"지우는 영어를 잘하고 싶어 한다.",
+    "be interested in":"너는 이 이야기에 관심이 생길 것이다.",
+    "be late for":"다시는 수업에 늦지 마라.",
+    "be proud of":"지우의 부모님은 지우를 자랑스러워하실 것이다.",
+    "be afraid of":"실수하는 것을 두려워하지 마라.",
+    "give up":"절대 네 꿈을 포기하지 마라.",
+    "grow up":"아이들은 아주 빨리 자란다.",
+    "turn off":"나갈 때 불을 꺼 주세요.",
+    "turn on":"에어컨 좀 켜 줄래?",
+    "put on":"코트를 입어. 밖이 추워.",
+    "take off":"들어오기 전에 신발을 벗으세요.",
+    "wake up":"나는 학교 가는 날에는 일찍 잠에서 깬다.",
+    "get along with":"지우와 나는 반 친구들 모두와 잘 지낸다.",
+    "look forward to":"지우와 나는 늘 수학여행을 기대한다.",
+    "look after":"이번 주말에 내 고양이를 돌봐 줄 수 있니?",
+    "look up":"사전에서 그 단어를 찾아봐라.",
+    "find out":"답을 함께 알아내 보자.",
+    "come true":"나는 내 꿈이 이루어지기를 바란다.",
+    "take part in":"지우는 말하기 대회에 참가하고 싶어 한다.",
+    "take a walk":"우리는 저녁을 먹은 뒤 공원에서 산책한다.",
+    "take a picture":"저 나무 앞에서 사진을 찍자.",
+    "pick up":"바닥에 있는 쓰레기를 주워 주세요.",
+    "throw away":"플라스틱 병을 버리지 마라.",
+    "clean up":"우리는 금요일마다 교실을 청소한다.",
+    "hurry up":"서둘러, 안 그러면 버스를 놓칠 거야.",
+    "wait for":"내가 버스 정류장에서 너를 기다릴게.",
+    "arrive at":"우리는 10시에 박물관에 도착할 것이다.",
+    "get on":"학교 정문에서 버스를 타라.",
+    "get off":"다음 정류장에서 내려 주세요.",
+    "run out of":"우리는 시험 중에 종이가 다 떨어질지도 모른다.",
+    "make friends with":"나는 새로 온 학생과 친구가 되고 싶다.",
+    "take a rest":"10분 동안 쉬자.",
+    "be full of":"강당은 학생들로 가득 찰 것이다.",
+    "be made of":"책상은 나무나 금속으로 만들어질 수 있다.",
+    "be covered with":"겨울이면 그 산은 눈으로 덮일 것이다.",
+    "be famous for":"이 마을은 벚나무로 유명해질 것이다.",
+    "be different from":"내 생각은 네 생각과 다를 수도 있다.",
+    "be similar to":"네 가방은 내 것과 비슷해 보인다.",
+    "be worried about":"기말고사를 걱정하지 마라.",
+    "be surprised at":"너는 그 소식에 놀랄 것이다.",
+    "depend on":"그것은 날씨에 달려 있을지도 모른다.",
+    "care about":"우리는 환경에 관심을 가져야 한다.",
+    "agree with":"나는 네 계획에 동의한다.",
+    "thanks to":"네 도움 덕분에 나는 과제를 끝냈다.",
+    "because of":"그 경기는 비 때문에 취소되었다.",
+    "instead of":"탄산음료 대신 물을 마시자.",
+    "in front of":"도서관 앞에서 만나자.",
+    "on time":"기차는 정확히 제시간에 도착했다.",
+    "in time":"우리는 정문에 늦지 않게 딱 맞춰 도착했다.",
+    "at first":"처음에는 영어가 나에게 어려웠다.",
+    "at last":"마침내 우리는 산 정상에 도착했다.",
+    "for example":"나는 수상 스포츠, 예를 들면 수영을 좋아한다.",
+    "more and more":"점점 더 많은 사람들이 자전거를 타고 학교에 온다.",
+    "as soon as":"도착하자마자 나에게 전화해.",
+    "used to":"나는 예전에 주말마다 축구를 하곤 했다.",
+    "achievement":"그 상을 탄 것은 큰 성취였다.",
+    "admit":"그는 자기가 틀렸다고 인정했다.",
+    "afford":"우리는 올해 새 차를 살 여유가 없다.",
+    "aim":"이 동아리의 목표는 다른 사람을 돕는 것이다.",
+    "amount":"많은 양의 물이 매일 낭비된다.",
+    "analyze":"우리는 설문 결과를 분석했다.",
+    "announce":"선생님이 시험 날짜를 발표하셨다.",
+    "anxious":"그녀는 첫 발표를 앞두고 불안해했다.",
+    "apologize":"너는 친구에게 사과해야 한다.",
+    "appearance":"겉모습으로 책을 판단하지 마라.",
+    "approach":"낯선 사람이 학교 정문으로 다가왔다.",
+    "appropriate":"그 행사에 알맞은 옷을 골라라.",
+    "arrange":"우리는 의자를 둥글게 배열했다.",
+    "assist":"학생 두 명이 과학 선생님을 도왔다.",
+    "athlete":"지우는 운동선수처럼 일주일에 엿새를 훈련한다.",
+    "attempt":"그는 인공 암벽에 오르려고 시도했다.",
+    "attract":"그 축제는 많은 방문객을 끌어들인다.",
+    "audience":"관객들이 오랫동안 박수를 쳤다.",
+    "aware":"너는 새 학교 규칙을 알고 있니?",
+    "balance":"자전거에서 균형을 잘 잡아라.",
+    "behave":"박물관에서는 예의 바르게 행동해라.",
+    "belong":"이 우산은 우리 언니 것이다.",
+    "brief":"그는 그 규칙을 간단히 설명했다.",
+    "cause":"폭우가 그 사고를 일으켰다.",
+    "charge":"그 박물관은 학생에게 요금을 받지 않는다.",
+    "citizen":"모든 시민은 법을 지켜야 한다.",
+    "claim":"그는 희귀한 새를 보았다고 주장했다.",
+    "climate":"기후 변화는 농사에 영향을 준다.",
+    "combine":"밀가루와 달걀을 먼저 섞어라.",
+    "comment":"아래에 짧은 의견을 써 주세요.",
+    "common":"김은 한국에서 흔한 성이다.",
+    "community":"우리 지역 사회는 작은 도서관을 지었다.",
+    "competition":"지우는 대회에서 1등을 했다.",
+    "complete":"나는 어젯밤에 과제를 완성했다.",
+    "complex":"이 기계는 구조가 복잡하다.",
+    "conclusion":"우리는 긴 대화 끝에 결론에 이르렀다.",
+    "condition":"내 낡은 자전거는 아직 상태가 좋다.",
+    "confuse":"이 두 단어는 학생들을 자주 헷갈리게 한다.",
+    "connect":"이 다리는 두 섬을 연결한다.",
+    "contribute":"모두가 학급 과제에 기여했다.",
+    "convenient":"이 앱은 단어를 공부하기에 편리하다.",
+    "cost":"그 여행은 예상보다 비용이 더 들었다.",
+    "courage":"실수를 인정하는 데는 용기가 필요하다.",
+    "crowd":"많은 사람들이 광장에 모였다.",
+    "cure":"의사들이 그녀의 병을 빨리 치료했다.",
+    "customer":"그 손님은 더 작은 치수를 요청했다.",
+    "debate":"우리는 교복에 대해 토론을 했다.",
+    "delay":"비 때문에 야구 경기가 미뤄졌다.",
+    "deliver":"그들은 매일 아침 신문을 배달한다.",
+    "demand":"학생들은 도서관 개방 시간을 늘려 달라고 요구했다.",
+    "deny":"그는 창문을 깼다는 것을 부인했다.",
+    "desire":"그녀는 배우고자 하는 강한 열망이 있다.",
+    "destroy":"그 불이 오래된 건물을 무너뜨렸다.",
+    "detail":"네 계획의 세부 사항을 말해 봐.",
+    "device":"이 장치는 온도를 측정한다.",
+    "disaster":"그 마을은 자연재해에 대비했다.",
+    "disease":"손을 씻으면 많은 질병을 예방할 수 있다.",
+    "distance":"역까지의 거리는 2킬로미터다.",
+    "divide":"그 일을 네 부분으로 나누자.",
+    "donate":"우리 반은 도서관에 책을 기부했다.",
+    "doubt":"나는 그가 제시간에 올지 의심스럽다.",
+    "duty":"자연을 보호하는 것은 우리의 의무다.",
+    "earn":"그는 세차를 해서 돈을 벌었다.",
+    "economy":"올해 경제는 천천히 성장하고 있다.",
+    "effect":"음악은 뇌에 좋은 영향을 준다.",
+    "elect":"우리는 지우를 반장으로 뽑았다.",
+    "emotion":"예술은 우리가 감정을 표현하도록 도와준다.",
+    "enemy":"두려움이 너의 가장 큰 적이다.",
+    "entire":"반 전체가 청소에 참여했다.",
+    "escape":"그 고양이는 창문으로 빠져나갔다.",
+    "essential":"물은 생명에 필수적이다.",
+    "evidence":"그 이야기에는 증거가 없다.",
+    "examine":"의사가 내 목을 진찰했다.",
+    "exchange":"우리는 크리스마스에 선물을 교환했다.",
+    "exist":"어떤 동물들은 지구에 더 이상 존재하지 않는다.",
+    "expand":"그 도시는 공원을 넓힐 계획이다.",
+    "expert":"그녀는 바다 동물 전문가다.",
+    "explore":"우리는 손전등을 들고 동굴을 탐험했다.",
+    "fair":"그 선생님은 모든 학생에게 공정하시다.",
+    "feature":"이 휴대전화의 주요 특징은 카메라다.",
+    "force":"그에게 대답하라고 강요하지 마라.",
+    "fortunately":"다행히 아무도 다치지 않았다.",
+    "frequently":"그는 할머니를 자주 찾아뵌다.",
+    "function":"이 버튼에는 기능이 두 가지 있다.",
+    "gain":"연습을 통해 자신감을 얻을 수 있다.",
+    "generation":"각 세대는 자기만의 음악이 있다.",
+    "global":"플라스틱 쓰레기는 세계적인 문제다.",
+    "government":"정부가 새 병원을 지었다.",
+    "gradually":"날씨가 점차 따뜻해졌다.",
+    "harm":"설탕을 너무 많이 먹으면 이가 상할 수 있다.",
+    "huge":"거대한 고래가 배 근처에 나타났다.",
+    "identify":"이 식물이 무엇인지 알아볼 수 있니?",
+    "ignore":"안전 경고를 절대 무시하지 마라.",
+    "impact":"소셜 미디어는 십 대에게 큰 영향을 준다.",
+    "impress":"지우의 연설은 강당에 있는 모두에게 감명을 주었다.",
+    "indicate":"이 표지판은 출구로 가는 길을 가리킨다.",
+    "industry":"영화 산업이 빠르게 성장하고 있다.",
+    "inform":"변경 사항이 있으면 알려 주세요.",
+    "injure":"그는 경기 중에 무릎을 다쳤다.",
+    "insist":"그녀는 점심값을 내겠다고 고집했다.",
+    "invention":"인쇄기는 위대한 발명품이었다.",
+    "laboratory":"우리는 실험실에서 실험을 했다.",
+    "lack":"그 팀은 연습 부족 때문에 졌다.",
+    "limit":"한 사람이 할 수 있는 일에는 한계가 있다.",
+    "manage":"나는 그 경주를 끝까지 완주해 냈다.",
+    "measure":"책상의 길이를 재어 보아라.",
+    "method":"이 방법은 시간을 많이 절약해 준다.",
+    "obey":"운전자는 교통 표지를 따라야 한다.",
+    "official":"공식 결과는 내일 나올 것이다.",
+    "opposite":"그들의 집은 길 반대편에 있다.",
+    "permit":"학교는 마당에 자전거를 두는 것을 허가한다.",
+    "pollution":"대기 오염은 대도시에서 더 심하다.",
+    "population":"우리 마을의 인구는 적다.",
+    "positive":"긍정적인 마음을 유지하려고 노력해라.",
+    "prove":"그는 자기 생각이 통한다는 것을 증명했다.",
+    "rapidly":"기술이 빠르게 변하고 있다.",
+    "recover":"지우는 일주일 만에 감기에서 회복했다.",
+    "regret":"나는 작년에 더 열심히 공부하지 않은 것을 후회한다.",
+    "relationship":"좋은 관계에는 정직함이 필요하다.",
+    "replace":"우리는 낡은 등을 새것으로 바꿨다.",
+    "accident":"그 사고는 학교 근처에서 일어났다.",
+    "active":"우리 할아버지는 아직도 매우 활동적이시다.",
+    "appointment":"나는 4시에 치과 예약이 있다.",
+    "blood":"피는 우리 몸에서 산소를 나른다.",
+    "brave":"그 용감한 소년은 길 잃은 아이를 도왔다.",
+    "breathe":"먼지 낀 공기에서는 숨쉬기가 어렵다.",
+    "cancel":"그들은 현장 학습을 취소했다.",
+    "careless":"부주의한 실수로 우리는 경기를 졌다.",
+    "cheap":"이 연필들은 싸고 좋다.",
+    "clear":"선생님의 설명은 분명했다.",
+    "close":"우리 집은 학교에서 가깝다.",
+    "contest":"지우는 글쓰기 대회에 참가했다.",
+    "correct":"옳은 답을 고르세요.",
+    "count":"너희 모둠의 학생 수를 세어라.",
+    "create":"포스터를 함께 만들자.",
+    "danger":"이 표지판은 우리에게 위험을 알린다.",
+    "decision":"그것은 나에게 어려운 결정이었다.",
+    "deep":"이 호수는 여기가 아주 깊다.",
+    "diet":"균형 잡힌 식단은 너를 건강하게 해 준다.",
+    "direction":"그에게 박물관 가는 방향을 물어봐라.",
+    "earth":"지구는 태양 주위를 돈다.",
+    "empty":"방과 후 교실은 비어 있었다.",
+    "exactly":"그것이 바로 내가 말하고 싶었던 것이다.",
+    "excited":"학생들은 여행에 신이 났다.",
+    "expensive":"이 가방은 나에게 너무 비싸다.",
+    "fill":"병을 찬물로 채워라.",
+    "forest":"우리는 조용한 숲을 걸었다.",
+    "fresh":"그 시장은 신선한 채소를 판다.",
+    "heavy":"이 상자는 들기에 너무 무겁다.",
+    "hide":"그 고양이는 침대 밑에 숨었다.",
+    "hold":"두 손으로 밧줄을 잡아라.",
+    "human":"인간은 깨끗한 공기와 물이 필요하다.",
+    "information":"나는 인터넷에서 유용한 정보를 찾았다.",
+    "interest":"그는 과학에 관심이 많다.",
+    "invent":"누가 전화를 발명했니?",
+    "kind":"도와주셔서 고마워요.",
+    "lead":"이 길은 해변으로 이어진다.",
+    "level":"이 책은 내 읽기 수준에 맞다.",
+    "local":"우리는 지역 시장을 방문했다.",
+    "lucky":"나는 운 좋게 지갑을 찾았다.",
+    "machine":"이 기계는 아이스크림을 만든다.",
+    "message":"나는 선생님께 메시지를 남겼다.",
+    "nature":"우리는 자연과 조화롭게 살아야 한다.",
+    "own":"나는 내 방을 갖고 싶다.",
+    "pain":"나는 발목에 심한 통증을 느꼈다.",
+    "planet":"화성은 춥고 건조한 행성이다.",
+    "poor":"그는 그림 그리는 데 서투르다.",
+    "power":"폭풍이 전기를 끊었다.",
+    "present":"나는 엄마를 위해 선물을 샀다.",
+    "promise":"나는 오늘 밤 너에게 전화하겠다고 약속한다.",
+    "be able to":"너는 영어를 잘 말할 수 있게 될 것이다.",
+    "be based on":"그 영화는 실화에 근거한 것일지도 모른다.",
+    "be known for":"우리 학교는 음악 동아리로 알려지게 될 것이다.",
+    "be tired of":"다시 시도하는 것에 싫증 내지 마라.",
+    "be used to":"너는 곧 새 학교에 익숙해질 것이다.",
+    "break down":"그 낡은 버스는 또 고장 날지도 모른다.",
+    "bring up":"그 이야기를 다시 꺼내지 마라.",
+    "call off":"그들은 소풍을 취소할지도 모른다.",
+    "carry out":"우리는 그 계획을 함께 실행해야 한다.",
+    "cheer up":"기운 내! 너는 최선을 다했어.",
+    "come up with":"더 좋은 생각을 떠올려 보자.",
+    "cut down on":"우리는 플라스틱 사용을 줄여야 한다.",
+    "deal with":"너는 그 문제를 스스로 처리해야 한다.",
+    "fall asleep":"나는 긴 영화를 보다가 자주 잠든다.",
+    "figure out":"나는 이 수학 문제를 이해할 수 없다.",
+    "get rid of":"우리는 낡은 책상들을 없애야 한다.",
+    "give a hand":"이 상자들 옮기는 것 좀 도와줄래?",
+    "go on":"네 이야기를 계속해 줘.",
+    "hand in":"너는 금요일까지 보고서를 제출해야 한다.",
+    "hang out":"나는 사촌들과 어울려 노는 것을 좋아한다.",
+    "keep in mind":"안전 수칙을 명심하세요.",
+    "make a decision":"너는 곧 결정을 내려야 한다.",
+    "make sure":"문이 잠겼는지 확인해라.",
+    "pay attention to":"선생님 말씀에 주의를 기울이세요.",
+    "put off":"오늘 숙제를 미루지 마라.",
+    "set up":"어두워지기 전에 텐트를 치자.",
+    "show up":"그는 또 늦게 나타날지도 모른다.",
+    "take place":"그 축제는 5월에 열릴 것이다.",
+    "turn down":"그녀는 그 제안을 거절할지도 모른다.",
+    "work out":"지우와 나는 일주일에 두 번 체육관에서 운동한다.",
+    "reveal":"그 작가는 결말을 너무 일찍 드러냈다.",
+    "rely":"너는 팀원들을 믿고 의지해도 된다.",
+    "remove":"문 앞에서 신발을 벗어 주세요.",
+    "repair":"삼촌이 부서진 의자를 수리했다.",
+    "represent":"학생 두 명이 우리 반을 대표할 것이다.",
+    "resource":"물은 소중한 자원이다.",
+    "respond":"그녀는 내 이메일에 즉시 답했다.",
+    "risk":"오늘은 폭우가 올 위험이 있다.",
+    "role":"각 구성원은 그 과제에서 맡은 역할이 있다.",
+    "rough":"정상으로 가는 길은 험하다.",
+    "routine":"아침 운동은 내 일과의 일부다.",
+    "rural":"우리 조부모님은 시골 마을에 사신다.",
+    "sacrifice":"그녀는 우리를 돕기 위해 주말을 희생했다.",
+    "scene":"그 영화의 마지막 장면은 슬펐다.",
+    "search":"우리는 잃어버린 열쇠를 사방에서 찾았다.",
+    "seek":"도움을 구하는 것을 두려워하지 마라.",
+    "select":"이 책장에서 책 세 권을 고르세요.",
+    "sense":"그녀는 유머 감각이 좋다.",
+    "series":"우리는 단편 영화를 연달아 보았다.",
+    "settle":"그 가족은 작은 마을에 정착했다.",
+    "shape":"그 구름은 하트 모양이었다.",
+    "shortage":"여름에는 물 부족이 생긴다.",
+    "sight":"그 탑에서 본 광경은 놀라웠다.",
+    "signal":"초록 신호는 가도 된다는 뜻이다.",
+    "significant":"이것은 우리 학교에 중요한 변화다.",
+    "similar":"우리 교복은 색이 비슷하다.",
+    "situation":"어려운 상황에서는 침착하려고 노력해라.",
+    "skill":"읽기는 중요한 능력이다.",
+    "society":"기술은 우리 사회를 빠르게 변화시킨다.",
+    "solution":"우리는 그 문제의 간단한 해결책을 찾았다.",
+    "source":"태양은 에너지의 주요 원천이다.",
+    "species":"이 섬에는 희귀한 종이 많다.",
+    "spread":"좋은 소식은 빨리 퍼진다.",
+    "stable":"올라가기 전에 사다리가 안정되어 있어야 한다.",
+    "standard":"학교는 안전에 대한 새 기준을 세웠다.",
+    "state":"그는 자기 의견을 분명히 말했다.",
+    "structure":"그 다리의 구조는 단순하다.",
+    "struggle":"그는 마지막 바퀴를 끝내려고 안간힘을 썼다.",
+    "subject":"내가 가장 좋아하는 과목은 역사다.",
+    "suffer":"많은 식물이 건조한 날씨에 시달린다.",
+    "sudden":"날씨에 갑작스러운 변화가 있었다.",
+    "suitable":"이 영화는 어린이에게 적합하다.",
+    "supply":"그 가게는 학교에 식품을 공급한다.",
+    "surface":"호수의 표면은 잔잔했다.",
+    "survey":"우리는 급식에 대해 설문 조사를 했다.",
+    "survive":"사막에서 살아남는 식물은 거의 없다.",
+    "symbol":"비둘기는 평화의 상징이다.",
+    "talent":"지우는 그림에 재능이 있다.",
+    "target":"우리 목표는 천 단어다.",
+    "task":"각 모둠은 서로 다른 일을 맡는다.",
+    "technology":"기술은 우리가 새로운 방식으로 배우도록 돕는다.",
+    "temperature":"기온이 영하로 떨어졌다.",
+    "tend":"어린아이들은 질문을 많이 하는 경향이 있다.",
+    "term":"새 학기는 3월에 시작한다.",
+    "theory":"그의 이론은 타당하게 들린다.",
+    "threat":"오염은 바다 동물에게 위협이 된다.",
+    "tiny":"아주 작은 곤충이 잎 위에 앉았다.",
+    "tool":"사전은 유용한 도구다.",
+    "topic":"보고서 주제를 하나 고르세요.",
+    "total":"전체 학생 수는 300명이다.",
+    "transfer":"그는 작년에 우리 학교로 전학 왔다.",
+    "transport":"버스는 매일 많은 사람을 실어 나른다.",
+    "treat":"대접받고 싶은 대로 남을 대하라.",
+    "trust":"지우는 가장 친한 친구를 온전히 신뢰한다.",
+    "typical":"이것은 내 학교생활의 전형적인 하루다.",
+    "unique":"모든 지문은 고유하다.",
+    "unit":"미터는 길이의 단위다.",
+    "universe":"우주는 우리가 상상하는 것보다 크다.",
+    "urban":"도시 지역은 흔히 붐빈다.",
+    "urgent":"이것은 너에게 온 긴급한 메시지다.",
+    "value":"오래된 사진은 우리 가족에게 큰 가치가 있다.",
+    "variety":"그 가게에는 다양한 간식이 있다.",
+    "various":"우리는 여러 종류의 식물을 공부했다.",
+    "view":"내 견해는 네 것과 다르다.",
+    "virtual":"우리는 박물관을 가상으로 둘러보았다.",
+    "volunteer":"지우는 토요일마다 동물 센터에서 자원봉사를 한다.",
+    "wealth":"건강이 재산보다 더 중요하다.",
+    "weigh":"이 상자는 무게가 약 5킬로그램이다.",
+    "whole":"나는 이틀 만에 그 책 전체를 읽었다.",
+    "wisdom":"우리는 옛이야기에서 지혜를 배울 수 있다.",
+    "wildlife":"이 공원은 야생 동물을 보호한다.",
+    "worth":"이 박물관은 두 번 가 볼 만하다.",
+    "average":"평균 점수는 70점이었다.",
+    "basic":"기본 규칙부터 시작하자.",
+    "capable":"지우는 훨씬 더 많은 것을 해낼 수 있다.",
+    "capital":"서울은 한국의 수도다.",
+    "career":"그녀는 장래 직업을 계획하고 있다.",
+    "ceremony":"개회식은 9시에 시작한다.",
+    "chance":"한 번만 더 기회를 주세요.",
+    "character":"주인공은 용감한 소녀다.",
+    "afraid":"나는 이제 어둠이 무섭지 않다.",
+    "alone":"그는 어젯밤 혼자 걸어서 집에 갔다.",
+    "among":"그녀는 우리 중에서 키가 가장 크다.",
+    "angry":"엄마는 어질러진 것에 화가 나셨다.",
+    "arrive":"기차는 10분 후에 도착할 것이다.",
+    "beauty":"그 산의 아름다움이 우리를 놀라게 했다.",
+    "begin":"수업은 9시에 시작한다.",
+    "behind":"공이 문 뒤로 굴러갔다.",
+    "bill":"아빠가 전기 요금을 내셨다.",
+    "bottom":"맨 아래에 이름을 쓰세요.",
+    "build":"그들은 내년에 새 체육관을 지을 것이다.",
+    "calm":"침착하게 심호흡을 해라.",
+    "carry":"이 가방 좀 들어 줄래?",
+    "catch":"나는 버스를 타려고 빨리 달렸다.",
+    "certain":"나는 그가 올 것이라고 확신한다.",
+    "cheer":"우리는 우리 팀을 큰 소리로 응원했다.",
+    "chore":"설거지는 내가 매일 하는 집안일이다.",
+    "comfort":"그녀의 말은 나에게 큰 위로가 되었다.",
+    "compete":"열 개 학교가 그 대회에서 경쟁했다.",
+    "contact":"이메일로 나에게 연락해도 된다.",
+    "cover":"눈이 운동장 전체를 덮었다.",
+    "crowded":"지하철은 아침에 붐빈다.",
+    "daily":"독서는 내 일상의 일부다.",
+    "dark":"겨울에는 일찍 어두워진다.",
+    "disappoint":"나는 부모님을 실망시키고 싶지 않다.",
+    "discount":"학생은 표를 할인받는다.",
+    "double":"가격이 평소의 두 배다.",
+    "draw":"그녀는 자기 개를 그렸다.",
+    "dry":"수건이 마를 때까지 널어 두어라.",
+    "during":"나는 방학 동안 책 세 권을 읽었다.",
+    "enter":"방에 들어가기 전에 노크해라.",
+    "event":"그 학교 행사는 큰 성공이었다.",
+    "exam":"기말고사는 다음 주 월요일이다.",
+    "excellent":"지우의 발표는 훌륭했다.",
+    "exit":"출구는 왼쪽에 있다.",
+    "fact":"식물이 빛을 필요로 한다는 것은 사실이다.",
+    "favor":"부탁 하나 해도 될까?",
+    "fear":"연습은 두려움을 이기는 데 도움이 된다.",
+    "flat":"우리는 텐트를 칠 평평한 곳이 필요하다.",
+    "fold":"종이를 반으로 접어라.",
+    "follow":"선생님의 지시를 따라라.",
+    "foreign":"나는 외국어를 배우고 싶다.",
+    "freeze":"물은 0도에서 언다.",
+    "friendship":"그들의 우정은 10년 동안 이어졌다.",
+    "garbage":"쓰레기를 내다 버려 주세요.",
+    "gentle":"아기 새를 부드럽게 다뤄라.",
+    "grade":"지우는 수학에서 좋은 성적을 받았다.",
+    "greet":"그녀는 따뜻한 미소로 우리를 맞이했다.",
+    "guess":"상자 안에 무엇이 있는지 맞혀 봐.",
+    "guide":"안내인이 우리에게 궁궐을 구경시켜 주었다.",
+    "hang":"코트를 고리에 걸어라.",
+    "harvest":"농부들은 10월에 벼를 수확한다.",
+    "health":"잠은 건강에 중요하다.",
+    "helpful":"네 조언은 아주 도움이 되었다.",
+    "hurt":"나는 요리하다가 손가락을 다쳤다.",
+    "image":"화면의 이미지는 선명했다.",
+    "indoor":"우리는 비 오는 날 실내 경기를 했다.",
+    "instrument":"바이올린은 내가 가장 좋아하는 악기다.",
+    "island":"우리는 배로 작은 섬을 방문했다.",
+    "journey":"그 여행은 약 다섯 시간이 걸렸다.",
+    "airport":"우리는 공항에서 삼촌을 만났다.",
+    "already":"나는 숙제를 이미 끝냈다.",
+    "almost":"거의 점심시간이다.",
+    "amazing":"그 마술 공연은 놀라웠다.",
+    "bake":"우리 언니는 주말에 쿠키를 굽는다.",
+    "between":"은행은 공원과 학교 사이에 있다.",
+    "both":"우리 형 둘 다 축구를 한다.",
+    "bottle":"현장 학습에 물병을 가져오세요.",
+    "clean":"내 방은 항상 깨끗하다.",
+    "clever":"그 영리한 새가 상자를 열었다.",
+    "cloudy":"오늘은 흐리고 선선하다.",
+    "cousin":"지우의 사촌은 대구에 산다.",
+    "cross":"건너기 전에 양쪽을 살펴라.",
+    "cute":"사진 속 강아지는 정말 귀엽다.",
+    "early":"우리는 공연에 일찍 도착했다.",
+    "enjoy":"나는 아빠와 배드민턴 치는 것을 즐긴다.",
+    "exciting":"마지막 경기는 정말 신났다.",
+    "field":"아이들이 들판을 가로질러 달렸다.",
+    "finally":"우리는 마침내 모둠 과제를 끝냈다.",
+    "floor":"도서관은 3층에 있다.",
+    "garden":"엄마는 정원에서 토마토를 기르신다.",
+    "gift":"이 목도리는 이모가 주신 선물이다.",
+    "hobby":"지우의 취미는 우표 수집이다.",
+    "holiday":"우리는 휴일에 캠핑을 간다.",
+    "hungry":"나는 체육 수업 후에 배가 고프다.",
+    "kitchen":"아빠가 부엌에서 요리하고 계신다.",
+    "later":"오늘 밤 나중에 전화할게.",
+    "letter":"나는 할머니께 편지를 썼다.",
+    "library":"도서관은 6시에 문을 닫는다.",
+    "match":"우리 반이 축구 경기에서 이겼다.",
+    "ask for":"너는 언제든 도움을 요청해도 된다.",
+    "believe in":"너는 너 자신을 믿어야 한다.",
+    "belong to":"이 책은 민수의 것임에 틀림없다.",
+    "bring back":"내일 우산을 돌려주세요.",
+    "check out":"새 도서관을 한번 살펴보자.",
+    "come from":"너는 어디 출신이니?",
+    "do your best":"시험에서 최선을 다하기만 해라.",
+    "end up":"너는 결국 버스를 놓치게 될지도 모른다.",
+    "focus on":"오늘 수업에 집중하자.",
+    "get better":"네 영어는 곧 나아질 것이다.",
+    "get together":"시험이 끝나면 모이자.",
+    "in addition":"게다가 우리는 의자가 더 필요하다.",
+    "in fact":"사실 나는 거기에 가 본 적이 없다.",
+    "in other words":"다시 말해, 우리는 오늘 시작해야 한다.",
+    "look like":"너는 아버지를 닮았다.",
+    "make up your mind":"너는 오늘 결심해야 한다.",
+    "no longer":"그는 더 이상 초보자가 아니다.",
+    "on the other hand":"반면에 버스는 더 싸다.",
+    "result in":"부주의한 운전은 사고를 초래할 수 있다.",
+    "turn out":"그 이야기는 사실로 밝혀질지도 모른다."
+  };
+  var TIPS = {
+    "achievement":"🏆 a+chieve(chief 우두머리) → 우두머리 자리에 오른 것 = 성취",
+    "admit":"🚪 ad(~로)+mit(보내다) → 안으로 들여보내 주다 = 인정하다",
+    "afford":"💳 어? 포드(Ford) 차를 살 여유가 있어?",
+    "analyze":"🔬 아날로그로 하나하나 뜯어보기 = 분석하다",
+    "announce":"📢 an+nounce(말하다) → 소리 내어 알리다",
+    "anxious":"😰 앵-! 앵-! 불안해서 앵앵거리는 소리",
+    "apologize":"🙇 아폴로 지-! 사과할 때 튀어나오는 소리로 외우기",
+    "appearance":"👀 ap(~에)+pear(보이다) → 눈앞에 보이는 것 = 겉모습",
+    "approach":"🚶 ap(~쪽으로)+proach(가까이) → 가까이 다가가다",
+    "appropriate":"👔 어, 프로(pro)답게 적절한 옷차림",
+    "arrange":"📚 a+range(줄) → 줄을 세우다 = 정리하다",
+    "attract":"🧲 at(~쪽으로)+tract(끌다) → 트랙터(tractor)가 끌어당기듯",
+    "audience":"👂 audio(소리)를 듣는 사람들 = 청중",
+    "aware":"👁️ 어! 웨어(where)? 어디 있는지 알아차린 상태",
+    "balance":"⚖️ 발란스! 양팔 저울이 딱 맞은 그림",
+    "behave":"🎩 be+have → 몸가짐을 가지다 = 행동하다",
+    "belong":"🏠 be+long(오래) → 오래 함께 있으면 그 집 것",
+    "brief":"📝 브리핑(briefing)은 짧게! = 간단한",
+    "citizen":"🏙️ city(도시) 안에 사는 사람 = 시민",
+    "combine":"🔗 com(함께)+bine(묶다) → 함께 묶다",
+    "community":"🏘️ com(함께)+unity(하나) → 함께 하나가 된 곳",
+    "competition":"🏁 com(함께)+pete(겨루다) → 함께 겨루기",
+    "complete":"✅ com(완전히)+plete(채우다) → 꽉 채우면 완성",
+    "complex":"🧩 com(함께)+plex(접다) → 여러 겹 접히면 복잡",
+    "conclusion":"🚪 con+clude(닫다) → 문을 닫으면 결론",
+    "confuse":"🌀 con(함께)+fuse(붓다) → 섞어 부으면 헷갈린다",
+    "connect":"🔌 con(함께)+nect(묶다) → 함께 묶다",
+    "contribute":"🎁 con(함께)+tribute(주다) → 함께 내놓다 = 기여",
+    "convenient":"🛒 편의점 = convenience store, 그 편리함",
+    "courage":"🦁 cour(심장) → 심장에서 나오는 힘 = 용기",
+    "crowd":"👥 크라우드 펀딩의 그 crowd, 사람 떼",
+    "cure":"💊 큐어! 마법 주문처럼 병을 낫게 하다",
+    "customer":"🛍️ custom(습관) → 습관처럼 오는 사람 = 단골손님",
+    "debate":"🗣️ de+bate(치다) → 말로 치고받기 = 토론",
+    "delay":"⏰ de(아래)+lay(놓다) → 일을 내려놓으면 미뤄진다",
+    "deliver":"📦 de+liver(풀어 주다) → 손에서 풀어 보내다 = 배달",
+    "demand":"✋ de(강하게)+mand(명령) → 강하게 요구하다",
+    "deny":"🙅 데니! 아니야! 부인하는 소리",
+    "destroy":"💥 de(반대)+stroy(세우다) → 세운 걸 반대로 = 파괴 (structure의 반대편)",
+    "device":"🔧 de+vice(나누다) → 쪼개 만든 물건 = 장치",
+    "disaster":"🌪️ dis(나쁜)+aster(별) → 별이 나쁘게 뜬 날 = 재난",
+    "distance":"📏 di(떨어져)+stance(서다) → 떨어져 선 만큼이 거리",
+    "divide":"➗ di(따로)+vide(나누다) → 나누기 기호 ÷ 를 떠올려",
+    "donate":"💝 방송에서 듣는 도네이션(donation) = 기부",
+    "doubt":"🤔 카드 게임에서 외치는 다우트! = 의심",
+    "duty":"🎖️ 듀티 프리(duty free) = 세금(의무) 면제",
+    "earn":"💰 learn(배우다)에서 l만 빼면 earn — 배워서 돈을 벌다",
+    "economy":"🏡 eco(집)+nomy(관리) → 집안 살림 관리 = 경제",
+    "effect":"➡️ ef(밖으로)+fect(만들다) → 밖으로 나온 결과 = 효과",
+    "elect":"🗳️ e(밖으로)+lect(고르다) → 뽑아내다. select는 따로 고르고, collect는 함께 모은다",
+    "emotion":"💓 e(밖으로)+motion(움직임) → 밖으로 나오는 마음의 움직임",
+    "entire":"🍰 자르지 않은 케이크 한 판 통째로 = 전체의",
+    "escape":"🏃 es(밖)+cape(망토) → 망토를 벗어던지고 탈출",
+    "essential":"🧴 에센스(essence)가 본질 → 꼭 있어야 하는",
+    "evidence":"📹 e(밖)+vid(보다) → 눈에 보이는 것 = 증거 (video와 형제)",
+    "examine":"🔍 ex(밖)+amine → 밖으로 꺼내 들여다보다",
+    "exchange":"🔄 ex(밖)+change(바꾸다) → 서로 바꾸다",
+    "exist":"🌱 ex(밖)+ist(서다) → 밖에 서 있다 = 존재하다",
+    "expand":"🎈 ex(밖)+pand(펼치다) → 풍선처럼 밖으로 펼치다",
+    "expert":"🧑‍🔬 ex+peri(겪다) → 많이 겪어 본 사람 (experience와 형제)",
+    "explore":"🔦 ex(밖)+plore(외치다) → 밖에서 소리치며 탐험하다",
+    "fair":"⚖️ 페어플레이 = 공정한 경기",
+    "feature":"🎬 피처링(featuring) = 그 곡의 특징을 살려 주기",
+    "force":"💪 포스(Force)가 함께하기를 = 힘",
+    "fortunately":"🍀 fortune(행운)+ly → 운 좋게도, 다행히",
+    "function":"⚙️ 키보드 펑션 키(F1~F12) = 기능 키",
+    "gain":"📈 게임에서 아이템을 게인(gain)! = 얻다",
+    "generation":"👨‍👩‍👦 gene(태어남) → 같이 태어난 무리 = 세대",
+    "global":"🌍 globe(지구본) → 지구 전체의",
+    "gradually":"📶 grade(단계) → 단계를 하나씩 밟아 = 점차",
+    "harm":"🤕 함부로 하면 harm(해)이 된다",
+    "identify":"🪪 ID(신분증)로 누군지 확인하다",
+    "ignore":"🙈 i(아님)+gnore(알다) → 알면서 모른 척 = 무시",
+    "impact":"💥 im(안)+pact(때리다) → 안쪽을 때리는 충격",
+    "impress":"🖨️ im(안)+press(누르다) → 마음에 도장을 꾹 = 감명",
+    "indicate":"👉 in+dic(말하다) → 손가락으로 말해 주다 = 가리키다",
+    "industry":"🏭 in+dustry(짓다) → 안에서 부지런히 짓는 일 = 산업",
+    "inform":"📨 in(안)+form(모양) → 머릿속에 모양을 넣어 주다 = 알리다",
+    "insist":"📌 in(계속)+sist(서다) → 계속 그 자리에 서 있다 = 고집하다",
+    "invention":"💡 in+vent(오다) → 머릿속에 온 생각 = 발명",
+    "laboratory":"🧪 labor(노동) → 힘써 일하는 방 = 실험실",
+    "lack":"🕳️ 자물쇠(lock)가 걸려 못 쓰는 상태 = 부족",
+    "limit":"🚧 게임 속 리미트(limit) = 넘을 수 없는 한계",
+    "manage":"🧑‍💼 man(손)+age → 손으로 다루다. 매니저(manager)가 하는 일",
+    "measure":"📐 메저 테이프 = 줄자로 재다",
+    "method":"📋 메소드 연기 = 방법을 끝까지 파고드는 연기",
+    "obey":"🐕 오, 베이! 주인 말을 따르는 강아지",
+    "official":"🏛️ office(사무실)에서 나온 것 = 공식적인",
+    "opposite":"↔️ op(맞은편)+posite(놓다) → 맞은편에 놓인 = 반대의",
+    "permit":"🎫 per(통과)+mit(보내다) → 통과시켜 보내 주다 = 허가",
+    "pollution":"🏭 풀(pool)에 오물을 푸는 장면 = 오염",
+    "population":"👨‍👩‍👧‍👦 popul(사람들) → popular와 한집안. 사람 수 = 인구",
+    "positive":"➕ 플러스(+) 기호를 떠올리면 긍정",
+    "prove":"✔️ proof(증거)의 짝 → 증거로 증명하다",
+    "rapidly":"⚡ 래피드(rapid)는 급류 → 빠르게",
+    "recover":"🔄 re(다시)+cover(덮다) → 다시 덮어 원래대로 = 회복 (discover는 덮개를 벗기는 것)",
+    "regret":"😣 re(다시)+gret(울다) → 다시 울고 싶은 마음 = 후회",
+    "relationship":"🔗 relate(연결하다) → 서로 연결된 사이",
+    "replace":"🔁 re(다시)+place(놓다) → 그 자리에 다시 놓다 = 바꾸다",
+    "represent":"🎤 re+present(보여 주다) → 대신 나서서 보여 주다 = 대표하다",
+    "resource":"⛲ re(다시)+source(원천) → 다시 쓸 수 있는 원천 = 자원",
+    "respond":"📞 re(되돌려)+spond(약속) → 되돌려 답하다",
+    "reveal":"🎭 re(반대)+veil(베일) → 베일을 벗기다 = 드러내다",
+    "rely":"🪑 등을 기대고 앉는 의자를 떠올려 → 의지하다",
+    "role":"🎬 롤플레잉 게임(RPG) = 역할 놀이",
+    "rural":"🌾 루랄~ 하고 흥얼거리는 시골 노래",
+    "sacrifice":"🕯️ sacri(신성한)+fice(만들다) → 신께 바치다 = 희생",
+    "scene":"🎬 신(scene) 원, 큐! 촬영 장면",
+    "seek":"🔎 숨바꼭질 hide and seek의 그 seek = 찾다",
+    "select":"☝️ se(따로)+lect(고르다) → 따로 골라내다",
+    "sense":"🧠 센스 있다 = 감각이 좋다",
+    "series":"📺 드라마 시리즈 = 줄줄이 이어진 것",
+    "settle":"🏕️ set(놓다) → 짐을 내려놓고 자리를 잡다 = 정착하다",
+    "shortage":"📉 short(모자란)+age → 부족",
+    "significant":"✴️ sign(표시) → 표시해 둘 만큼 중요한",
+    "situation":"📍 site(자리) → 놓여 있는 자리 = 상황",
+    "solution":"🔑 solve(풀다)의 명사 → 해결책",
+    "source":"💧 소스 코드의 그 source = 원천",
+    "species":"🐾 스페셜(special)과 한집안 → 특별히 구분된 종",
+    "spread":"🧈 빵에 잼을 스프레드! = 펴 바르다, 퍼지다",
+    "stable":"🧱 st(서다) → 흔들리지 않고 서 있는 = 안정된",
+    "standard":"📏 stand(세우다) → 기준으로 세워 둔 것",
+    "struggle":"🤼 스트-러-글! 뒤엉켜 몸부림치는 소리",
+    "subject":"📚 sub(아래)+ject(던지다) → 눈앞에 던져진 것 = 과목, 주제",
+    "suffer":"😖 suf(아래)+fer(나르다) → 밑에서 짊어지고 견디다",
+    "suitable":"👗 suit(정장, 어울리다)+able → 딱 어울리는",
+    "supply":"📦 sup(아래)+ply(채우다) → 밑에서 채워 주다 = 공급",
+    "surface":"🪞 sur(위)+face(얼굴) → 위쪽 얼굴 = 표면",
+    "survey":"🛰️ sur(위)+vey(보다) → 위에서 내려다보기 = 조사",
+    "survive":"🌵 sur(넘어)+vive(살다) → 넘어서 살아남다",
+    "symbol":"🕊️ sym(함께)+bol(던지다) → 함께 던져 맞춘 표식",
+    "talent":"⭐ 탤런트 = 재능 있는 사람",
+    "tend":"🧲 ten(뻗다) → 마음이 자꾸 그쪽으로 뻗는다 = ~하는 경향",
+    "threat":"😱 쓰-렛! 협박 쪽지를 받은 순간",
+    "transfer":"🚌 trans(건너)+fer(나르다) → 갈아타다, 옮기다. prefer는 먼저 집어 나르는 것",
+    "transport":"🚚 trans(건너)+port(나르다) → 실어 나르다",
+    "typical":"🗂️ type(유형) → 그 유형의 전형",
+    "unique":"1️⃣ uni(하나) → 하나뿐인",
+    "unit":"1️⃣ uni(하나) → 하나로 묶은 덩어리",
+    "universe":"🌌 uni(하나)+verse(돌다) → 하나로 도는 것 = 우주",
+    "urban":"🏙️ 어반(urban) 스타일 = 도시 감성",
+    "urgent":"🚨 어! 젠! 급해! 사이렌 소리로 외우기",
+    "value":"💎 밸류 = 값어치",
+    "variety":"🎨 vary(변하다) → 이리저리 변한 여러 가지",
+    "virtual":"🕶️ VR = virtual reality, 가상현실",
+    "volunteer":"🙋 vol(의지 will) → 제 의지로 손드는 사람",
+    "wealth":"🏦 well(좋은)+th → 잘사는 상태 = 부",
+    "weigh":"⚖️ weight(무게)의 동사형 → 무게가 나가다",
+    "wisdom":"🦉 wise(현명한)+dom → 지혜. 지혜의 상징은 부엉이",
+    "worth":"🏷️ 가격표를 떠올려 — Is it worth it? 그만한 값어치가 있어?",
+    "respect":"🙏 re(다시)+spect(보다) → 다시 돌아보다 = 존중 (expect는 밖을 내다보는 것)",
+    "expect":"🔭 ex(밖)+spect(보다) → 밖을 내다보다 = 기대하다",
+    "protect":"🛡️ pro(앞에)+tect(덮다) → 앞을 덮어 주다 = 보호",
+    "prefer":"🥇 pre(먼저)+fer(나르다) → 먼저 집어 오다 = 더 좋아하다",
+    "support":"🤝 sup(아래)+port(나르다) → 밑에서 받쳐 주다 = 지지",
+    "opportunity":"⛵ op+port(항구) → 항구로 배가 들어오는 때 = 기회",
+    "describe":"✍️ de(아래로)+scribe(쓰다) → 받아 적듯 그려 내다 = 묘사하다",
+    "predict":"🔮 pre(미리)+dict(말하다) → 미리 말하다 (dictionary와 형제)",
+    "produce":"🏭 pro(앞으로)+duce(이끌다) → 앞으로 끌어내다 = 생산하다",
+    "reduce":"📉 re(뒤로)+duce(이끌다) → 뒤로 끌어당기다 = 줄이다",
+    "introduce":"🤝 intro(안으로)+duce(이끌다) → 안으로 데려오다 = 소개하다",
+    "include":"📥 in(안)+clude(닫다) → 안에 넣고 닫다 = 포함하다",
+    "refuse":"🙅 re(뒤로)+fuse(붓다) → 되돌려 부어 버리다 = 거절",
+    "require":"🔁 re(다시)+quire(구하다) → 자꾸 구하다 = 요구하다",
+    "responsible":"📮 response(응답)+ible → 응답할 수 있는 = 책임이 있는",
+    "available":"🟢 avail(쓸모 있다)+able → 쓸 수 있는",
+    "capable":"🖐️ cap(잡다)+able → 잡을 수 있는 = 해낼 수 있는",
+    "capital":"👑 cap(머리) → 머리가 되는 도시 = 수도 (captain과 형제)",
+    "career":"🛣️ 수레가 달리던 길 → 인생에서 달려온 길 = 경력",
+    "ceremony":"⚽ 골 넣고 하는 세리머니, 그게 바로 의식",
+    "confident":"💪 con(완전히)+fid(믿다) → 나를 완전히 믿는 = 자신 있는",
+    "contain":"🫙 con(함께)+tain(잡다) → 안에 담아 잡고 있다",
+    "maintain":"🔧 main(손)+tain(잡다) → 손으로 붙잡고 유지하다",
+    "persuade":"🍬 per(완전히)+suade(달콤하게) → 달래서 설득하다 (sweet과 먼 친척)",
+    "immediately":"⚡ im(없이)+mediate(중간) → 중간 단계 없이 = 즉시",
+    "independent":"🕊️ in(아님)+depend(의지하다) → 기대지 않는 = 독립적인",
+    "concentrate":"🎯 con+center → 가운데로 모으다 = 집중하다",
+    "obvious":"🛣️ ob(앞에)+via(길) → 길 앞에 딱 놓여 있으니 = 분명한",
+    "previous":"👣 pre(먼저)+via(길) → 먼저 지나간 길 = 이전의",
+    "generous":"👐 gene(태생) → 태생이 넉넉한 = 관대한",
+    "benefit":"🎀 bene(좋은)+fit → 좋은 것 = 이익",
+    "discover":"🔍 dis(벗기다)+cover(덮개) → 덮개를 벗기다 = 발견 (recover는 다시 덮는 것)",
+    "temperature":"🌡️ temper(조절하다) → 조절해 재는 것 = 온도",
+    "society":"🧑‍🤝‍🧑 soci(동료) → social과 한집안, 동료들의 모임 = 사회",
+    "appear":"🎩 ap(~에)+pear(보이다) → 눈앞에 나타나다",
+    "disappear":"🎩 dis(반대)+appear → 나타남의 반대 = 사라지다",
+    "increase":"📈 in(안으로)+crease(자라다) → 늘어나다",
+    "decrease":"📉 de(아래로)+crease(자라다) → 줄어들다",
+    "separate":"✂️ se(따로)+parate → 따로 떼어 놓다",
+    "look forward to":"🔭 앞(forward)을 내다보는(look) 마음 = 기대하다",
+    "give up":"🏳️ 두 손을 위로(up) 들고 항복 = 포기하다",
+    "break down":"🚗 부서져(break) 주저앉다(down) = 고장 나다",
+    "put off":"📅 달력에서 일정을 떼어(off) 뒤로 밀어 두다 = 미루다",
+    "run out of":"⛽ 다 써서 밖으로(out) 달아나 버림 = 다 떨어지다",
+    "figure out":"🧮 머릿속 숫자(figure)가 밖으로(out) 딱 떨어지면 = 알아내다",
+    "come up with":"💡 생각이 위로(up) 떠올라 오다 = 떠올리다",
+    "turn down":"🔉 소리를 낮추듯 제안도 낮춰 버리다 = 거절하다",
+    "end up":"🏁 달리다 보니 결국 끝(end)에 서 있다 = 결국 ~하게 되다",
+    "take place":"📍 자리(place)를 차지하다 = 일어나다, 열리다"
+  };
+
+  var POS_KO = {n:"명사",v:"동사",adj:"형용사",adv:"부사",phr:"표현",idm:"숙어"};
+  var GRADE_KO = {0:"내 카드",1:"중1 과정",2:"중2 과정",3:"중3 과정",4:"숙어"};
+
+  /* 예문 안의 {중괄호}는 빈칸 문제로 바꿀 부분 */
+  function parseEx(s){
+    s = s || "";
+    var m = s.match(/\{([^}]*)\}/);
+    if(!m) return {ex:s, cloze:"", form:""};
+    return {ex:s.replace(/[{}]/g, ""), cloze:s.replace(/\{[^}]*\}/, "______"), form:m[1]};
+  }
+  function makeCard(g, en, pos, ko, exRaw, id){
+    var p = parseEx(exRaw);
+    return {id:id, g:g, en:en, pos:pos, ko:ko, ex:p.ex, cloze:p.cloze, form:p.form, kr:EXKO[en] || "", tip:TIPS[en] || ""};
+  }
+  var BUILTIN = RAW.map(function(r){
+    return makeCard(r[0], r[1], r[2], r[3], r[4], "b-" + r[1].toLowerCase().replace(/[^a-z0-9]+/g, "-"));
+  });
+
+  /* ============ 상태 ============ */
+  /* 상품은 '완성함' 카드 수(완주 진행)로 열린다. 포인트는 용돈 전용. */
+  var REWARDS = [
+    {id:"r1", at:0.25, name:"쥬에서 짬뽕"},
+    {id:"r2", at:0.50, name:"영화 관람권"},
+    {id:"r3", at:0.75, name:"외식 선택권"},
+    {id:"r4", at:1.00, name:"에어팟 — 전체 완주"}
+  ];
+  var LS_LETTER = "mid-vocab-box/letter/v1";
+  var LS_KEY = "mid-vocab-box/v1";
+  var LS_SESSION = "mid-vocab-box/session/v1";
+  var DEFAULTS = {order:"repeat-first", grade:"all", dir:"en-ko", shuffle:false, goal:20, rate:100};
+  var state = {v:1, status:{}, custom:[], daily:{}, paid:[], unlocked:[], prefs:Object.assign({}, DEFAULTS), updatedAt:0};
+  var session = {queue:[], idx:0, revealed:false, history:[], dirOf:{}, again:{}};
+  var db = null, saveTimer = null, lastPushed = "";
+
+  function el(id){ return document.getElementById(id); }
+  function cards(){
+    return BUILTIN.concat(state.custom.map(function(c){
+      return makeCard(Number(c.g) || 0, c.en, c.pos, c.ko, c.ex, c.id);
+    }));
+  }
+  function byId(id){
+    var all = cards();
+    for(var i=0;i<all.length;i++){ if(all[i].id===id) return all[i]; }
+    return null;
+  }
+  function st(id){ return state.status[id] || "new"; }
+
+  function readLocal(){
+    try{
+      var raw = localStorage.getItem(LS_KEY);
+      if(!raw) return null;
+      var o = JSON.parse(raw);
+      if(!o || typeof o !== "object") return null;
+      return normalize(o);
+    }catch(e){ return null; }
+  }
+  function normalize(o){
+    var daily = {};
+    if(o.daily && typeof o.daily === "object"){
+      Object.keys(o.daily).forEach(function(k){
+        var r = o.daily[k];
+        if(r && typeof r === "object" && typeof r.n === "number") daily[k] = {n:Math.max(0, r.n|0), goal:Math.max(1, (r.goal|0) || 20)};
+      });
+    }
+    return {
+      v:1,
+      status:(o.status && typeof o.status==="object") ? o.status : {},
+      custom:Array.isArray(o.custom) ? o.custom.filter(function(c){ return c && c.id && c.en && c.ko; }) : [],
+      daily:daily,
+      paid:Array.isArray(o.paid) ? o.paid.filter(function(p){ return p && p.ts && typeof p.p === "number"; }) : [],
+      unlocked:Array.isArray(o.unlocked) ? o.unlocked.filter(function(x){ return typeof x === "string"; }) : [],
+      prefs:Object.assign({}, DEFAULTS, (o.prefs && typeof o.prefs==="object") ? o.prefs : {}),
+      updatedAt: typeof o.updatedAt==="number" ? o.updatedAt : 0
+    };
+  }
+  function writeLocal(){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function save(){
+    state.updatedAt = Date.now();
+    writeLocal();
+    if(!db) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(push, 700);
+  }
+  function push(){
+    if(!db) return;
+    var body = JSON.stringify(state);
+    if(body === lastPushed) return;
+    lastPushed = body;
+    db.doc("study/state").set(JSON.parse(body)).catch(function(err){
+      lastPushed = "";
+      if(err && err.code === "revoked"){ db = null; setSync(false, "이 브라우저에만 저장됩니다"); }
+    });
+  }
+  function merge(remote, local){
+    var winner = (remote.updatedAt||0) >= (local.updatedAt||0) ? remote : local;
+    var loser  = winner === remote ? local : remote;
+    var status = Object.assign({}, loser.status, winner.status);
+    var seen = {}, custom = [];
+    winner.custom.concat(loser.custom).forEach(function(c){
+      if(!seen[c.id]){ seen[c.id]=1; custom.push(c); }
+    });
+    var daily = {};
+    Object.keys(loser.daily).concat(Object.keys(winner.daily)).forEach(function(k){
+      var a = winner.daily[k], b = loser.daily[k];
+      daily[k] = (!a) ? b : (!b) ? a : (a.n >= b.n ? a : b);
+    });
+    var pseen = {}, paid = [];
+    winner.paid.concat(loser.paid).forEach(function(p){
+      if(!pseen[p.ts]){ pseen[p.ts]=1; paid.push(p); }
+    });
+    paid.sort(function(a,b){ return b.ts - a.ts; });
+    var unlocked = winner.unlocked.concat(loser.unlocked).filter(function(x, i, a){ return a.indexOf(x) === i; });
+    return {v:1, status:status, custom:custom, daily:daily, paid:paid, unlocked:unlocked,
+      prefs:Object.assign({}, winner.prefs), updatedAt:Math.max(remote.updatedAt||0, local.updatedAt||0)};
+  }
+
+  /* ============ 날짜와 포인트 ============ */
+  function pad(n){ return (n<10?"0":"") + n; }
+  function keyOf(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+  function todayKey(){ return keyOf(new Date()); }
+  function parseKey(k){ var p = k.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function mondayOf(d){
+    var x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    x.setDate(x.getDate() - ((x.getDay()+6) % 7));
+    return x;
+  }
+  function weekKeyOf(dayKey){ return keyOf(mondayOf(parseKey(dayKey))); }
+  function rate(){ var r = Number(state.prefs.rate); return isFinite(r) && r >= 0 ? r : 100; }
+  function goal(){ var g = Number(state.prefs.goal); return isFinite(g) && g > 0 ? g : 20; }
+  function won(p){ return Math.round(p * rate()).toLocaleString("ko-KR") + "원"; }
+  function fmtP(p){ return (Math.round(p*10)/10) + "P"; }
+
+  function dayPoints(k){
+    var r = state.daily[k];
+    if(!r) return 0;
+    var g = r.goal || goal();
+    return Math.min(r.n, g*2) * 0.5 + (r.n >= g ? 10 : 0);
+  }
+  function weekOf(monKey){
+    var mon = parseKey(monKey), cards = 0, pts = 0, hits = 0;
+    for(var i=0;i<7;i++){
+      var d = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate()+i);
+      var k = keyOf(d), r = state.daily[k];
+      if(!r) continue;
+      cards += r.n;
+      pts += dayPoints(k);
+      if(r.n >= (r.goal || goal())) hits++;
+    }
+    var bonus = hits >= 5 ? 20 : 0;
+    return {key:monKey, cards:cards, pts:pts + bonus, hits:hits, bonus:bonus};
+  }
+  function allWeeks(){
+    var set = {};
+    Object.keys(state.daily).forEach(function(k){ set[weekKeyOf(k)] = 1; });
+    return Object.keys(set).sort().reverse();
+  }
+  function earnedTotal(){
+    return allWeeks().reduce(function(s, w){ return s + weekOf(w).pts; }, 0);
+  }
+  function paidTotal(){
+    return state.paid.reduce(function(s, p){ return s + p.p; }, 0);
+  }
+  function pruneDaily(){
+    var limit = new Date(); limit.setDate(limit.getDate() - 180);
+    Object.keys(state.daily).forEach(function(k){ if(parseKey(k) < limit) delete state.daily[k]; });
+  }
+
+  /* ============ 큐 ============ */
+  function pool(){
+    var g = state.prefs.grade;
+    return cards().filter(function(c){ return g==="all" || String(c.g)===String(g); });
+  }
+  function shuffled(a){
+    a = a.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+  function buildQueue(){
+    var list = pool();
+    if(state.prefs.shuffle) list = shuffled(list);
+    var mode = state.prefs.order, q;
+    if(mode==="repeat-only") q = list.filter(function(c){ return st(c.id)==="repeat"; });
+    else if(mode==="new-only") q = list.filter(function(c){ return st(c.id)==="new"; });
+    else if(mode==="done-only") q = list.filter(function(c){ return st(c.id)==="done"; });
+    else if(mode==="all") q = list;
+    else {
+      var rank = mode==="new-first" ? {"new":0,repeat:1,done:2} : {repeat:0,"new":1,done:2};
+      q = list.slice().sort(function(a,b){ return rank[st(a.id)] - rank[st(b.id)]; });
+    }
+    session.queue = q.map(function(c){ return c.id; });
+    session.idx = 0;
+    session.revealed = false;
+    session.history = [];
+    session.dirOf = {};
+    session.again = {};
+    saveSession();
+  }
+  function saveSession(){
+    try{
+      localStorage.setItem(LS_SESSION, JSON.stringify({queue:session.queue, idx:session.idx, order:state.prefs.order, grade:state.prefs.grade}));
+    }catch(e){}
+  }
+  function restoreSession(){
+    try{
+      var o = JSON.parse(localStorage.getItem(LS_SESSION) || "null");
+      if(!o || !Array.isArray(o.queue) || !o.queue.length) return false;
+      if(o.order !== state.prefs.order || String(o.grade) !== String(state.prefs.grade)) return false;
+      var valid = o.queue.filter(function(id){ return !!byId(id); });
+      if(!valid.length) return false;
+      session.queue = valid;
+      session.idx = Math.min(Math.max(0, o.idx|0), valid.length);
+      return true;
+    }catch(e){ return false; }
+  }
+
+  /* ============ 렌더 ============ */
+  function counts(){
+    var c = {"new":0, repeat:0, done:0, total:0};
+    cards().forEach(function(card){ c[st(card.id)]++; c.total++; });
+    return c;
+  }
+  function renderMeter(){
+    var c = counts();
+    el("c-new").textContent = c["new"];
+    el("c-rep").textContent = c.repeat;
+    el("c-done").textContent = c.done;
+    var t = Math.max(1, c.total);
+    el("bar-done").style.width = (c.done/t*100).toFixed(2) + "%";
+    el("bar-rep").style.width = (c.repeat/t*100).toFixed(2) + "%";
+    el("bar").setAttribute("aria-label", "전체 " + c.total + "장 중 완성함 " + c.done + "장, 반복함 " + c.repeat + "장");
+  }
+  function renderResume(){
+    var c = counts();
+    var box = el("resume");
+    if(c.repeat > 0){
+      el("resume-text").textContent = "반복함 카드 " + c.repeat + "장이 기다리고 있어요. 먼저 보실래요?";
+      box.hidden = false;
+    } else {
+      box.hidden = true;
+    }
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
+  function highlight(ex, en){
+    var safe = esc(ex);
+    var word = en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    try{
+      return safe.replace(new RegExp("\\b" + word + "\\w{0,3}\\b", "gi"), function(m){ return "<b>" + m + "</b>"; });
+    }catch(e){ return safe; }
+  }
+  var canSpeak = typeof window.speechSynthesis !== "undefined" && typeof window.SpeechSynthesisUtterance !== "undefined";
+  var enVoice = null;
+  function pickVoice(){
+    if(!canSpeak) return;
+    var vs = window.speechSynthesis.getVoices() || [];
+    var en = vs.filter(function(v){ return /^en[-_]?/i.test(v.lang || ""); });
+    if(!en.length){ enVoice = null; return; }
+    var prefer = ["Google US English","Samantha","Ava","Allison","Aria","Jenny","Guy","Karen","Daniel","Alex"];
+    for(var i=0;i<prefer.length;i++){
+      var hit = en.filter(function(v){ return (v.name || "").indexOf(prefer[i]) >= 0; })[0];
+      if(hit){ enVoice = hit; return; }
+    }
+    enVoice = en.filter(function(v){ return /en[-_]US/i.test(v.lang); })[0] || en[0];
+  }
+  if(canSpeak){
+    pickVoice();
+    window.speechSynthesis.onvoiceschanged = pickVoice;
+  }
+  function speakBtn(text, label){
+    if(!canSpeak) return "";
+    return '<button class="speak" type="button" data-speak="' + esc(text) + '" aria-label="' + esc(label || text) + ' 듣기" title="' + esc(label || "발음 듣기") + '">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M11 5 6 9H3v6h3l5 4V5Z" fill="currentColor" stroke="none"/>' +
+      '<path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>';
+  }
+  function speak(text){
+    if(!canSpeak) return;
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      if(!enVoice) pickVoice();
+      if(enVoice){ u.voice = enVoice; u.lang = enVoice.lang; }
+      else u.lang = "en-US";
+      u.rate = /\s/.test(String(text).trim()) ? 0.95 : 0.85;
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+  function exBlock(card){
+    if(!card.ex && !card.tip) return "";
+    var out = '<div class="exwrap">';
+    if(card.ex){
+      out += '<div class="exrow"><div class="a-ex">' + highlight(card.ex, card.form || card.en) + '</div>' +
+        speakBtn(card.ex, "문장") +
+        (card.kr ? '<button class="trans" type="button" data-act="trans" aria-expanded="false">해석</button>' : "") +
+        (card.tip ? '<button class="trans tip" type="button" data-act="tip" aria-expanded="false">이렇게 외워봐</button>' : "") +
+        '</div>';
+      if(card.kr) out += '<div class="a-ko" hidden>' + esc(card.kr) + '</div>';
+    }
+    if(card.tip) out += '<div class="a-tip" hidden><b>이렇게 외워봐</b>' + esc(card.tip) + '</div>';
+    return out + '</div>';
+  }
+  function toggleTrans(b){
+    var wrap = b.closest(".exwrap");
+    var ko = wrap && wrap.querySelector(".a-ko");
+    if(!ko) return;
+    ko.hidden = !ko.hidden;
+    b.setAttribute("aria-expanded", ko.hidden ? "false" : "true");
+    b.textContent = ko.hidden ? "해석" : "해석 닫기";
+  }
+  function toggleTip(b){
+    var wrap = b.closest(".exwrap");
+    var tip = wrap && wrap.querySelector(".a-tip");
+    if(!tip) return;
+    tip.hidden = !tip.hidden;
+    b.setAttribute("aria-expanded", tip.hidden ? "false" : "true");
+    var isHint = b.getAttribute("data-label") === "hint";
+    b.textContent = tip.hidden ? (isHint ? "힌트" : "이렇게 외워봐") : (isHint ? "힌트 닫기" : "암기법 닫기");
+  }
+  function dirFor(card){
+    var d = state.prefs.dir;
+    if(d !== "mix") return d;
+    if(!session.dirOf[card.id]) session.dirOf[card.id] = Math.random() < 0.5 ? "en-ko" : "ko-en";
+    return session.dirOf[card.id];
+  }
+
+  function renderCard(){
+    var box = el("card");
+    var total = session.queue.length;
+    el("counter").textContent = total ? (Math.min(session.idx+1, total) + " / " + total) : "0 / 0";
+
+    if(!total){
+      box.innerHTML = '<p class="card-h">이 조건에 맞는 카드가 없어요.</p>' +
+        '<p class="a-ex">출제 순서나 범위를 바꾸거나, 카드 추가 탭에서 단어를 넣어 보세요.</p>';
+      el("hint").textContent = "";
+      return;
+    }
+    if(session.idx >= total){
+      box.innerHTML = '<p class="card-h">이 묶음 ' + total + '장을 모두 봤어요.</p>' +
+        '<p class="a-ex">반복함으로 분류한 카드만 다시 돌리면 기억에 더 잘 남습니다.</p>' +
+        '<div class="acts">' +
+          '<button class="btn primary" type="button" data-go="repeat-only">반복함만 다시 보기</button>' +
+          '<button class="btn" type="button" data-go="restart">처음부터 다시</button>' +
+        '</div>';
+      el("hint").textContent = "";
+      return;
+    }
+
+    var card = byId(session.queue[session.idx]);
+    if(!card){ session.idx++; return renderCard(); }
+    var dir = dirFor(card);
+    var status = st(card.id);
+    var tags = '<div class="tags">' +
+      '<span class="tag">' + esc(GRADE_KO[card.g] || "내 카드") + '</span>' +
+      (card.pos && POS_KO[card.pos] ? '<span class="tag">' + POS_KO[card.pos] + '</span>' : "") +
+      (status==="repeat" ? '<span class="tag rep">반복함</span>' : "") +
+      (status==="done" ? '<span class="tag done">완성함</span>' : "") +
+      '</div>';
+
+    var question = dir==="en-ko"
+      ? '<div class="qrow"><div class="q-en">' + esc(card.en) + '</div>' + speakBtn(card.en) + '</div>'
+      : '<div class="q-ko">' + esc(card.ko) + '</div>';
+
+    var html = tags + question;
+
+    if(session.revealed){
+      var answer = dir==="en-ko"
+        ? '<div class="a-main">' + esc(card.ko) + '</div>'
+        : '<div class="qrow"><div class="a-main en">' + esc(card.en) + '</div>' + speakBtn(card.en) + '</div>';
+      var ex = exBlock(card);
+      html += '<div class="answer reveal-in">' + answer + ex + '</div>' +
+        '<div class="acts">' +
+          '<button class="btn rep" type="button" data-mark="repeat">반복함<kbd>1</kbd></button>' +
+          '<button class="btn done" type="button" data-mark="done">완성함<kbd>2</kbd></button>' +
+        '</div>';
+    } else {
+      html += '<div class="acts"><button class="btn primary" type="button" data-act="reveal">뜻 보기<kbd>Space</kbd></button></div>';
+    }
+    html += '<div class="acts" style="gap:14px">' +
+      (session.history.length ? '<button class="btn small" type="button" data-act="undo">되돌리기</button>' : "") +
+      '<button class="btn small" type="button" data-act="skip">건너뛰기</button>' +
+      '</div>';
+
+    box.innerHTML = html;
+    el("hint").textContent = session.revealed ? "1 반복함 · 2 완성함 · S 발음 · ← 되돌리기" : "Space 뜻 보기 · S 발음";
+  }
+
+  function renderList(){
+    if(!el("panel-list").classList.contains("on")) return;
+    var q = el("q-search").value.trim().toLowerCase();
+    var fs = el("q-status").value, fg = el("q-grade").value;
+    var rows = cards().filter(function(c){
+      if(fs !== "all" && st(c.id) !== fs) return false;
+      if(fg !== "all" && String(c.g) !== String(fg)) return false;
+      if(q && c.en.toLowerCase().indexOf(q) < 0 && c.ko.toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    var tb = el("tbody");
+    tb.innerHTML = "";
+    if(!rows.length){
+      tb.innerHTML = '<tr><td colspan="4"><div class="empty">조건에 맞는 카드가 없어요.</div></td></tr>';
+    } else {
+      var frag = document.createDocumentFragment();
+      rows.slice(0, 1000).forEach(function(c){
+        var s = st(c.id);
+        var tr = document.createElement("tr");
+        tr.innerHTML =
+          '<td><span class="w">' + esc(c.en) + '</span>' + (c.g===0 ? ' <span class="tag">내 카드</span>' : "") + '</td>' +
+          '<td class="m">' + esc(c.ko) + '</td>' +
+          '<td><span class="pill ' + (s==="repeat"?"rep":s==="done"?"done":"new") + '">' +
+            (s==="repeat"?"반복함":s==="done"?"완성함":"안 봄") + '</span></td>' +
+          '<td><div class="mini">' +
+            '<button type="button" data-set="repeat" data-id="' + esc(c.id) + '">반복함</button>' +
+            '<button type="button" data-set="done" data-id="' + esc(c.id) + '">완성함</button>' +
+            '<button type="button" data-set="new" data-id="' + esc(c.id) + '">초기화</button>' +
+            (c.g===0 ? '<button type="button" data-del="' + esc(c.id) + '" class="danger">삭제</button>' : "") +
+          '</div></td>';
+        frag.appendChild(tr);
+      });
+      tb.appendChild(frag);
+    }
+    el("list-count").textContent = rows.length + "장 표시" + (rows.length > 1000 ? " (앞 1000장만)" : "") + " · 전체 " + cards().length + "장";
+  }
+
+  function renderToday(){
+    var k = todayKey(), r = state.daily[k], n = r ? r.n : 0, g = goal();
+    var wk = weekOf(weekKeyOf(k));
+    el("t-count").textContent = n;
+    el("t-goal").textContent = g;
+    el("t-fill").style.width = Math.min(100, n / g * 100).toFixed(1) + "%";
+    el("today").classList.toggle("hit", n >= g);
+    el("t-pts").textContent = "이번 주 " + fmtP(wk.pts) + " · " + won(wk.pts);
+
+    var out = [], today = new Date();
+    for(var i=6;i>=0;i--){
+      var d = new Date(today.getFullYear(), today.getMonth(), today.getDate()-i);
+      var dk = keyOf(d), rec = state.daily[dk];
+      var hit = rec && rec.n >= (rec.goal || g);
+      out.push('<span class="s' + (hit ? " on" : "") + (i===0 ? " today" : "") + '" title="' + dk + '">' +
+        "일월화수목금토".charAt(d.getDay()) + '</span>');
+    }
+    el("stamps").innerHTML = out.join("");
+    el("stamps").setAttribute("aria-label", "최근 7일 중 목표 달성 " + out.filter(function(s){ return s.indexOf(" on") > 0; }).length + "일");
+  }
+
+  function needCards(r, total){ return Math.max(1, Math.ceil(total * r.at)); }
+  function renderRewards(){
+    var c = counts(), done = c.done, total = c.total;
+    el("run-progress").innerHTML = '완성함 <b class="num">' + done + '</b> / ' + total + '장' +
+      (done >= total ? " · 완주!" : ' · 완주까지 <b class="num">' + (total - done) + '</b>장');
+    el("rewards").innerHTML = REWARDS.map(function(r){
+      var need = needCards(r, total);
+      var on = done >= need;
+      var pct = Math.min(100, done / need * 100);
+      return '<div class="reward' + (on ? " on" : "") + '">' +
+        '<div class="icon">' + (on ? "✓" : "🔒") + '</div>' +
+        '<div class="txt"><div class="name">' + esc(r.name) + '</div>' +
+        '<div class="need">' + (on ? "열림 · " + need + "장 완성" :
+          (need - done) + "장 더 외우면 열려요 · " + need + "장") + '</div>' +
+        '<div class="rbar"><i style="width:' + pct.toFixed(1) + '%"></i></div></div></div>';
+    }).join("");
+  }
+  function checkUnlock(){
+    var c = counts(), newly = null;
+    REWARDS.forEach(function(r){
+      if(c.done >= needCards(r, c.total) && state.unlocked.indexOf(r.id) < 0){
+        state.unlocked.push(r.id);
+        newly = r;
+      }
+    });
+    if(newly){
+      save();
+      toast(newly.at >= 1 ? "지우, 전체 " + c.total + "장 완주! 에어팟이다!"
+                          : "축하해 지우! " + needCards(newly, c.total) + "장 완성 — " + newly.name + "!");
+    }
+  }
+  function renderPoints(){
+    if(!el("panel-points").classList.contains("on")) return;
+    var wk = weekOf(weekKeyOf(todayKey()));
+    el("wk-pts").innerHTML = (Math.round(wk.pts*10)/10) + "<small>P</small>";
+    el("wk-money").textContent = won(wk.pts);
+    el("wk-days").textContent = "목표 달성 " + wk.hits + "일 / 5일" + (wk.bonus ? " · 주간 보너스 +20P" : "");
+
+    var bal = Math.max(0, earnedTotal() - paidTotal());
+    el("bal-money").textContent = won(bal);
+    el("bal-pts").textContent = fmtP(bal) + " · 지금까지 모은 " + fmtP(earnedTotal());
+    el("btn-payout").disabled = bal <= 0;
+
+    var log = state.paid.slice(0, 4).map(function(p){
+      return "<span>" + new Date(p.ts).toLocaleDateString("ko-KR") + " · " + fmtP(p.p) + " · " + Math.round(p.p * (p.rate || rate())).toLocaleString("ko-KR") + "원 지급</span>";
+    });
+    el("paidlog").innerHTML = log.join("");
+
+    var rows = allWeeks().slice(0, 6).map(function(w){
+      var s = weekOf(w), mon = parseKey(w);
+      var label = (mon.getMonth()+1) + "/" + mon.getDate() + " 주";
+      return "<tr><td>" + label + '</td><td class="num">' + s.cards + '장</td><td class="num">' + s.hits + '일</td><td class="num">' +
+        (Math.round(s.pts*10)/10) + 'P</td><td class="num">' + won(s.pts) + "</td></tr>";
+    });
+    renderRewards();
+    el("wk-body").innerHTML = rows.length ? rows.join("") : '<tr><td colspan="5"><div class="empty">아직 기록이 없어요. 오늘 목표부터 시작해 보세요.</div></td></tr>';
+  }
+
+  /* ============ 숙어 빈칸 퀴즈 ============ */
+  var quiz = {list:[], i:0, correct:0, answered:false, picked:null, opts:[]};
+
+  function idiomPool(){
+    return cards().filter(function(c){ return c.cloze && c.form; });
+  }
+  function buildOpts(){
+    var cur = byId(quiz.list[quiz.i]);
+    if(!cur){ quiz.opts = []; return; }
+    var others = shuffled(idiomPool().filter(function(c){ return c.id !== cur.id; })).slice(0, 3);
+    quiz.opts = shuffled([cur].concat(others)).map(function(c){ return c.id; });
+  }
+  function newQuizRound(){
+    var pool = idiomPool();
+    var rep = [], fresh = [], done = [];
+    pool.forEach(function(c){
+      var s = st(c.id);
+      (s === "repeat" ? rep : s === "new" ? fresh : done).push(c);
+    });
+    var ordered = shuffled(rep).concat(shuffled(fresh), shuffled(done));
+    quiz.list = ordered.slice(0, 10).map(function(c){ return c.id; });
+    quiz.i = 0; quiz.correct = 0; quiz.answered = false; quiz.picked = null;
+    buildOpts();
+    renderQuiz();
+  }
+  function answerQuiz(id){
+    if(quiz.answered) return;
+    var cur = byId(quiz.list[quiz.i]);
+    if(!cur) return;
+    quiz.answered = true;
+    quiz.picked = id;
+    var ok = id === cur.id;
+    if(ok) quiz.correct++;
+    state.status[cur.id] = ok ? "done" : "repeat";
+    var reached = bumpToday(1);
+    save();
+    renderQuiz(); renderMeter(); renderResume(); renderToday(); renderPoints();
+    checkUnlock();
+    if(reached) toast("지우, 오늘 목표 " + goal() + "장 달성! +10P");
+  }
+  function nextQuiz(){
+    quiz.i++;
+    quiz.answered = false;
+    quiz.picked = null;
+    if(quiz.i < quiz.list.length) buildOpts();
+    renderQuiz();
+  }
+  /* 정답 뜻을 가린 해석 + 형태 힌트 */
+  function koStems(ko){
+    var out = [];
+    String(ko || "").split(/[;,]/).forEach(function(sense){
+      var t = sense.trim().replace(/^[~∼]\s*/, "").replace(/^\(.*?\)\s*/, "");
+      t = t.replace(/^[을를에와과의로]\s*/, "");
+      [t, t.replace(/(하다|되다|하기)$/, ""), t.replace(/다$/, ""), t.replace(/[은는이가을를]$/, "")]
+        .forEach(function(v){ v = v.trim(); if(v.length >= 1 && out.indexOf(v) < 0) out.push(v); });
+    });
+    return out.sort(function(a, b){ return b.length - a.length; });
+  }
+  function esc4(n){ var h = n.toString(16); while(h.length < 4) h = "0" + h; return "\\u" + h; }
+  function sylBlock(ch){
+    var c = ch.charCodeAt(0);
+    if(c < 0xAC00 || c > 0xD7A3) return null;
+    var base = 0xAC00 + Math.floor((c - 0xAC00) / 28) * 28;
+    return "[" + esc4(base) + "-" + esc4(base + 27) + "]";
+  }
+  /* 정답에 해당하는 우리말을 ○ 로 가린다. 못 가리면 해석을 아예 보여주지 않는다. */
+  function maskKo(kr, ko){
+    var stems = koStems(ko);
+    for(var n = 0; n < stems.length; n++){
+      var stem = stems[n];
+      if(stem.length < 1) continue;
+      var head = stem.slice(0, -1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      var last = stem.slice(-1);
+      var tries = [stem.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")];
+      var blk = sylBlock(last);
+      if(blk) tries.push(head + blk);
+      if(stem.length >= 2) tries.push(head + "[\uac00-\ud7a3]");
+      for(var i = 0; i < tries.length; i++){
+        var re;
+        try{ re = new RegExp(tries[i], "g"); }catch(e){ continue; }
+        if(re.test(kr)){
+          re.lastIndex = 0;
+          return {text: kr.replace(re, function(m){ return new Array(m.length + 1).join("○"); }), masked:true};
+        }
+      }
+    }
+    return {text:"", masked:false};
+  }
+  function shapeHint(en){
+    var parts = String(en).split(" ");
+    var shape = parts.map(function(w){
+      return w.charAt(0) + new Array(w.length).join("·");
+    }).join(" ");
+    return shape + "  (" + parts.length + "단어)";
+  }
+  function renderQuiz(){
+    if(!el("panel-quiz").classList.contains("on")) return;
+    var box = el("quiz"), sc = el("q-score");
+    if(!quiz.list.length){
+      sc.textContent = "";
+      box.innerHTML = '<p class="card-h">아직 퀴즈로 낼 숙어가 없어요.</p>' +
+        '<p class="a-ex">카드 추가 탭에서 단계를 숙어로 고르고, 예문에 빈칸으로 낼 부분을 {중괄호}로 표시해 보세요.</p>';
+      return;
+    }
+    if(quiz.i >= quiz.list.length){
+      sc.innerHTML = "이번 회차 끝";
+      var pct = Math.round(quiz.correct / quiz.list.length * 100);
+      box.innerHTML = '<p class="card-h">' + quiz.list.length + '문제 중 <b class="num">' + quiz.correct + '개</b> 정답 (' + pct + '%)</p>' +
+        '<p class="a-ex">' + (quiz.correct === quiz.list.length ? "전부 맞혔어요. 다음 회차로 넘어가 볼까요?" : "틀린 숙어는 반복함에 들어갔어요. 학습 탭에서 한 번 더 볼 수 있습니다.") + '</p>' +
+        '<div class="acts"><button class="btn primary" type="button" data-quiz="new">다음 10문제</button></div>';
+      return;
+    }
+    var cur = byId(quiz.list[quiz.i]);
+    if(!cur){ return nextQuiz(); }
+    sc.innerHTML = "문제 <b>" + (quiz.i + 1) + "</b> / " + quiz.list.length + " · 정답 <b>" + quiz.correct + "</b>";
+
+    var sentence = esc(cur.cloze).replace("______", "<u>______</u>");
+    var html = '<div class="tags"><span class="tag">숙어</span></div>' +
+      '<div class="exwrap"><div class="cloze">' + sentence + '</div>' +
+      '<div class="exrow"><button class="trans tip" type="button" data-act="tip" data-label="hint" aria-expanded="false">힌트</button></div>' +
+      '<div class="a-tip" hidden><b>힌트</b>' +
+        (function(){ var m = cur.kr ? maskKo(cur.kr, cur.ko) : {text:""}; return m.text ? esc(m.text) + '<br>' : ""; })() +
+        '<span class="shape">' + esc(shapeHint(cur.en)) + '</span></div>' +
+      '</div>';
+
+    html += '<div class="opts">' + quiz.opts.map(function(id, n){
+      var o = byId(id);
+      if(!o) return "";
+      var cls = "opt";
+      if(quiz.answered){
+        if(id === cur.id) cls += " ok";
+        else if(id === quiz.picked) cls += " no";
+      }
+      return '<button class="' + cls + '" type="button" data-pick="' + esc(id) + '"' + (quiz.answered ? " disabled" : "") + '>' +
+        '<span class="k">' + (n+1) + '</span>' + esc(o.en) + '</button>';
+    }).join("") + '</div>';
+
+    if(quiz.answered){
+      var ok = quiz.picked === cur.id;
+      html += '<div class="answer reveal-in">' +
+        '<div class="verdict ' + (ok ? "ok" : "no") + '">' + (ok ? "정답이에요" : "아쉬워요 — 정답은 " + esc(cur.en)) + '</div>' +
+        '<div class="a-main">' + esc(cur.ko) + '</div>' +
+        exBlock(cur) +
+        '</div>' +
+        '<div class="acts"><button class="btn primary" type="button" data-quiz="next">다음 문제</button></div>';
+    }
+    box.innerHTML = html;
+  }
+
+  function renderAll(){ renderMeter(); renderResume(); renderToday(); renderCard(); renderList(); renderPoints(); renderQuiz(); }
+
+  var toastTimer = null;
+  function toast(msg){
+    var t = el("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 1800);
+  }
+
+  /* ============ 동작 ============ */
+  function bumpToday(delta){
+    var k = todayKey(), g = goal();
+    var r = state.daily[k] || (state.daily[k] = {n:0, goal:g});
+    var before = r.n;
+    r.n = Math.max(0, r.n + delta);
+    pruneDaily();
+    return (before < (r.goal || g) && r.n >= (r.goal || g));
+  }
+  function mark(status){
+    if(session.idx >= session.queue.length) return;
+    var id = session.queue[session.idx];
+    var entry = {id:id, prev:state.status[id], at:-1};
+
+    if(status === "repeat" && (session.again[id] || 0) < 2){
+      session.again[id] = (session.again[id] || 0) + 1;
+      entry.at = Math.min(session.idx + 6, session.queue.length);
+      session.queue.splice(entry.at, 0, id);
+    }
+    session.history.push(entry);
+    if(session.history.length > 60) session.history.shift();
+
+    state.status[id] = status;
+    session.idx++;
+    session.revealed = false;
+    var reached = bumpToday(1);
+    save(); saveSession();
+    renderMeter(); renderResume(); renderToday(); renderCard(); renderList(); renderPoints();
+
+    checkUnlock();
+    if(reached){
+      el("today").classList.remove("pulse");
+      void el("today").offsetWidth;
+      el("today").classList.add("pulse");
+      toast("지우, 오늘 목표 " + goal() + "장 달성! +10P");
+    } else {
+      toast(status==="repeat" ? (entry.at >= 0 ? "반복함 — 조금 뒤에 다시 나와요" : "반복함으로 보냈어요") : "완성함으로 보냈어요");
+    }
+  }
+  function undo(){
+    var last = session.history.pop();
+    if(!last) return;
+    if(last.at >= 0 && session.queue[last.at] === last.id){
+      session.queue.splice(last.at, 1);
+      session.again[last.id] = Math.max(0, (session.again[last.id] || 1) - 1);
+    }
+    if(last.prev === undefined) delete state.status[last.id];
+    else state.status[last.id] = last.prev;
+    session.idx = Math.max(0, session.idx - 1);
+    session.revealed = true;
+    bumpToday(-1);
+    save(); saveSession();
+    renderMeter(); renderResume(); renderToday(); renderCard(); renderList(); renderPoints();
+  }
+  function skip(){
+    if(session.idx >= session.queue.length) return;
+    session.idx++;
+    session.revealed = false;
+    saveSession();
+    renderCard();
+  }
+  function reveal(){
+    if(session.idx >= session.queue.length) return;
+    if(session.revealed) return;
+    session.revealed = true;
+    renderCard();
+  }
+  function startWith(order){
+    state.prefs.order = order;
+    el("sel-order").value = order;
+    save();
+    buildQueue();
+    renderAll();
+    el("panel-study").scrollIntoView({block:"nearest"});
+  }
+
+  /* ============ 이벤트 ============ */
+  el("card").addEventListener("click", function(e){
+    var b = e.target.closest("button");
+    if(!b) return;
+    if(b.dataset.speak){ speak(b.dataset.speak); return; }
+    if(b.dataset.act === "trans"){ toggleTrans(b); return; }
+    if(b.dataset.act === "tip"){ toggleTip(b); return; }
+    if(b.dataset.mark) mark(b.dataset.mark);
+    else if(b.dataset.act === "reveal") reveal();
+    else if(b.dataset.act === "undo") undo();
+    else if(b.dataset.act === "skip") skip();
+    else if(b.dataset.go === "repeat-only") startWith("repeat-only");
+    else if(b.dataset.go === "restart"){ buildQueue(); renderAll(); }
+  });
+  el("resume-rep").addEventListener("click", function(){ startWith("repeat-first"); });
+  el("resume-new").addEventListener("click", function(){ startWith("new-first"); });
+  el("btn-restart").addEventListener("click", function(){ buildQueue(); renderAll(); toast("이 조건으로 다시 시작했어요"); });
+
+  document.querySelectorAll("[data-jump]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var mode = b.dataset.jump;
+      var c = counts();
+      var need = mode === "new-only" ? c["new"] : mode === "repeat-only" ? c.repeat : c.done;
+      if(!need){
+        toast(mode === "new-only" ? "안 본 카드가 없어요" : mode === "repeat-only" ? "반복함 카드가 아직 없어요" : "완성함 카드가 아직 없어요");
+        return;
+      }
+      selectTab("study");
+      startWith(mode);
+    });
+  });
+
+  ["sel-order","sel-grade","sel-dir","chk-shuffle"].forEach(function(id){
+    el(id).addEventListener("change", function(){
+      state.prefs.order = el("sel-order").value;
+      state.prefs.grade = el("sel-grade").value;
+      state.prefs.dir = el("sel-dir").value;
+      state.prefs.shuffle = el("chk-shuffle").checked;
+      save();
+      buildQueue();
+      renderAll();
+    });
+  });
+
+  ["q-search","q-status","q-grade"].forEach(function(id){
+    el(id).addEventListener("input", renderList);
+    el(id).addEventListener("change", renderList);
+  });
+
+  el("tbody").addEventListener("click", function(e){
+    var b = e.target.closest("button");
+    if(!b) return;
+    if(b.dataset.set){
+      var id = b.dataset.id;
+      if(b.dataset.set === "new") delete state.status[id];
+      else state.status[id] = b.dataset.set;
+      save(); checkUnlock(); renderMeter(); renderResume(); renderList(); renderCard(); renderPoints();
+    } else if(b.dataset.del){
+      var did = b.dataset.del;
+      var card = byId(did);
+      if(!card) return;
+      if(!confirm('"' + card.en + '" 카드를 삭제할까요?')) return;
+      state.custom = state.custom.filter(function(c){ return c.id !== did; });
+      delete state.status[did];
+      session.queue = session.queue.filter(function(x){ return x !== did; });
+      save(); saveSession(); renderAll();
+      toast("카드를 삭제했어요");
+    }
+  });
+
+  el("btn-reset").addEventListener("click", function(){
+    if(!confirm("반복함·완성함 분류를 모두 지우고 처음 상태로 돌릴까요? 추가한 카드는 그대로 남습니다.")) return;
+    state.status = {};
+    save(); buildQueue(); renderAll();
+    toast("진도를 초기화했어요");
+  });
+
+  function newId(){ return "c-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,6); }
+  function addCard(en, ko, pos, ex, g){
+    en = String(en).trim(); ko = String(ko).trim();
+    if(!en || !ko) return null;
+    var dup = cards().filter(function(c){ return c.en.toLowerCase() === en.toLowerCase(); })[0];
+    if(dup) return {dup:dup};
+    var card = {id:newId(), g:Number(g)||0, en:en, pos:pos||"", ko:ko, ex:(ex||"").trim()};
+    state.custom.unshift(card);
+    return {card:card};
+  }
+
+  el("form-one").addEventListener("submit", function(e){
+    e.preventDefault();
+    var r = addCard(el("in-en").value, el("in-ko").value, el("in-pos").value, el("in-ex").value, el("in-grade").value);
+    if(!r){ toast("영어 단어와 뜻을 모두 채워 주세요"); return; }
+    if(r.dup){ toast('"' + r.dup.en + '" 은 이미 있는 카드예요'); return; }
+    save(); buildQueue(); renderAll();
+    el("in-en").value = ""; el("in-ko").value = ""; el("in-ex").value = "";
+    el("in-en").focus();
+    toast('"' + r.card.en + '" 카드를 추가했어요');
+  });
+
+  el("form-bulk").addEventListener("submit", function(e){
+    e.preventDefault();
+    var lines = el("in-bulk").value.split(/\r?\n/);
+    var added = 0, dup = 0, bad = 0;
+    lines.forEach(function(line){
+      if(!line.trim()) return;
+      var parts = line.split(/\t|,|;|\s\/\s|\|/).map(function(s){ return s.trim(); }).filter(function(s){ return s.length; });
+      if(parts.length < 2){ bad++; return; }
+      var r = addCard(parts[0], parts[1], "", parts.slice(2).join(", "), 0);
+      if(!r) bad++;
+      else if(r.dup) dup++;
+      else added++;
+    });
+    if(added){ save(); buildQueue(); renderAll(); el("in-bulk").value = ""; }
+    toast(added + "장 추가" + (dup ? " · 중복 " + dup : "") + (bad ? " · 형식 오류 " + bad : ""));
+  });
+
+  el("quiz").addEventListener("click", function(e){
+    var b = e.target.closest("button");
+    if(!b) return;
+    if(b.dataset.speak) speak(b.dataset.speak);
+    else if(b.dataset.act === "trans") toggleTrans(b);
+    else if(b.dataset.act === "tip") toggleTip(b);
+    else if(b.dataset.pick) answerQuiz(b.dataset.pick);
+    else if(b.dataset.quiz === "next") nextQuiz();
+    else if(b.dataset.quiz === "new") newQuizRound();
+  });
+  el("btn-newquiz").addEventListener("click", function(){ newQuizRound(); });
+
+  function openLetter(){
+    el("backdrop").hidden = false;
+    setTimeout(function(){ var b = el("btn-letter-close"); if(b) b.focus(); }, 30);
+  }
+  function closeLetter(){
+    el("backdrop").hidden = true;
+    try{ localStorage.setItem(LS_LETTER, "1"); }catch(e){}
+  }
+  el("btn-letter-close").addEventListener("click", closeLetter);
+  el("backdrop").addEventListener("click", function(e){ if(e.target === el("backdrop")) closeLetter(); });
+
+  function selectTab(name){
+    ["study","quiz","list","points"].forEach(function(n){
+      var on = n === name;
+      el("tab-" + n).setAttribute("aria-selected", on ? "true" : "false");
+      el("panel-" + n).classList.toggle("on", on);
+    });
+    if(name === "list") renderList();
+    if(name === "points") renderPoints();
+    if(name === "quiz"){
+      if(!quiz.list.length) newQuizRound();
+      else renderQuiz();
+    }
+  }
+  ["study","quiz","list","points"].forEach(function(n){
+    el("tab-" + n).addEventListener("click", function(){ selectTab(n); });
+  });
+
+  el("set-goal").addEventListener("change", function(){
+    state.prefs.goal = Number(el("set-goal").value) || 20;
+    var k = todayKey();
+    if(state.daily[k]) state.daily[k].goal = state.prefs.goal;
+    save(); renderToday(); renderPoints();
+    toast("하루 목표를 " + state.prefs.goal + "장으로 바꿨어요");
+  });
+  el("set-rate").addEventListener("change", function(){
+    var v = parseInt(String(el("set-rate").value).replace(/[^0-9]/g, ""), 10);
+    state.prefs.rate = isFinite(v) && v >= 0 ? v : 100;
+    el("set-rate").value = state.prefs.rate;
+    save(); renderToday(); renderPoints();
+  });
+  el("btn-payout").addEventListener("click", function(){
+    var bal = Math.max(0, earnedTotal() - paidTotal());
+    if(bal <= 0) return;
+    if(!confirm(won(bal) + " (" + fmtP(bal) + ") 을 지급한 것으로 기록할까요?")) return;
+    state.paid.unshift({ts:Date.now(), p:bal, rate:rate()});
+    state.paid = state.paid.slice(0, 40);
+    save(); renderPoints();
+    toast("용돈 지급을 기록했어요");
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(!el("backdrop").hidden){
+      if(e.key === "Escape" || e.key === "Enter" || e.key === " "){ e.preventDefault(); closeLetter(); }
+      return;
+    }
+    var t = e.target;
+    if(t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT")) return;
+    if(el("panel-quiz").classList.contains("on")){
+      if(!quiz.answered && /^[1-4]$/.test(e.key)){
+        var pickId = quiz.opts[Number(e.key) - 1];
+        if(pickId) answerQuiz(pickId);
+      } else if(quiz.answered && (e.key === "Enter" || e.key === " ")){
+        e.preventDefault();
+        if(quiz.i >= quiz.list.length) newQuizRound(); else nextQuiz();
+      }
+      return;
+    }
+    if(!el("panel-study").classList.contains("on")) return;
+    if(e.key === " " || e.key === "Enter"){ e.preventDefault(); reveal(); }
+    else if(e.key === "1" && session.revealed) mark("repeat");
+    else if(e.key === "2" && session.revealed) mark("done");
+    else if(e.key === "ArrowLeft") undo();
+    else if(e.key === "ArrowRight") skip();
+    else if(e.key === "s" || e.key === "S"){
+      var cur = byId(session.queue[session.idx]);
+      if(cur) speak(cur.en);
+    }
+  });
+
+  function setSync(on, text){
+    var d = el("syncdot"), t = el("synctext");
+    if(d) d.classList.toggle("on", !!on);
+    if(t) t.textContent = text;
+  }
+
+  function applyPrefsToUI(){
+    el("sel-order").value = state.prefs.order;
+    el("sel-grade").value = String(state.prefs.grade);
+    el("sel-dir").value = state.prefs.dir;
+    el("chk-shuffle").checked = !!state.prefs.shuffle;
+    el("set-goal").value = String(goal());
+    el("set-rate").value = String(rate());
+  }
+
+  /* ============ 시작 ============ */
+  var local = readLocal();
+  if(local) state = local;
+  applyPrefsToUI();
+  if(!restoreSession()) buildQueue();
+  renderAll();
+  setSync(false, "이 기기에 저장 중");
+  try{ if(!localStorage.getItem(LS_LETTER)) openLetter(); }catch(e){}
+
+  if(window.claude && typeof window.claude.use === "function"){
+    window.claude.use("db").then(function(store){
+      if(!store) return;
+      db = store;
+      var ref = db.doc("study/state");
+      return ref.get().then(function(snap){
+        if(snap.exists){
+          var remote = normalize(snap.data());
+          state = merge(remote, state);
+          applyPrefsToUI();
+          writeLocal();
+          buildQueue();
+          renderAll();
+        }
+        lastPushed = "";
+        push();
+        setSync(true, "기기 간 저장 켜짐");
+        ref.onSnapshot(function(s){
+          if(!s.exists || s.metadata.hasPendingWrites) return;
+          var body = JSON.stringify(normalize(s.data()));
+          if(body === JSON.stringify(state) || body === lastPushed) return;
+          state = merge(normalize(s.data()), state);
+          applyPrefsToUI();
+          writeLocal();
+          renderMeter(); renderResume(); renderList();
+        }, function(){ /* 구독 종료: 로컬 저장은 계속 동작 */ });
+      });
+    }).catch(function(){ setSync(false, "이 브라우저에만 저장됩니다"); });
+  }
+
+  window.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden"){ writeLocal(); push(); }
+  });
+})();
+</script>
+
+<script>
+if("serviceWorker" in navigator){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("sw.js").catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
