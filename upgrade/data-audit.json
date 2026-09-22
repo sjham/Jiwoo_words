@@ -1,0 +1,21 @@
+{
+  "cards": 1510,
+  "words": 1200,
+  "phrases": 310,
+  "added_words": 362,
+  "added_phrases": 147,
+  "original_cards_preserved": 1001,
+  "existing_cards_revised": 121,
+  "meaning_pos_sentence_fields_revised": 149,
+  "notes": 127,
+  "topics": {
+    "daily": 1193,
+    "style": 106,
+    "music": 200,
+    "skin": 11
+  },
+  "missing_translations": 0,
+  "duplicate_ids": 0,
+  "original_commit": "bf83f0e2ab7a2b7b612365786625313874cb3a95",
+  "checks": "Structural checks and editorial review; not independent teacher validation."
+}

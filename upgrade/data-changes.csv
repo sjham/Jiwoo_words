@@ -1,0 +1,150 @@
+﻿word,field,before,after
+answer,pos,v,v/n
+cook,pos,v,v/n
+enough,pos,adj,det/adv
+exercise,pos,v,v/n
+practice,pos,v,v/n
+surprise,pos,n,n/v
+travel,pos,v,v/n
+visit,pos,v,v/n
+challenge,pos,n,n/v
+damage,pos,n,n/v
+develop,ko,"발전시키다, 개발하다","발전하다, 발전시키다, 개발하다"
+experience,pos,n,n/v
+focus,pos,v,v/n
+patient,pos,adj,adj/n
+respect,pos,v,v/n
+support,pos,v,v/n
+waste,pos,v,v/n
+wonder,pos,v,v/n
+effective,ex,This is the most effective way to memorize words.,Daily review is an effective way to practice new words.
+effective,kr,이것이 단어를 외우는 가장 효과적인 방법이다.,매일 복습하는 것은 새 단어를 연습하는 효과적인 방법이다.
+estimate,pos,v,v/n
+influence,pos,n,n/v
+judge,pos,v,v/n
+offer,pos,v,v/n
+separate,pos,v,v/adj
+be interested in,ex,You will {be interested in} this story.,Jiwoo {is interested in} this story.
+be interested in,kr,너는 이 이야기에 관심이 생길 것이다.,지우는 이 이야기에 관심이 있다.
+be full of,ex,The hall will {be full of} students.,The hall {is full of} students.
+be full of,kr,강당은 학생들로 가득 찰 것이다.,강당은 학생들로 가득 차 있다.
+be made of,ex,Desks can {be made of} wood or metal.,This desk {is made of} wood.
+be made of,kr,책상은 나무나 금속으로 만들어질 수 있다.,이 책상은 나무로 만들어졌다.
+be covered with,ex,"In winter, the mountain will {be covered with} snow.",The mountain {is covered with} snow.
+be covered with,kr,겨울이면 그 산은 눈으로 덮일 것이다.,산이 눈으로 덮여 있다.
+be famous for,ex,This town will {be famous for} its cherry trees.,This town {is famous for} its cherry trees.
+be famous for,kr,이 마을은 벚나무로 유명해질 것이다.,이 마을은 벚나무로 유명하다.
+aim,pos,n,n/v
+approach,pos,v,v/n
+attempt,pos,v,v/n
+cause,pos,v,v/n
+charge,pos,v,v/n
+complete,pos,v,v/adj
+cost,pos,v,v/n
+cure,pos,v,v/n
+demand,pos,v,v/n
+doubt,pos,v,v/n
+exchange,pos,v,v/n
+force,pos,v,v/n
+harm,pos,v,v/n
+measure,pos,v,v/n
+official,pos,adj,adj/n
+positive,ex,Try to keep a positive mind.,Try to keep a positive attitude.
+positive,kr,긍정적인 마음을 유지하려고 노력해라.,긍정적인 태도를 유지하려고 노력해라.
+close,pos,adj,adj/v
+correct,pos,adj,adj/v
+direction,ko,방향,방향; (directions) 길 안내
+direction,ex,Ask him for the direction to the museum.,We asked a teacher for directions to the museum.
+direction,kr,그에게 박물관 가는 방향을 물어봐라.,우리는 선생님께 박물관으로 가는 길을 물었다.
+hold,ko,"잡다, 열다",잡다; (행사 등을) 열다
+human,pos,n,n/adj
+kind,pos,adj,adj/n
+own,pos,adj,adj/v
+present,pos,n,n/adj
+promise,pos,v,v/n
+be based on,ex,The movie may {be based on} a true story.,The movie {is based on} a true story.
+be based on,kr,그 영화는 실화에 근거한 것일지도 모른다.,그 영화는 실화를 바탕으로 한다.
+be known for,ex,Our school will {be known for} its music club.,Our school {is known for} its music club.
+be known for,kr,우리 학교는 음악 동아리로 알려지게 될 것이다.,우리 학교는 음악 동아리로 알려져 있다.
+be tired of,ex,Don't {be tired of} trying again.,I {am tired of} waiting for the bus.
+be tired of,kr,다시 시도하는 것에 싫증 내지 마라.,나는 버스를 기다리는 데 싫증이 났다.
+be used to,ex,You will {be used to} the new school soon.,I {am used to} getting up early.
+be used to,kr,너는 곧 새 학교에 익숙해질 것이다.,나는 일찍 일어나는 데 익숙하다.
+sacrifice,pos,v,v/n
+sight,ex,The sight from the tower was amazing.,The sight of the rainbow made us smile.
+sight,kr,그 탑에서 본 광경은 놀라웠다.,무지개를 보자 우리는 미소를 지었다.
+state,pos,v,v/n
+supply,pos,v,v/n
+total,pos,adj,adj/n
+transport,pos,v,v/n
+trust,pos,v,v/n
+volunteer,pos,v,v/n
+average,pos,n,adj/n
+contact,pos,v,v/n
+double,pos,adj,adj/v
+guide,pos,n,n/v
+harvest,pos,v,v/n
+both,pos,adj,det/pron
+both,ko,둘 다의,둘 다의; 둘 다
+clean,pos,adj,adj/v
+early,pos,adv,adv/adj
+match,pos,n,n/v
+another,pos,adj,det
+brush,pos,v,v/n
+camp,pos,n,n/v
+cold,pos,adj,adj/n
+dance,pos,v,v/n
+dream,pos,n,n/v
+drop,pos,v,v/n
+fall,pos,v,v/n
+fast,pos,adj,adj/adv
+fish,pos,n,n/v
+act,pos,v,v/n
+attack,pos,v,v/n
+command,pos,n,n/v
+control,pos,v,v/n
+copy,pos,v,v/n
+cough,pos,v,v/n
+crash,pos,v,v/n
+design,pos,v,v/n
+dish,ex,This dish is my grandmother's recipe.,I made this dish using my grandmother's recipe.
+dish,kr,이 요리는 할머니의 조리법이다.,나는 할머니의 조리법으로 이 요리를 만들었다.
+downtown,pos,n,adv/n
+excuse,pos,n,n/v
+fee,ex,The entrance fee is free for students.,There is no entrance fee for students.
+fee,kr,입장료는 학생에게 무료다.,학생은 입장료를 내지 않는다.
+fight,pos,v,v/n
+fit,pos,v,v/adj
+accomplish,ex,We accomplished the project in two weeks.,We accomplished our goal in two weeks.
+accomplish,kr,우리는 2주 만에 그 과제를 해냈다.,우리는 2주 만에 목표를 이루었다.
+advance,pos,n,n/v
+alternative,pos,n,n/adj
+appeal,pos,v,v/n
+appeal,ko,호소하다; 매력,"호소하다, 마음을 끌다; 매력"
+appeal,ex,The song appeals to every age.,This song appeals to people of all ages.
+appeal,kr,그 노래는 모든 세대에게 호소력이 있다.,이 노래는 모든 연령대의 사람들에게 매력적으로 다가온다.
+associate,pos,v,v/n
+authority,ex,The city authority fixed the bridge.,The local authorities repaired the bridge.
+authority,kr,시 당국이 다리를 고쳤다.,지방 당국이 그 다리를 수리했다.
+broadcast,pos,v,v/n
+commercial,pos,adj,adj/n
+concern,pos,n,n/v
+content,pos,n,n/adj
+current,pos,adj,adj/n
+defeat,pos,v,v/n
+delight,pos,n,n/v
+display,pos,v,v/n
+domestic,ex,Domestic flights are cheaper.,This airport handles both domestic and international flights.
+domestic,kr,국내선이 더 싸다.,이 공항은 국내선과 국제선을 모두 운항한다.
+encounter,pos,v,v/n
+exhibit,pos,v,v/n
+expense,ex,The trip expense was shared.,We shared the expense of the trip.
+expense,kr,여행 비용은 나눠서 냈다.,우리는 여행 경비를 나누어 냈다.
+export,pos,v,v/n
+external,ex,The building needs external repair.,The building needs repairs to its external walls.
+external,kr,그 건물은 외부 수리가 필요하다.,그 건물은 외벽을 수리해야 한다.
+forecast,pos,n,n/v
+forecast,ex,The forecast says rain tomorrow.,The weather forecast says it will rain tomorrow.
+forecast,kr,예보에 따르면 내일 비가 온다.,일기예보에 따르면 내일 비가 올 것이다.
+be born,ex,My sister will {be born} in May.,My sister {was born} in May.
+be born,kr,내 동생은 5월에 태어날 것이다.,내 여동생은 5월에 태어났다.

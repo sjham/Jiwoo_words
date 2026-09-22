@@ -1,0 +1,1 @@
+{"private":true,"scripts":{"test":"node smoke.cjs && node edges.cjs"},"devDependencies":{"playwright":"1.61.1"}}
