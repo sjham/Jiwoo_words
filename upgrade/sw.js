@@ -1,4 +1,4 @@
-const VERSION='jiwoo-upgrade-v2-7';
+const VERSION='jiwoo-upgrade-v2-8';
 const ROOT=new URL('./',self.location.href).href;
 const FILES=['./','./index.html','./app.css','./header-magic.svg','./fonts/cinzel-decorative-700.ttf','./app.js','./data.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png'].map(p=>new URL(p,ROOT).href);
 self.addEventListener('install',e=>e.waitUntil(caches.open(VERSION).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
